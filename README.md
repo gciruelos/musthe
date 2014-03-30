@@ -11,7 +11,7 @@ How to use
 
 It is very simple, everything is coded in a object-oriented style, for example:
 
-    $ python 
+    $ python -i musthe.py
     >>> a = Note('A4')
     >>> a
     <__main__.Note object at 0x7f981b1ba9b0>
