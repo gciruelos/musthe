@@ -55,3 +55,11 @@ Fair enough. Chords are yet to be implemented.
 If you have lilypond installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
 
 
+License
+=======
+
+See license file.
+
+This was made by Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+
+

@@ -1,3 +1,9 @@
+'''
+Copyright (c) 2014 Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+'''
+
+
+
 import re
 
 
