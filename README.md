@@ -58,7 +58,7 @@ If you have lilypond installed, you can make little melodies using this program,
 Contributors
 ============
 
-* (https://github.com/srir)[Sri Raghavan]
+* [Sri Raghavan](https://github.com/srir)
 
 
 License
