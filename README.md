@@ -12,11 +12,12 @@ How to use
 It is very simple, everything is coded in a object-oriented style, for example:
 
     $ python -i musthe.py
-    >>> a = Note('A4')
+    >>> a = Note('A')  #Default A4
     >>> a
-    <__main__.Note object at 0x7f981b1ba9b0>
+    Note("A4")
     >>> str(a)
     'A'
+
 
 
 Suppose you want to create tension, so you want the perfect fifth or the minor seventh of that A, so you do:
@@ -24,7 +25,7 @@ Suppose you want to create tension, so you want the perfect fifth or the minor s
     >>> fifth = Interval('P5')
     >>> seventh = Interval('m7')
     >>> a+fifth
-    <__main__.Note object at 0x7f981b1baac8>
+    Note("E5")
     >>> str(a+fifth)
     'E'
     >>> str(a+seventh)
@@ -39,14 +40,12 @@ Though it is important to see that the octaves of those notes are different:
 
 Now lets try scales:
 
-    >>> b.scale('major')
-    [<__main__.Note object at 0x7f981b1bafd0>, <__main__.Note object at 0x7f981aa43208>, <__main__.Note object at 0x7f981aa43240>, <__main__.Note object at 0x7f981aa430b8>, <__main__.Note object at 0x7f981aa43320>, <__main__.Note object at 0x7f981aa433c8>, <__main__.Note object at 0x7f981aa43400>, <__main__.Note object at 0x7f981aa432e8>]
+    >>> scale(Note('B'), 'major')
+    [Note("B4"), Note("C#5"), Note("D#5"), Note("E5"), Note("F#5"), Note("G#5"), Note("A#5"), Note("B5")]
 
-wat
+It return a list of Note instances, so if you want a cleaner result should do something like:
 
-It return a list of Note instances, so you should do something like:
-
-    >>> list(map(str, b.scale('major')))
+    >>> list(map(str, scale(Note('B'), 'major')))
     ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B']
     
 Fair enough. Chords are yet to be implemented.
