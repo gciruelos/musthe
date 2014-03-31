@@ -7,6 +7,35 @@ Copyright (c) 2014 Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
 import re
 
 
+def scale(note, scale_name):
+	if scale_name=='major':
+		return [note, note+Interval('M2'), note+Interval('M3'), 
+				note+Interval('P4'), note+Interval('P5'),
+				note+Interval('M6'), note+Interval('M7'), 
+				note+Interval('P8')]
+	elif scale_name=='natural_minor':
+		return [note, note+Interval('M2'), note+Interval('m3'), 
+				note+Interval('P4'), note+Interval('P5'),
+				note+Interval('m6'), note+Interval('m7'), 
+				note+Interval('P8')]
+	elif scale_name=='harmonic_minor':
+		return [note, note+Interval('M2'), note+Interval('m3'), 
+				note+Interval('P4'), note+Interval('P5'),
+				note+Interval('m6'), note+Interval('M7'), 
+				note+Interval('P8')]
+	elif scale_name=='melodic_minor':
+		return [note, note+Interval('M2'), note+Interval('m3'), 
+				note+Interval('P4'), note+Interval('P5'),
+				note+Interval('M6'), note+Interval('M7'), 
+				note+Interval('P8')]
+	elif scale_name=='minor_pentatonic':
+		return [note, note+Interval('m3'), note+Interval('P4'),
+				note+Interval('P5'), note+Interval('m7'), 
+				note+Interval('P8')]
+	else:
+		raise Exception('No scale named '+scale_name) 
+
+
 
 class Note():
 	'''
@@ -91,34 +120,6 @@ class Note():
 		'''
 		pass
 	
-	def scale(self, scale_name):
-		if scale_name=='major':
-			return [self, self+Interval('M2'), self+Interval('M3'), 
-			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('M6'), self+Interval('M7'), 
-			        self+Interval('P8')]
-		elif scale_name=='natural_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
-			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('m6'), self+Interval('m7'), 
-			        self+Interval('P8')]
-		elif scale_name=='harmonic_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
-			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('m6'), self+Interval('M7'), 
-			        self+Interval('P8')]
-		elif scale_name=='melodic_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
-			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('M6'), self+Interval('M7'), 
-			        self+Interval('P8')]
-		elif scale_name=='minor_pentatonic':
-			return [self, self+Interval('m3'), self+Interval('P4'),
-					self+Interval('P5'), self+Interval('m7'), 
-			        self+Interval('P8')]
-		else:
-			raise Exception('No scale named '+scale_name) 
-
 	def lilypond_notation(self):
 		return str(self).replace('b', 'is').replace('#','es').lower()
 	
