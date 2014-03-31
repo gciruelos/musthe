@@ -117,14 +117,16 @@ class Note():
 					self+Interval('P5'), self+Interval('m7'), 
 			        self+Interval('P8')]
 		else:
-		    raise Exception('No scale named '+scale_name) 
+			raise Exception('No scale named '+scale_name) 
 
 	def lilypond_notation(self):
 		return str(self).replace('b', 'is').replace('#','es').lower()
 	
 	def scientific_notation(self):
 		return str(self)+str(self.octave)
-	      
+	
+	def __repr__(self):
+		return "Note(\"%s\")" % self.scientific_notation()
 			
 	def __str__(self):
 		return self.tone+self.accidental
