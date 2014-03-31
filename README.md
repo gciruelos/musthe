@@ -54,14 +54,15 @@ Fair enough.
 Basic triad (major, minor, diminished, augmented) support has been added.
 
 Basic chord usage, default args return A Major:
-    >>> musthe.Chord()
-    A major chord: [Note("A4"), Note("C#5"), Note("E5")]
-    >>> musthe.Chord('A', 'minor')
-    A minor chord: [Note("A4"), Note("C5"), Note("E5")]
-    >>> musthe.Chord('A', 'augmented')
-    A augmented chord: [Note("A4"), Note("C#5"), Note("E#5")]
-    >>> musthe.Chord('A', 'diminished')
-    A diminished chord: [Note("A4"), Note("C5"), Note("Eb5")]
+
+	>>> musthe.Chord()
+	A major chord: [Note("A4"), Note("C#5"), Note("E5")]
+	>>> musthe.Chord('A', 'minor')
+	A minor chord: [Note("A4"), Note("C5"), Note("E5")]
+	>>> musthe.Chord('A', 'augmented')
+	A augmented chord: [Note("A4"), Note("C#5"), Note("E#5")]
+	>>> musthe.Chord('A', 'diminished')
+	A diminished chord: [Note("A4"), Note("C5"), Note("Eb5")]
 
 The chords contain an internal list (Chord-Object.notes) containing Note objects that make up the chord. 
 
