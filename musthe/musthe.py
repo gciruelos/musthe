@@ -11,78 +11,78 @@ import re
 class Note():
 	'''
 	The note class.
-	
+
 	The notes are to be parsed in th following way:
-	* the letter name, 
-	* accidentals (up to 3), 
+	* the letter name,
+	* accidentals (up to 3),
 	* octave (default is 4).
-	
-	For example, 'Ab', 'G9', 'B##7' are all valid notes. '#', 'A9b', 
+
+	For example, 'Ab', 'G9', 'B##7' are all valid notes. '#', 'A9b',
 	'Dbbbb' are not.
 	'''
 	def __init__(self, note):
 		note_pattern = re.compile(r'^[A-G]([b#])?\1{0,2}?\d?$') #raw because of '\'
 		if note_pattern.search(note) == None:
 			raise Exception('Could not parse the note: '+note)
-		
+
 		self.tone = note[0]
 		self.accidental = re.findall('[b#]{1,3}', note)
 		self.octave = re.findall('[0-9]', note)
-		
-		
+
+
 		if self.accidental == []:
 			self.accidental = ''
 		else:
 			self.accidental = self.accidental[0]
-			
+
 		if self.octave == []:
 			self.octave = 4
 		else:
 			self.octave = int(self.octave[0])
-		
+
 		self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.tone]
 		for change in self.accidental:
 			if change == '#': self.note_id += 1
 			elif change == 'b': self.note_id -= 1
 		self.note_id %= 12
-			
-			
+
+
 	def __add__(self, interval):
 		if not isinstance(interval, Interval):
 			raise Exception('Cannot add '+type(interval)+' to a note.')
-		
+
 		# * _old_note is the index in the list of the old note tone.
 		# * new_note_tone is calculated adding the interval_number-1 because
 		# you have start counting in the current tone. e.g. the fifth of
 		# E is: (E F G A) B.
 		_old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.tone)
 		new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
-		
+
 		# %12 because it wraps in B->C and starts over.
 		new_note_id = (self.note_id+interval.semitones)%12
-		
+
 		# First calculates the note, and then the difference from the note
-		# without accidentals, then adds proper accidentals. 
+		# without accidentals, then adds proper accidentals.
 		difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_tone]
 		# In some cases, like G##+m3, difference is -11, and it should be
 		# 1, so this corrects the error.
 		if abs(difference)>3:
 			difference = difference + 12
-			
+
 		if difference<0: accidental = 'b'*abs(difference)
 		elif difference>0: accidental = '#'*abs(difference)
 		else: accidental = ''
-		
-		
+
+
 		# it calculates how many times it wrapped around B->C and adds.
 		new_note_octave = (self.note_id+interval.semitones)//12+self.octave
 		# corrects cases like B#, B##, B### and A###.
 		# http://en.wikipedia.org/wiki/Scientific_pitch_notation#C-flat_and_B-sharp_problems
 		if new_note_tone+accidental in ['B#', 'B##', 'B###', 'A###']:
 			new_note_octave -= 1
-		
+
 		return Note(new_note_tone+accidental+str(new_note_octave))
-		
+
 
 	def frequency(self):
 		'''
@@ -90,44 +90,44 @@ class Note():
 		http://en.wikipedia.org/wiki/Note#Note_frequency_.28hertz.29
 		'''
 		pass
-	
+
 	def scale(self, scale_name):
 		if scale_name=='major':
-			return [self, self+Interval('M2'), self+Interval('M3'), 
+			return [self, self+Interval('M2'), self+Interval('M3'),
 			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('M6'), self+Interval('M7'), 
+			        self+Interval('M6'), self+Interval('M7'),
 			        self+Interval('P8')]
 		elif scale_name=='natural_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
+			return [self, self+Interval('M2'), self+Interval('m3'),
 			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('m6'), self+Interval('m7'), 
+			        self+Interval('m6'), self+Interval('m7'),
 			        self+Interval('P8')]
 		elif scale_name=='harmonic_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
+			return [self, self+Interval('M2'), self+Interval('m3'),
 			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('m6'), self+Interval('M7'), 
+			        self+Interval('m6'), self+Interval('M7'),
 			        self+Interval('P8')]
 		elif scale_name=='melodic_minor':
-			return [self, self+Interval('M2'), self+Interval('m3'), 
+			return [self, self+Interval('M2'), self+Interval('m3'),
 			        self+Interval('P4'), self+Interval('P5'),
-			        self+Interval('M6'), self+Interval('M7'), 
+			        self+Interval('M6'), self+Interval('M7'),
 			        self+Interval('P8')]
 		elif scale_name=='minor_pentatonic':
 			return [self, self+Interval('m3'), self+Interval('P4'),
-					self+Interval('P5'), self+Interval('m7'), 
+					self+Interval('P5'), self+Interval('m7'),
 			        self+Interval('P8')]
 		else:
-			raise Exception('No scale named '+scale_name) 
+			raise Exception('No scale named '+scale_name)
 
 	def lilypond_notation(self):
 		return str(self).replace('b', 'is').replace('#','es').lower()
-	
+
 	def scientific_notation(self):
 		return str(self)+str(self.octave)
-	
+
 	def __repr__(self):
 		return "Note(\"%s\")" % self.scientific_notation()
-			
+
 	def __str__(self):
 		return self.tone+self.accidental
 
@@ -135,11 +135,11 @@ class Note():
 class Interval():
 	'''
 	The interval class.
-	
+
 	The notes are to be parsed in th following way:
 	* the quality, (m, M, p, A, d)
 	* the number. (1 to 8) [Compound intervals will be supported]
-	
+
 	For example, 'd8', 'P1', 'A5' are valid intervals. 'P3', '5' are not.
 	'''
 	def __init__(self, interval):
@@ -152,9 +152,46 @@ class Interval():
 		except:
 			raise Exception('Could not parse the interval.')
 		self.number = int(interval[1])
-		
 
+
+class Chord():
+    supported_chord_types = ['major', 'minor', 'diminished', 'augmented']
+
+    def __init__(self, root='A', chord_type='major'):
+        self.notes = []
+
+        try:
+            self.notes.append(Note(root))
+        except:
+            raise Exception('Invalid root note supplied.')
+
+        if chord_type in self.supported_chord_types:
+            self.chord_type = chord_type
+        else:
+            raise Exception('Invalid chord type supplied! current valid types: {} '.format(self.supported_chord_types))
+
+        self.build_chord()
+
+    def build_chord(self):
+
+        #basic triads
+        if self.chord_type == 'major':
+            self.add_intervals(['M3', 'P5'])
+        if self.chord_type == 'minor':
+            self.add_intervals(['m3', 'P5'])
+        if self.chord_type == 'diminished':
+            self.add_intervals(['m3', 'd5'])
+        if self.chord_type == 'augmented':
+            self.add_intervals(['M3', 'A5'])
+        #extended
+
+    def add_intervals(self, intervals):
+        for i in intervals:
+            self.notes.append(self.notes[0]+Interval(i))
+
+    def __repr__(self):
+        return "{} {} chord: {}".format(self.notes[0],self.chord_type, self.notes)
 
 if __name__ == '__main__':
 	pass
-	
+
