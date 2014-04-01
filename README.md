@@ -53,6 +53,7 @@ Fair enough.
 Basic triad (major, minor, diminished, augmented) support has been added.
 
 Basic chord usage, default args return A Major:
+
 	>>> musthe.Chord()
 	A major chord: [Note("A4"), Note("C#5"), Note("E5")]
 	>>> musthe.Chord('A', 'minor')
