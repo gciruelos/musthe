@@ -58,7 +58,7 @@ Contributors
 ============
 
 * [Sri Raghavan](https://github.com/srir)
-
+* [Sylvain](https://github.com/SylvainDe)
 
 License
 =======
