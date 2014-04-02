@@ -8,33 +8,16 @@ import re
 
 
 def scale(note, scale_name):
-	if scale_name=='major':
-		return [note, note+Interval('M2'), note+Interval('M3'),
-				note+Interval('P4'), note+Interval('P5'),
-				note+Interval('M6'), note+Interval('M7'),
-				note+Interval('P8')]
-	elif scale_name=='natural_minor':
-		return [note, note+Interval('M2'), note+Interval('m3'),
-				note+Interval('P4'), note+Interval('P5'),
-				note+Interval('m6'), note+Interval('m7'),
-				note+Interval('P8')]
-	elif scale_name=='harmonic_minor':
-		return [note, note+Interval('M2'), note+Interval('m3'),
-				note+Interval('P4'), note+Interval('P5'),
-				note+Interval('m6'), note+Interval('M7'),
-				note+Interval('P8')]
-	elif scale_name=='melodic_minor':
-		return [note, note+Interval('M2'), note+Interval('m3'),
-				note+Interval('P4'), note+Interval('P5'),
-				note+Interval('M6'), note+Interval('M7'),
-				note+Interval('P8')]
-	elif scale_name=='minor_pentatonic':
-		return [note, note+Interval('m3'), note+Interval('P4'),
-				note+Interval('P5'), note+Interval('m7'),
-				note+Interval('P8')]
-	else:
-		raise Exception('No scale named '+scale_name)
-
+    scales = {
+        'major' :           ['M2', 'M3', 'P4', 'P5', 'M6', 'M7', 'P8'],
+        'natural_minor':    ['M2', 'm3', 'P4', 'P5', 'm6', 'm7', 'P8'],
+        'harmonic_minor':   ['M2', 'm3', 'P4', 'P5', 'm6', 'M7', 'P8'],
+        'melodic_minor':    ['M2', 'm3', 'P4', 'P5', 'M6', 'M7', 'P8'],
+        'minor_pentatonic': ['m3', 'P4', 'P5', 'm7', 'P8']
+    }
+    if scale_name in scales:
+        return [note] + [note+Interval(i) for i in scales[scale_name]]
+    raise Exception('No scale named '+scale_name)
 
 
 class Note():
@@ -153,6 +136,7 @@ class Interval():
 		except:
 			raise Exception('Could not parse the interval.')
 		self.number = int(interval[1])
+
 
 
 class Chord():

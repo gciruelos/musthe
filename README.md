@@ -73,6 +73,7 @@ Contributors
 
 * [Sri Raghavan](https://github.com/srir)
 * [David H](http://github.com/bobthenameless)
+* [Sylvain](https://github.com/SylvainDe)
 
 License
 =======
