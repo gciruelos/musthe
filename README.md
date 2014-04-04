@@ -1,7 +1,7 @@
 musthe
 ======
 
-Music theory implemented in Python. Notes, scales and chords. It was made as an experiment to test Python3, unit testing and magic methods.
+Music theory implemented in Python. Notes, scales and chords.
 
 It is still in development so feel free to read the code, fork and make pull requests! They are very welcome!
 
@@ -72,6 +72,7 @@ Contributors
 In alphabetic order,
 
 * [David H](http://github.com/bobthenameless)
+* [Edgar Gavrik](https://github.com/edgarasg)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
 
