@@ -57,6 +57,8 @@ class TestsForJesusChords(unittest.TestCase):
         #check __repr__ returns
         #//todo
 
+        #check __eq__
+        self.assertEqual(Chord(), Chord(Note('A'), 'M'))
 
         #check faulty inputs
         self.assertRaises(Exception, Chord, 'A$')

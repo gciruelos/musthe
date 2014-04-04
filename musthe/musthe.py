@@ -176,8 +176,16 @@ class Chord():
     def __repr__(self):
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
 
+
     def __str__(self):
         return "{}{}".format(str(self.notes[0]),self.chord_type)
+
+    def __eq__(self, other):
+        if len(self.notes) != len(other.notes):
+            #if chords dont have the same number of notes, def not equal
+            return False
+        else:
+            return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
 
 if __name__ == '__main__':
 	pass
