@@ -21,7 +21,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
+py3.4/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -52,3 +52,5 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+#vim .swp
+*.swp
