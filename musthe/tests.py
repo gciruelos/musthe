@@ -24,9 +24,9 @@ class TestsForJesus(unittest.TestCase):
 		self.assertEqual(str(Note('F')+Interval('P5')), str(Note('C')))
 	
 	def test_note_scales(self):
-		self.assertEqual(list(map(str, Note('C').scale('major'))), ['C','D','E','F','G','A','B','C'])
-		self.assertEqual(list(map(str, Note('C').scale('major'))), ['C','D','E','F','G','A','B','C'])
-		self.assertEqual(list(map(str, Note('C').scale('major'))), ['C','D','E','F','G','A','B','C'])
+		self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
+		self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
+		self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
 
 
 unittest.main()
