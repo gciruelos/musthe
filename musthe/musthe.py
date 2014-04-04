@@ -148,7 +148,7 @@ class Chord():
                      }
 
 
-    def __init__(self, root=Note('A'), chord_type='M'):
+    def __init__(self, root, chord_type='M'):
         self.notes = []
 
         try:
