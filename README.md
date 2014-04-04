@@ -50,9 +50,7 @@ It return a list of Note instances, so if you want a cleaner result should do so
     
 Fair enough.
 
-Basic triad (major, minor, diminished, augmented) support has been added.
-
-Basic chord usage, default args return A Major:
+Now with let's see basic chord usage:
 
 	>>> Chord(Note('A'),'M')
 	Chord(Note('A'), 'M')
@@ -61,7 +59,9 @@ Basic chord usage, default args return A Major:
 	>>> Chord(Note('Bb'),'dim').notes
 	[Note("Bb4"), Note("Db5"), Note("Fb5")]
 
-The chords contain an internal list (Chord-Object.notes) containing Note objects that make up the chord. 
+Default chord type is 'M' (Major). Currently, only triads (major, minor, diminished, augmented) are supported.
+
+
 
 If you have lilypond installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
 
