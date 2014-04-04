@@ -138,44 +138,42 @@ class Interval():
 		self.number = int(interval[1])
 
 
-
 class Chord():
-    supported_chord_types = ['major', 'minor', 'diminished', 'augmented']
+    chord_recipes = {'M': ['R', 'M3', 'P5'],
+                     'm': ['R', 'm3', 'P5'],
+                     'aug': ['R', 'm3', 'd5'],
+                     'dim': ['R', 'M3', 'A5'],
+                     }
 
-    def __init__(self, root='A', chord_type='major'):
+
+    def __init__(self, root=Note('A'), chord_type='M'):
         self.notes = []
 
         try:
-            self.notes.append(Note(root))
+            self.notes.append(root)
         except:
             raise Exception('Invalid root note supplied.')
 
-        if chord_type in self.supported_chord_types:
+        if chord_type in self.chord_recipes.keys():
             self.chord_type = chord_type
         else:
-            raise Exception('Invalid chord type supplied! current valid types: {} '.format(self.supported_chord_types))
+            raise Exception('Invalid chord type supplied! current valid types: {} '.format(self.chord_recipes.keys()))
 
         self.build_chord()
 
     def build_chord(self):
-
-        #basic triads
-        if self.chord_type == 'major':
-            self.add_intervals(['M3', 'P5'])
-        if self.chord_type == 'minor':
-            self.add_intervals(['m3', 'P5'])
-        if self.chord_type == 'diminished':
-            self.add_intervals(['m3', 'd5'])
-        if self.chord_type == 'augmented':
-            self.add_intervals(['M3', 'A5'])
-        #extended
+        self.add_intervals(self.chord_recipes[self.chord_type][1:])
 
     def add_intervals(self, intervals):
         for i in intervals:
             self.notes.append(self.notes[0]+Interval(i))
 
     def __repr__(self):
-        return "{} {} chord: {}".format(self.notes[0],self.chord_type, self.notes)
+        return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
+
+    def __str__(self):
+        return "{}{}".format(self.notes[0].tone,self.chord_type)
+
 
 if __name__ == '__main__':
 	pass
