@@ -115,6 +115,8 @@ class Note():
 	def __str__(self):
 		return self.tone+self.accidental
 
+	def __eq__(self, other):
+		return self.scientific_notation() == other.scientific_notation()
 
 class Interval():
 	'''
@@ -169,14 +171,13 @@ class Chord():
             self.notes.append(self.notes[0]+Interval(i))
 
     def list_notes(self):
-        print self.notes
+        return self.notes
 
     def __repr__(self):
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
 
     def __str__(self):
         return "{}{}".format(self.notes[0].tone,self.chord_type)
-
 
 if __name__ == '__main__':
 	pass
