@@ -143,8 +143,8 @@ class Interval():
 class Chord():
     chord_recipes = {'M': ['R', 'M3', 'P5'],
                      'm': ['R', 'm3', 'P5'],
-                     'aug': ['R', 'm3', 'd5'],
-                     'dim': ['R', 'M3', 'A5'],
+                     'dim': ['R', 'm3', 'd5'],
+                     'aug': ['R', 'M3', 'A5'],
                      }
 
 
