@@ -177,7 +177,7 @@ class Chord():
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
 
     def __str__(self):
-        return "{}{}".format(self.notes[0].tone,self.chord_type)
+        return "{}{}".format(str(self.notes[0]),self.chord_type)
 
 if __name__ == '__main__':
 	pass

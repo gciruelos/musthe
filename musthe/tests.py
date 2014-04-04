@@ -51,6 +51,8 @@ class TestsForJesusChords(unittest.TestCase):
         self.assertEqual(str(Chord(Note('B'), 'm')), 'Bm')
         self.assertEqual(str(Chord(Note('C'), 'dim')), 'Cdim')
         self.assertEqual(str(Chord(Note('D'), 'aug')), 'Daug')
+        self.assertEqual(str(Chord(Note('A#'))), 'A#M')
+        self.assertEqual(str(Chord(Note('Bb'))), 'BbM')
 
         #check __repr__ returns
         #//todo
