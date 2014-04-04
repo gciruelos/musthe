@@ -115,6 +115,8 @@ class Note():
 	def __str__(self):
 		return self.tone+self.accidental
 
+	def __eq__(self, other):
+		return self.scientific_notation() == other.scientific_notation()
 
 class Interval():
 	'''
@@ -138,6 +140,52 @@ class Interval():
 		self.number = int(interval[1])
 
 
+class Chord():
+    chord_recipes = {'M': ['R', 'M3', 'P5'],
+                     'm': ['R', 'm3', 'P5'],
+                     'dim': ['R', 'm3', 'd5'],
+                     'aug': ['R', 'M3', 'A5'],
+                     }
+
+
+    def __init__(self, root=Note('A'), chord_type='M'):
+        self.notes = []
+
+        try:
+            self.notes.append(root)
+        except:
+            raise Exception('Invalid root note supplied.')
+
+        if chord_type in self.chord_recipes.keys():
+            self.chord_type = chord_type
+        else:
+            raise Exception('Invalid chord type supplied! current valid types: {} '.format(self.chord_recipes.keys()))
+
+        self.build_chord()
+
+    def build_chord(self):
+        self.add_intervals(self.chord_recipes[self.chord_type][1:])
+
+    def add_intervals(self, intervals):
+        for i in intervals:
+            self.notes.append(self.notes[0]+Interval(i))
+
+    def list_notes(self):
+        return self.notes
+
+    def __repr__(self):
+        return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
+
+
+    def __str__(self):
+        return "{}{}".format(str(self.notes[0]),self.chord_type)
+
+    def __eq__(self, other):
+        if len(self.notes) != len(other.notes):
+            #if chords dont have the same number of notes, def not equal
+            return False
+        else:
+            return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
 
 if __name__ == '__main__':
 	pass
