@@ -38,11 +38,13 @@ def random_music():
 		for _ in range(notes_in_bar):
 			note = pool[index].lilypond_notation()+str(notes_in_bar)
 			
+			'''
 			difference = (bar[-1].octave)-(pool[index].octave)
 			if difference == 1:
 				note+=','
 			elif difference == -1:
 				note+='\''
+			'''
 			
 			bar.append(note)
 			
