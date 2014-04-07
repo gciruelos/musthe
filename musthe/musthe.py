@@ -105,7 +105,7 @@ class Note():
 		pass
 
 	def lilypond_notation(self):
-		return str(self).replace('b', 'is').replace('#','es').lower()
+		return str(self).replace('b', 'es').replace('#','is').lower()
 
 	def scientific_notation(self):
 		return str(self)+str(self.octave)
