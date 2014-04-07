@@ -69,7 +69,7 @@ If you have lilypond installed, you can make little melodies using this program,
 Contributors
 ============
 
-In alphabetic order,
+In alphabetical order
 
 * [David H](http://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
