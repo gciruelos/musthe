@@ -28,7 +28,7 @@ def lilypond_composer(bars, instrument='acoustic guitar (steel)', file_name='exa
 def random_music():
 	import random
 	n = Note('Bb')
-	pool = n.scale('minor_pentatonic')
+	pool = scale(n, 'minor_pentatonic')
 	
 	for total_bars in range(4):
 		bar = []

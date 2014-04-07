@@ -35,7 +35,7 @@ class TestsForJesusChords(unittest.TestCase):
     def setUp(self):
         '''put here for later building of test chords, one for each
         chord_type in chord_recipes'''
-        self.chord_types = [k for k in Chord().chord_recipes.keys()]
+        self.chord_types = [k for k in Chord(Note('Bb')).chord_recipes.keys()]
         self.chords = {k:Chord(Note('A'), k) for k in self.chord_types}
         self.rootNote = Note('A')
 
@@ -55,9 +55,9 @@ class TestsForJesusChords(unittest.TestCase):
 
         #check __repr__ returns
         #//todo
-
+        
         #check __eq__
-        self.assertEqual(Chord(), Chord(Note('A'), 'M'))
+        #//todo
 
         #check faulty inputs
         self.assertRaises(Exception, Chord, 'A$')

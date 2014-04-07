@@ -171,9 +171,6 @@ class Chord():
         for i in intervals:
             self.notes.append(self.notes[0]+Interval(i))
 
-    def list_notes(self):
-        return self.notes
-
     def __repr__(self):
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
 
