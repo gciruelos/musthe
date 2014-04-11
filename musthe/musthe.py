@@ -68,7 +68,11 @@ class Note():
         # you have start counting in the current tone. e.g. the fifth of
         # E is: (E F G A) B.
         _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.tone)
-        new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
+        # Fixing Issue #7: Note('Ab')+Interval('m3') --> Exception
+        if self.tone == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
+            new_note_tone = 'B'
+        else:
+            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
 
         # %12 because it wraps in B->C and starts over.
         new_note_id = (self.note_id+interval.semitones)%12
