@@ -14,6 +14,12 @@ def scale(note, scale_name):
         'natural_minor':    ['M2', 'm3', 'P4', 'P5', 'm6', 'm7', 'P8'],
         'harmonic_minor':   ['M2', 'm3', 'P4', 'P5', 'm6', 'M7', 'P8'],
         'melodic_minor':    ['M2', 'm3', 'P4', 'P5', 'M6', 'M7', 'P8'],
+        'dorian':           ['M2', 'm3', 'P4', 'P5', 'M6', 'm7', 'P8'],
+        'locrian':          ['m2', 'm3', 'P4', 'd5', 'm6', 'm7', 'P8'],
+        'lydian':           ['M2', 'M3', 'A4', 'P5', 'M6', 'M7', 'P8'],
+        'mixolydian':       ['M2', 'M3', 'P4', 'P5', 'M6', 'm7', 'P8'],
+        'phrygian':         ['m2', 'm3', 'P4', 'P5', 'm6', 'm7', 'P8'],
+        'major_pentatonic': ['M2', 'M3', 'P5', 'M6', 'P8'],
         'minor_pentatonic': ['m3', 'P4', 'P5', 'm7', 'P8']
     }
     if scale_name in scales:

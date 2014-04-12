@@ -25,9 +25,17 @@ class TestsForJesus(unittest.TestCase):
         self.assertEqual(str(Note('F')+Interval('P5')), str(Note('C')))
 
     def test_note_scales(self):
-        self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
-        self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
-        self.assertEqual(list(map(str, scale(Note('C'),'major'))), ['C','D','E','F','G','A','B','C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'major'))),          ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'natural_minor'))),  ['C', 'D', 'Eb','F', 'G', 'Ab','Bb','C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'harmonic_minor'))), ['C', 'D', 'Eb','F', 'G', 'Ab','B', 'C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'melodic_minor'))),  ['C', 'D', 'Eb','F', 'G', 'A', 'B', 'C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'dorian'))),         ['C', 'D', 'Eb','F', 'G', 'A', 'Bb','C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'locrian'))),        ['C', 'Db','Eb','F', 'Gb','Ab','Bb','C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'lydian'))),         ['C', 'D', 'E', 'F#','G', 'A', 'B', 'C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'mixolydian'))),     ['C', 'D', 'E', 'F', 'G', 'A', 'Bb','C'])
+        self.assertEqual(list(map(str, scale(Note('C'), 'phrygian'))),       ['C', 'Db','Eb','F', 'G', 'Ab','Bb','C'])
+        self.assertEqual(list(map(str, scale(Note('C'),'major_pentatonic'))),['C', 'D', 'E', 'G', 'A', 'C'])
+        self.assertEqual(list(map(str, scale(Note('C'),'minor_pentatonic'))),['C', 'Eb','F', 'G', 'Bb','C'])
         self.assertRaises(Exception, scale, Note('C'), 'non-existent scale')
 
 class TestsForJesusChords(unittest.TestCase):
