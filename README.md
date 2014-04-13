@@ -73,6 +73,7 @@ In alphabetical order
 
 * [David H](http://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
+* [Marco Heins](https://github.com/barrio)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
 
