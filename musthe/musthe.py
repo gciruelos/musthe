@@ -1,5 +1,5 @@
-#!/usr/bin/env python   
-# -*- coding: utf-8 -*- 
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 '''
 Copyright (c) 2014 Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
@@ -146,7 +146,12 @@ class Chord():
                      'm': ['R', 'm3', 'P5'],
                      'dim': ['R', 'm3', 'd5'],
                      'aug': ['R', 'M3', 'A5'],
-                     }
+                     'open5': ['R', 'P5', 'P8'],
+                     'dim7': ['R', 'm3', 'd5', 'd7'],
+                     'maj7': ['R', 'M3', 'P5', 'M7'],
+                     'aug7': ['R', 'M3', 'A5', 'm7'],
+                     'sus2': ['R', 'P5', 'P8', 'M2'],
+                     'sus4': ['R', 'P5', 'P8', 'P4']}
 
 
     def __init__(self, root, chord_type='M'):
