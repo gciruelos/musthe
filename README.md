@@ -71,7 +71,7 @@ Contributors
 
 In alphabetical order
 
-* [David H](http://github.com/bobthenameless)
+* [David H](https://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
 * [Marco Heins](https://github.com/barrio)
 * [Sri Raghavan](https://github.com/srir)
