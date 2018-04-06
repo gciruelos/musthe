@@ -40,23 +40,40 @@ Though it is important to see that the octaves of those notes are different:
 
 Now lets try scales:
 
-    >>> scale(Note('B'), 'major')
-    [Note("B4"), Note("C#5"), Note("D#5"), Note("E5"), Note("F#5"), Note("G#5"), Note("A#5"), Note("B5")]
+    >>> s = Scale(Note('B'), 'major')
+    >>> [s[i] for i in range(len(s))]
+    [Note('B4'), Note('C#5'), Note('D#5'), Note('E5'), Note('F#5'), Note('G#5'), Note('A#5')]
+    >>> s[0]
+    Note('B4')
+    >>> s[-11]
+    Note('E3')
+
+To check if notes and chords are contained in a given scale:
+
+    >>> Note('D#3') in s
+    True
+    >>> Note('F3') in s
+    False
+    >>> Chord(Note('C#'), 'm') in s
+    True
+    >>> Chord(Note('C'), 'M') in s
+    False
 
 It return a list of Note instances, so if you want a cleaner result should do something like:
 
-    >>> list(map(str, scale(Note('B'), 'major')))
-    ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B']
+    >>> s = Scale(Note('B'), 'major')
+    >>> [str(s[i]) for i in range(len(s))]
+    ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']
     
 Fair enough.
 
 Now with let's see basic chord usage:
 
-	>>> Chord(Note('A'),'M')
+	>>> Chord(Note('A'), 'M')
 	Chord(Note('A'), 'M')
-	>>> Chord(Note('A'),'M').notes
+	>>> Chord(Note('A'), 'M').notes
 	[Note("A4"), Note("C#5"), Note("E5")]
-	>>> Chord(Note('Bb'),'dim').notes
+	>>> Chord(Note('Bb'), 'dim').notes
 	[Note("Bb4"), Note("Db5"), Note("Fb5")]
 
 Default chord type is 'M' (Major). Currently, only triads (major, minor, diminished, augmented) are supported.
@@ -73,6 +90,7 @@ In alphabetical order
 
 * [David H](https://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
+* [Federico Ferri](https://github.com/fferri)
 * [Marco Heins](https://github.com/barrio)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
