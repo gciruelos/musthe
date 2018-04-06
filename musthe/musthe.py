@@ -180,15 +180,11 @@ class Chord():
     }
 
     def __init__(self, root, chord_type='M'):
-        self.notes = []
-
-        if chord_type in self.chord_recipes.keys():
-            self.chord_type = chord_type
-        else:
+        if chord_type not in self.chord_recipes.keys():
             raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.chord_recipes.keys())))
 
-        for i in self.chord_recipes[chord_type]:
-            self.notes.append(root + Interval(i))
+        self.chord_type = chord_type
+        self.notes = [root + Interval(i) for i in self.chord_recipes[chord_type]]
 
     def __repr__(self):
         return "Chord({!r}, {!r})".format(self.notes[0], self.chord_type)
