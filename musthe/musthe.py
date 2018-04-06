@@ -148,38 +148,45 @@ class Interval():
 
 
 class Chord():
-    chord_recipes = {'M': ['R', 'M3', 'P5'],
-                     'm': ['R', 'm3', 'P5'],
-                     'dim': ['R', 'm3', 'd5'],
-                     'aug': ['R', 'M3', 'A5'],
-                     'open5': ['R', 'P5', 'P8'],
-                     'dim7': ['R', 'm3', 'd5', 'd7'],
-                     'maj7': ['R', 'M3', 'P5', 'M7'],
-                     'aug7': ['R', 'M3', 'A5', 'm7'],
-                     'sus2': ['R', 'P5', 'P8', 'M2'],
-                     'sus4': ['R', 'P5', 'P8', 'P4']}
+    chord_recipes = {
+        'M':      ['P1', 'M3', 'P5'],
+        'maj':    ['P1', 'M3', 'P5'],
+        'm':      ['P1', 'm3', 'P5'],
+        'min':    ['P1', 'm3', 'P5'],
+        'aug':    ['P1', 'M3', 'A5'],
+        '+':      ['P1', 'M3', 'A5'],
+        'dim':    ['P1', 'm3', 'd5'],
+        '°':      ['P1', 'm3', 'd5'],
+        '7':      ['P1', 'M3', 'P5', 'm7'],
+        'dom7':   ['P1', 'M3', 'P5', 'm7'],
+        'm7':     ['P1', 'm3', 'P5', 'm7'],
+        'min7':   ['P1', 'm3', 'P5', 'm7'],
+        'M7':     ['P1', 'M3', 'P5', 'M7'],
+        'maj7':   ['P1', 'M3', 'P5', 'M7'],
+        '+7':     ['P1', 'M3', 'A5', 'm7'],
+        'aug7':   ['P1', 'M3', 'A5', 'm7'],
+        '7aug5':  ['P1', 'M3', 'A5', 'm7'],
+        '7#5':    ['P1', 'M3', 'A5', 'm7'],
+        '°7':     ['P1', 'm3', 'd5', 'd7'],
+        'dim7':   ['P1', 'm3', 'd5', 'd7'],
+        'ø7':     ['P1', 'm3', 'd5', 'm7'],
+        'm7dim5': ['P1', 'm3', 'd5', 'm7'],
+        'm7b5':   ['P1', 'm3', 'd5', 'm7'],
+        'sus2':   ['P1', 'P5', 'P8', 'M2'],
+        'sus4':   ['P1', 'P5', 'P8', 'P4'],
+        'open5':  ['P1', 'P5', 'P8'],
+    }
 
     def __init__(self, root, chord_type='M'):
         self.notes = []
-
-        try:
-            self.notes.append(root)
-        except:
-            raise Exception('Invalid root note supplied.')
 
         if chord_type in self.chord_recipes.keys():
             self.chord_type = chord_type
         else:
             raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.chord_recipes.keys())))
 
-        self.build_chord()
-
-    def build_chord(self):
-        self.add_intervals(self.chord_recipes[self.chord_type][1:])
-
-    def add_intervals(self, intervals):
-        for i in intervals:
-            self.notes.append(self.notes[0] + Interval(i))
+        for i in self.chord_recipes[chord_type]:
+            self.notes.append(root + Interval(i))
 
     def __repr__(self):
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
