@@ -24,7 +24,7 @@ def scale(note, scale_name):
     }
     if scale_name in scales:
         return [note] + [note+Interval(i) for i in scales[scale_name]]
-    raise Exception('No scale named '+scale_name)
+    raise Exception('No scale named {!r}'.format(scale_name))
 
 
 class Note():
@@ -59,7 +59,7 @@ class Note():
 
     def __add__(self, interval):
         if not isinstance(interval, Interval):
-            raise Exception('Cannot add '+type(interval)+' to a note.')
+            raise Exception('Cannot add {} to a note.'.format(type(interval)))
 
         # * _old_note is the index in the list of the old note tone.
         # * new_note_tone is calculated adding the interval_number-1 because
@@ -108,7 +108,7 @@ class Note():
         return str(self)+str(self.octave)
 
     def __repr__(self):
-        return "Note(\"%s\")" % self.scientific_notation()
+        return 'Note({!r})'.format(self.scientific_notation())
 
     def __str__(self):
         return self.tone+self.accidental
@@ -162,7 +162,7 @@ class Chord():
         if chord_type in self.chord_recipes.keys():
             self.chord_type = chord_type
         else:
-            raise Exception('Invalid chord type supplied! current valid types: {} '.format(self.chord_recipes.keys()))
+            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.chord_recipes.keys())))
 
         self.build_chord()
 
