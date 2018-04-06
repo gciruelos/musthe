@@ -39,9 +39,11 @@ class Note():
     For example, 'Ab', 'G9', 'B##7' are all valid notes. '#', 'A9b',
     'Dbbbb' are not.
     """
+
+    pattern = re.compile(r'^[A-G]([b#])?\1{0,2}?\d?$')
+
     def __init__(self, note):
-        note_pattern = re.compile(r'^[A-G]([b#])?\1{0,2}?\d?$') #raw because of '\'
-        if note_pattern.search(note) == None:
+        if pattern.search(note) == None:
             raise Exception('Could not parse the note: '+note)
 
         self.tone = note[0]
