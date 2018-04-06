@@ -98,11 +98,8 @@ class Note():
         return self.note_id + self.octave * 12
 
     def frequency(self):
-        """
-        Returns frequency in Hz. It uses the method given in
-        http://en.wikipedia.org/wiki/Note#Note_frequency_.28hertz.29
-        """
-        pass
+        from math import pow
+        return 440.0 * pow(2, 1./12.)**(self.midi_note() - Note('A4').midi_note())
 
     def lilypond_notation(self):
         return str(self).replace('b', 'es').replace('#', 'is').lower()
