@@ -231,9 +231,12 @@ class Scale:
     def __getitem__(self, k):
         if not isinstance(k, int):
             raise TypeError('Scale can be indexed only by integers.')
-        octaves = k // len(self.intervals)
-        offset = k - octaves * len(self.intervals)
+        octaves = k // len(self)
+        offset = k - octaves * len(self)
         return self.root.to_octave(self.root.octave + octaves) + self.intervals[offset]
+
+    def __len__(self):
+        return len(self.intervals)
 
     def __contains__(self, k):
         if isinstance(k, Note):
