@@ -150,41 +150,45 @@ class Interval():
 
 
 class Chord():
-    chord_recipes = {
-        'M':      ['P1', 'M3', 'P5'],
+    recipes = {
         'maj':    ['P1', 'M3', 'P5'],
-        'm':      ['P1', 'm3', 'P5'],
         'min':    ['P1', 'm3', 'P5'],
         'aug':    ['P1', 'M3', 'A5'],
-        '+':      ['P1', 'M3', 'A5'],
         'dim':    ['P1', 'm3', 'd5'],
-        '°':      ['P1', 'm3', 'd5'],
-        '7':      ['P1', 'M3', 'P5', 'm7'],
         'dom7':   ['P1', 'M3', 'P5', 'm7'],
-        'm7':     ['P1', 'm3', 'P5', 'm7'],
         'min7':   ['P1', 'm3', 'P5', 'm7'],
-        'M7':     ['P1', 'M3', 'P5', 'M7'],
         'maj7':   ['P1', 'M3', 'P5', 'M7'],
-        '+7':     ['P1', 'M3', 'A5', 'm7'],
         'aug7':   ['P1', 'M3', 'A5', 'm7'],
-        '7aug5':  ['P1', 'M3', 'A5', 'm7'],
-        '7#5':    ['P1', 'M3', 'A5', 'm7'],
-        '°7':     ['P1', 'm3', 'd5', 'd7'],
         'dim7':   ['P1', 'm3', 'd5', 'd7'],
-        'ø7':     ['P1', 'm3', 'd5', 'm7'],
         'm7dim5': ['P1', 'm3', 'd5', 'm7'],
-        'm7b5':   ['P1', 'm3', 'd5', 'm7'],
         'sus2':   ['P1', 'P5', 'P8', 'M2'],
         'sus4':   ['P1', 'P5', 'P8', 'P4'],
         'open5':  ['P1', 'P5', 'P8'],
     }
+    aliases = {
+        'M':      'maj',
+        'm':      'min',
+        '+':      'aug',
+        '°':      'dim',
+        '7':      'dom7',
+        'm7':     'min7',
+        'M7':     'maj7',
+        '+7':     'aug7',
+        '7aug5':  'aug7',
+        '7#5':    'aug7',
+        '°7':     'm7dim5',
+        'ø7':     'm7dim5',
+        'm7b5':   'm7dim5',
+    }
 
     def __init__(self, root, chord_type='M'):
-        if chord_type not in self.chord_recipes.keys():
-            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.chord_recipes.keys())))
+        if chord_type in self.aliases:
+            chord_type = self.aliases[chord_type]
+        if chord_type not in self.recipes.keys():
+            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.recipes.keys())))
 
         self.chord_type = chord_type
-        self.notes = [root + Interval(i) for i in self.chord_recipes[chord_type]]
+        self.notes = [root + Interval(i) for i in self.recipes[chord_type]]
 
     def __repr__(self):
         return "Chord({!r}, {!r})".format(self.notes[0], self.chord_type)

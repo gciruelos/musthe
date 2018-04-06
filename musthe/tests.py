@@ -42,7 +42,7 @@ class TestsForJesusChords(unittest.TestCase):
     def setUp(self):
         '''put here for later building of test chords, one for each
         chord_type in chord_recipes'''
-        self.chord_types = [k for k in Chord(Note('Bb')).chord_recipes.keys()]
+        self.chord_types = [k for k in Chord(Note('Bb')).recipes.keys()]
         self.chords = {k:Chord(Note('A'), k) for k in self.chord_types}
         self.rootNote = Note('A')
 
@@ -53,12 +53,12 @@ class TestsForJesusChords(unittest.TestCase):
 
     def test_chord_creation(self):
         #check __str__ returns
-        self.assertEqual(str(Chord(Note('A'))), 'AM')
-        self.assertEqual(str(Chord(Note('B'), 'm')), 'Bm')
+        self.assertEqual(str(Chord(Note('A'))), 'Amaj')
+        self.assertEqual(str(Chord(Note('B'), 'm')), 'Bmin')
         self.assertEqual(str(Chord(Note('C'), 'dim')), 'Cdim')
         self.assertEqual(str(Chord(Note('D'), 'aug')), 'Daug')
-        self.assertEqual(str(Chord(Note('A#'))), 'A#M')
-        self.assertEqual(str(Chord(Note('Bb'))), 'BbM')
+        self.assertEqual(str(Chord(Note('A#'))), 'A#maj')
+        self.assertEqual(str(Chord(Note('Bb'))), 'Bbmaj')
 
         #check __repr__ returns
         #//todo
@@ -71,12 +71,12 @@ class TestsForJesusChords(unittest.TestCase):
         self.assertRaises(Exception, Chord, 'H')
 
         #check recipe notes
-        self.assertEqual(self.chords['M'].notes,
+        self.assertEqual(self.chords['maj'].notes,
                          [self.rootNote,
                           self.rootNote+Interval('M3'),
                           self.rootNote+Interval('P5')
                           ])
-        self.assertEqual(self.chords['m'].notes,
+        self.assertEqual(self.chords['min'].notes,
                          [self.rootNote,
                           self.rootNote+Interval('m3'),
                           self.rootNote+Interval('P5')
