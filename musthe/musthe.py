@@ -83,10 +83,7 @@ class Note():
         if difference < 3: difference += 12
         if difference > 3: difference -= 12
 
-        if difference<0: accidental = 'b'*abs(difference)
-        elif difference>0: accidental = '#'*abs(difference)
-        else: accidental = ''
-
+        accidental = 'b' * max(0, -difference) + '#' * max(0, difference)
 
         # it calculates how many times it wrapped around B->C and adds.
         new_note_octave = (self.note_id+interval.semitones)//12+self.octave
