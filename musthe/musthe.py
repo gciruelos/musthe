@@ -229,11 +229,17 @@ class Scale:
         self.notes = [(root + i).to_octave(0) for i in self.intervals]
 
     def __getitem__(self, k):
-        if not isinstance(k, int):
-            raise TypeError('Scale can be indexed only by integers.')
-        octaves = k // len(self)
-        offset = k - octaves * len(self)
-        return self.root.to_octave(self.root.octave + octaves) + self.intervals[offset]
+        if isinstance(k, int):
+            try:
+                octaves = k // len(self)
+                offset = k - octaves * len(self)
+                return self.root.to_octave(self.root.octave + octaves) + self.intervals[offset]
+            except:
+                raise IndexError('Index out of range')
+        elif isinstance(k, slice):
+            return [self[i] for i in range(k.start or 0, k.stop or self.max_index, k.step or 1)]
+        else:
+            raise TypeError('Scale cannot be indexed by {}.'.format(type(k)))
 
     def __len__(self):
         return len(self.intervals)
