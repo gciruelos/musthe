@@ -78,6 +78,20 @@ Now with let's see basic chord usage:
 
 Default chord type is 'M' (Major). Currently, only triads (major, minor, diminished, augmented) are supported.
 
+Now let's try some advanced stuff: given a list of chords, find all scales that contain them:
+
+    >>> chords = [Chord(Note('C'), 'm'), Chord(Note('F'), 'm7'), Chord(Note('G'), 'm')]
+    >>> for scale in Scale.all():
+    ...     if all(chord in scale for chord in chords):
+    ...         print(scale)
+    ...
+    C natural_minor
+    D locrian
+    Eb major
+    F dorian
+    G phrygian
+    Ab lydian
+    Bb mixolydian
 
 
 If you have lilypond installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
