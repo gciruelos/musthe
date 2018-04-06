@@ -40,32 +40,21 @@ class Note():
     'Dbbbb' are not.
     """
 
-    pattern = re.compile(r'^[A-G]([b#])?\1{0,2}?\d?$')
+    pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d*)$')
 
     def __init__(self, note):
-        if pattern.search(note) == None:
-            raise Exception('Could not parse the note: '+note)
+        m = self.pattern.match(note)
+        if m is None: raise Exception('Could not parse the note {!r}'.format(note))
 
-        self.tone = note[0]
-        self.accidental = re.findall('[b#]{1,3}', note)
-        self.octave = re.findall('[0-9]', note)
-
-        if self.accidental == []:
-            self.accidental = ''
-        else:
-            self.accidental = self.accidental[0]
-
-        if self.octave == []:
-            self.octave = 4
-        else:
-            self.octave = int(self.octave[0])
+        self.tone = m.group(1)
+        self.accidental = m.group(2)
+        self.octave = int(m.group(3) or '4')
 
         self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.tone]
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
         self.note_id %= 12
-
 
     def __add__(self, interval):
         if not isinstance(interval, Interval):
