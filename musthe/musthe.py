@@ -2,29 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Copyright (c) 2014 Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+Copyright (c) 2014-2018
+Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+Federico Ferri <federico.ferri.it@gmail.com>
 """
 
 import re
-
-
-def scale(note, scale_name):
-    scales = {
-        'major' :           ['M2', 'M3', 'P4', 'P5', 'M6', 'M7', 'P8'],
-        'natural_minor':    ['M2', 'm3', 'P4', 'P5', 'm6', 'm7', 'P8'],
-        'harmonic_minor':   ['M2', 'm3', 'P4', 'P5', 'm6', 'M7', 'P8'],
-        'melodic_minor':    ['M2', 'm3', 'P4', 'P5', 'M6', 'M7', 'P8'],
-        'dorian':           ['M2', 'm3', 'P4', 'P5', 'M6', 'm7', 'P8'],
-        'locrian':          ['m2', 'm3', 'P4', 'd5', 'm6', 'm7', 'P8'],
-        'lydian':           ['M2', 'M3', 'A4', 'P5', 'M6', 'M7', 'P8'],
-        'mixolydian':       ['M2', 'M3', 'P4', 'P5', 'M6', 'm7', 'P8'],
-        'phrygian':         ['m2', 'm3', 'P4', 'P5', 'm6', 'm7', 'P8'],
-        'major_pentatonic': ['M2', 'M3', 'P5', 'M6', 'P8'],
-        'minor_pentatonic': ['m3', 'P4', 'P5', 'm7', 'P8']
-    }
-    if scale_name in scales:
-        return [note] + [note+Interval(i) for i in scales[scale_name]]
-    raise Exception('No scale named {!r}'.format(scale_name))
 
 
 class Note():
@@ -100,6 +83,9 @@ class Note():
     def frequency(self):
         from math import pow
         return 440.0 * pow(2, 1./12.)**(self.midi_note() - Note('A4').midi_note())
+
+    def to_octave(self, octave):
+        return Note(self.tone + self.accidental + str(octave))
 
     def lilypond_notation(self):
         return str(self).replace('b', 'es').replace('#', 'is').lower()
@@ -216,6 +202,53 @@ class Chord():
             return False
         else:
             return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
+
+class Scale:
+    scales = {
+        'major' :           ['P1', 'M2', 'M3', 'P4', 'P5', 'M6', 'M7'],
+        'natural_minor':    ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'm7'],
+        'harmonic_minor':   ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'M7'],
+        'melodic_minor':    ['P1', 'M2', 'm3', 'P4', 'P5', 'M6', 'M7'],
+        'dorian':           ['P1', 'M2', 'm3', 'P4', 'P5', 'M6', 'm7'],
+        'locrian':          ['P1', 'm2', 'm3', 'P4', 'd5', 'm6', 'm7'],
+        'lydian':           ['P1', 'M2', 'M3', 'A4', 'P5', 'M6', 'M7'],
+        'mixolydian':       ['P1', 'M2', 'M3', 'P4', 'P5', 'M6', 'm7'],
+        'phrygian':         ['P1', 'm2', 'm3', 'P4', 'P5', 'm6', 'm7'],
+        'major_pentatonic': ['P1', 'M2', 'M3',       'P5', 'M6'],
+        'minor_pentatonic': ['P1',       'm3', 'P4', 'P5',       'm7']
+    }
+
+    def __init__(self, root, name):
+        if not isinstance(root, Note):
+            raise TypeError('Invalid root note type: {}'.format(type(root)))
+        if name not in self.scales:
+            raise NameError('No such scale: {}'.format(name))
+        self.root = root
+        self.name = name
+        self.intervals = [Interval(i) for i in self.scales[name]]
+        self.notes = [(root + i).to_octave(0) for i in self.intervals]
+
+    def __getitem__(self, k):
+        if not isinstance(k, int):
+            raise TypeError('Scale can be indexed only by integers.')
+        octaves = k // len(self.intervals)
+        offset = k - octaves * len(self.intervals)
+        return self.root.to_octave(self.root.octave + octaves) + self.intervals[offset]
+
+    def __contains__(self, k):
+        if isinstance(k, Note):
+            return k.to_octave(0) in self.notes
+        elif isinstance(k, Chord):
+            return all(n in self for n in k.notes)
+        else:
+            raise TypeError('Cannot check scale containment for an object of type {}'.format(type(k)))
+
+    def __str__(self):
+        return '{} {}'.format(self.root, self.name)
+
+    def __repr__(self):
+        return 'Scale({!r}, {!r})'.format(self.root, self.name)
+
 
 if __name__ == '__main__':
     add = Note('Ab') + Interval('m3')
