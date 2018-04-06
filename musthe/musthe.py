@@ -156,6 +156,12 @@ class Interval():
         except:
             raise Exception('Invalid interval {!r}.'.format(interval))
 
+    def __str__(self):
+        return self.quality + str(self.number)
+
+    def __repr__(self):
+        return 'Interval({!r})'.format(str(self))
+
 
 class Chord():
     chord_recipes = {
