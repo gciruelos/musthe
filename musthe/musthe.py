@@ -218,6 +218,13 @@ class Scale:
         'minor_pentatonic': ['P1',       'm3', 'P4', 'P5',       'm7']
     }
 
+    def all():
+        for note in Note.tones:
+            for accidental in ('b', '', '#'):
+                root = Note(note + accidental)
+                for name in Scale.scales:
+                    yield Scale(root, name)
+
     def __init__(self, root, name):
         if not isinstance(root, Note):
             raise TypeError('Invalid root note type: {}'.format(type(root)))
