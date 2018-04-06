@@ -70,10 +70,10 @@ class Note():
         if self.tone == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
             new_note_tone = 'B'
         else:
-            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
+            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone + interval.number - 1]
 
         # %12 because it wraps in B->C and starts over.
-        new_note_id = (self.note_id+interval.semitones)%12
+        new_note_id = (self.note_id + interval.semitones) % 12
 
         # First calculates the note, and then the difference from the note
         # without accidentals, then adds proper accidentals.
@@ -89,7 +89,7 @@ class Note():
         new_note_octave = (self.note_id+interval.semitones)//12+self.octave
         # corrects cases like B#, B##, B### and A###.
         # http://en.wikipedia.org/wiki/Scientific_pitch_notation#C-flat_and_B-sharp_problems
-        if new_note_tone+accidental in ['B#', 'B##', 'B###', 'A###']:
+        if new_note_tone + accidental in ['B#', 'B##', 'B###', 'A###']:
             new_note_octave -= 1
 
         return Note(new_note_tone+accidental+str(new_note_octave))
@@ -105,13 +105,13 @@ class Note():
         return str(self).replace('b', 'es').replace('#', 'is').lower()
 
     def scientific_notation(self):
-        return str(self)+str(self.octave)
+        return str(self) + str(self.octave)
 
     def __repr__(self):
         return 'Note({!r})'.format(self.scientific_notation())
 
     def __str__(self):
-        return self.tone+self.accidental
+        return self.tone + self.accidental
 
     def __eq__(self, other):
         return self.scientific_notation() == other.scientific_notation()
@@ -129,11 +129,11 @@ class Interval():
     """
     def __init__(self, interval):
         try:
-            self.semitones = {'P1': 0, 'A1':1, 'd2':0, 'm2':1, 'M2':2, 'A2':3,
-                              'd3':2, 'm3':3, 'M3':4, 'A3':5, 'd4':4, 'P4':5,
-                              'A4':6, 'd5':6, 'P5':7, 'A5':8, 'd6':7, 'm6':8,
-                              'M6':9, 'A6':10,'d7':9, 'm7':10, 'M7':11, 'A7':12,
-                              'd8':11, 'P8':12}[interval]
+            self.semitones = {'P1': 0, 'A1': 1, 'd2': 0, 'm2': 1, 'M2': 2, 'A2': 3,
+                              'd3': 2, 'm3': 3, 'M3': 4, 'A3': 5, 'd4': 4, 'P4': 5,
+                              'A4': 6, 'd5': 6, 'P5': 7, 'A5': 8, 'd6': 7, 'm6': 8,
+                              'M6': 9, 'A6': 10,'d7': 9, 'm7': 10, 'M7': 11, 'A7': 12,
+                              'd8': 11, 'P8': 12}[interval]
         except:
             raise Exception('Could not parse the interval.')
         self.number = int(interval[1])
@@ -171,13 +171,13 @@ class Chord():
 
     def add_intervals(self, intervals):
         for i in intervals:
-            self.notes.append(self.notes[0]+Interval(i))
+            self.notes.append(self.notes[0] + Interval(i))
 
     def __repr__(self):
         return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
 
     def __str__(self):
-        return "{}{}".format(str(self.notes[0]),self.chord_type)
+        return "{}{}".format(str(self.notes[0]), self.chord_type)
 
     def __eq__(self, other):
         if len(self.notes) != len(other.notes):
@@ -187,5 +187,5 @@ class Chord():
             return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
 
 if __name__ == '__main__':
-    add = Note('Ab')+Interval('m3')
-    print add
+    add = Note('Ab') + Interval('m3')
+    print(add)
