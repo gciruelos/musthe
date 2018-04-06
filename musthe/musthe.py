@@ -23,7 +23,7 @@ class Note():
     'Dbbbb' are not.
     """
 
-    pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d*)$')
+    pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d{0,1})$')
     tones = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     def __init__(self, note):
