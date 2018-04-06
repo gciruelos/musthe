@@ -88,8 +88,8 @@ class Note():
         difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_tone]
         # In some cases, like G##+m3, difference is -11, and it should be
         # 1, so this corrects the error.
-        if abs(difference)>3:
-            difference = difference + 12
+        if difference < 3: difference += 12
+        if difference > 3: difference -= 12
 
         if difference<0: accidental = 'b'*abs(difference)
         elif difference>0: accidental = '#'*abs(difference)
