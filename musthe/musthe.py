@@ -41,6 +41,7 @@ class Note():
     """
 
     pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d*)$')
+    tones = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     def __init__(self, note):
         m = self.pattern.match(note)
@@ -50,7 +51,7 @@ class Note():
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.tone]
+        self.note_id = self.tones[self.tone]
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
@@ -76,7 +77,7 @@ class Note():
 
         # First calculates the note, and then the difference from the note
         # without accidentals, then adds proper accidentals.
-        difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_tone]
+        difference = new_note_id - self.tones[new_note_tone]
         # In some cases, like G##+m3, difference is -11, and it should be
         # 1, so this corrects the error.
         if difference < 3: difference += 12
