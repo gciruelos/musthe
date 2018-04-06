@@ -94,6 +94,9 @@ class Note():
 
         return Note(new_note_tone+accidental+str(new_note_octave))
 
+    def midi_note(self):
+        return self.note_id + self.octave * 12
+
     def frequency(self):
         """
         Returns frequency in Hz. It uses the method given in
