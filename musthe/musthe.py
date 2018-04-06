@@ -123,7 +123,7 @@ class Interval():
 
     The notes are to be parsed in th following way:
     * the quality, (m, M, p, A, d)
-    * the number. (1 to 8) [Compound intervals will be supported]
+    * the number.
 
     For example, 'd8', 'P1', 'A5' are valid intervals. 'P3', '5' are not.
     """
@@ -140,11 +140,21 @@ class Interval():
     }
 
     def __init__(self, interval):
+        self.quality = interval[0]
+        self.number = int(interval[1:])
+        self.semitones = 0
+
+        # compound intervals:
+        number = self.number
+        while number > 8:
+            number -= 7
+            self.semitones += 12
+        interval1 = self.quality + str(number)
+
         try:
-            self.semitones = self.intervals[interval]
+            self.semitones = self.intervals[interval1]
         except:
-            raise Exception('Could not parse the interval.')
-        self.number = int(interval[1])
+            raise Exception('Invalid interval {!r}.'.format(interval))
 
 
 class Chord():
