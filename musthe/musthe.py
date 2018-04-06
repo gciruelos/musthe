@@ -205,7 +205,7 @@ class Chord():
             self.notes.append(root + Interval(i))
 
     def __repr__(self):
-        return "Chord(Note({!r}), {!r})".format(str(self.notes[0]), self.chord_type)
+        return "Chord({!r}, {!r})".format(self.notes[0], self.chord_type)
 
     def __str__(self):
         return "{}{}".format(str(self.notes[0]), self.chord_type)
