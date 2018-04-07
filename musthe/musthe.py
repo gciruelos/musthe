@@ -111,7 +111,7 @@ class Note:
         return self + -interval
 
     def midi_note(self):
-        return self.note_id + self.octave * 12
+        return self.note_id + (1 + self.octave) * 12
 
     def frequency(self):
         from math import pow
