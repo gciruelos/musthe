@@ -24,6 +24,15 @@ class TestsForJesus(unittest.TestCase):
         self.assertEqual(str(Note('G##')+Interval('m3')), str(Note('B#')))
         self.assertEqual(str(Note('F')+Interval('P5')), str(Note('C')))
 
+    def test_tone_arithmetic(self):
+        self.assertEqual(str(Tone('A')+2), 'B')
+        self.assertEqual(str(Tone('A')+3), 'C')
+        self.assertEqual(str(Tone('A')+5), 'E')
+        self.assertEqual(str(Tone('G')+11), 'C')
+        self.assertEqual(str(Tone('D')+1), 'D')
+        self.assertEqual(str(Tone('D')-2), 'C')
+        self.assertEqual(Tone('D')-Tone('C'), 2)
+
     def test_note_scales(self):
         self.assertEqual(list(map(str, Scale(Note('C'), 'major').notes)),          ['C', 'D', 'E', 'F', 'G', 'A', 'B'])
         self.assertEqual(list(map(str, Scale(Note('C'), 'natural_minor').notes)),  ['C', 'D', 'Eb','F', 'G', 'Ab','Bb'])
