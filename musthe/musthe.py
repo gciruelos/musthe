@@ -97,6 +97,9 @@ class Note():
 
         return Note(new_tone.name + accidental + str(new_note_octave))
 
+    def __sub__(self, interval):
+        return self + -interval
+
     def midi_note(self):
         return self.note_id + self.octave * 12
 
@@ -167,6 +170,12 @@ class Interval():
 
     def __repr__(self):
         return 'Interval({!r})'.format(str(self))
+
+    def __neg__(self):
+        i = Interval(self.quality + str(self.number))
+        i.number *= -1
+        i.semitones *= -1
+        return i
 
 
 class Chord():
