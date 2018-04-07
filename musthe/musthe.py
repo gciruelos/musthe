@@ -11,6 +11,16 @@ import re
 
 
 class Tone:
+    """
+    The tone class.
+
+    There are 7 tones: C, D, E, F, G, A, and B.
+
+    This class implements basic tone arithmetic, such as adding and
+    subtracting interval numbers, or computing a difference between
+    two tones.
+    """
+
     tones = 'CDEFGAB'
     tones_idx = {x: i for i, x in enumerate(tones)}
 
@@ -46,7 +56,7 @@ class Tone:
         return 'Tone({!r})'.format(str(self))
 
 
-class Note():
+class Note:
     """
     The note class.
 
@@ -126,11 +136,11 @@ class Note():
         return self.scientific_notation() == other.scientific_notation()
 
 
-class Interval():
+class Interval:
     """
     The interval class.
 
-    The notes are to be parsed in th following way:
+    The intervals are to be parsed in th following way:
     * the quality, (m, M, p, A, d)
     * the number.
 
@@ -178,7 +188,13 @@ class Interval():
         return i
 
 
-class Chord():
+class Chord:
+    """
+    The chord class.
+
+    Contains recipes for common chords.
+    """
+
     recipes = {
         'maj':    ['P1', 'M3', 'P5'],
         'min':    ['P1', 'm3', 'P5'],
@@ -233,6 +249,14 @@ class Chord():
             return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
 
 class Scale:
+    """
+    The scale class.
+
+    Contains recipes for common scales, and operators for accessing the
+    notes of the scale, and for checking if a scale contains specific
+    notes or chords.
+    """
+
     scales = {
         'major' :           ['P1', 'M2', 'M3', 'P4', 'P5', 'M6', 'M7'],
         'natural_minor':    ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'm7'],
