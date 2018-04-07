@@ -10,6 +10,42 @@ Federico Ferri <federico.ferri.it@gmail.com>
 import re
 
 
+class Tone:
+    tones = 'CDEFGAB'
+    tones_idx = {x: i for i, x in enumerate(tones)}
+
+    def __init__(self, tone):
+        if tone not in self.tones_idx:
+            raise ValueError('Invalid tone {!r}'.format(tone))
+        self.name = tone
+        self.idx = self.tones_idx[tone]
+
+    def __add__(self, o):
+        if isinstance(o, int):
+            if o == 0:
+                raise ValueError('Invalid interval number: 0')
+            new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.tones)
+            return Tone(self.tones[new_idx])
+        else:
+            raise TypeError('Cannot add {} to Tone'.format(type(o)))
+
+    def __sub__(self, o):
+        if isinstance(o, Tone):
+            d = self.idx - o.idx
+            d += 1 if d >= 0 else -1
+            return d
+        elif isinstance(o, int):
+            return self + -o
+        else:
+            raise TypeError('Cannot subtract {} from Tone'.format(type(o)))
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return 'Tone({!r})'.format(str(self))
+
+
 class Note():
     """
     The note class.
@@ -30,11 +66,11 @@ class Note():
         m = self.pattern.match(note)
         if m is None: raise Exception('Could not parse the note {!r}'.format(note))
 
-        self.tone = m.group(1)
+        self.tone = Tone(m.group(1))
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.note_id = self.tones[self.tone]
+        self.note_id = self.tones[self.tone.name]
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
@@ -44,38 +80,22 @@ class Note():
         if not isinstance(interval, Interval):
             raise Exception('Cannot add {} to a note.'.format(type(interval)))
 
-        # * _old_note is the index in the list of the old note tone.
-        # * new_note_tone is calculated adding the interval_number-1 because
-        # you have start counting in the current tone. e.g. the fifth of
-        # E is: (E F G A) B.
-        _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.tone)
-        # Fixing Issue #7: Note('Ab')+Interval('m3') --> Exception
-        if self.tone == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
-            new_note_tone = 'B'
-        else:
-            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone + interval.number - 1]
+        new_tone = self.tone + interval.number
 
-        # %12 because it wraps in B->C and starts over.
         new_note_id = (self.note_id + interval.semitones) % 12
 
-        # First calculates the note, and then the difference from the note
-        # without accidentals, then adds proper accidentals.
-        difference = new_note_id - self.tones[new_note_tone]
-        # In some cases, like G##+m3, difference is -11, and it should be
-        # 1, so this corrects the error.
+        new_note_octave = (self.note_id + interval.semitones) // 12 + self.octave
+
+        difference = new_note_id - self.tones[new_tone.name]
         if difference < 3: difference += 12
         if difference > 3: difference -= 12
-
         accidental = 'b' * max(0, -difference) + '#' * max(0, difference)
 
-        # it calculates how many times it wrapped around B->C and adds.
-        new_note_octave = (self.note_id+interval.semitones)//12+self.octave
         # corrects cases like B#, B##, B### and A###.
-        # http://en.wikipedia.org/wiki/Scientific_pitch_notation#C-flat_and_B-sharp_problems
-        if new_note_tone + accidental in ['B#', 'B##', 'B###', 'A###']:
+        if new_tone.name + accidental in ['B#', 'B##', 'B###', 'A###']:
             new_note_octave -= 1
 
-        return Note(new_note_tone+accidental+str(new_note_octave))
+        return Note(new_tone.name + accidental + str(new_note_octave))
 
     def midi_note(self):
         return self.note_id + self.octave * 12
@@ -85,7 +105,7 @@ class Note():
         return 440.0 * pow(2, 1./12.)**(self.midi_note() - Note('A4').midi_note())
 
     def to_octave(self, octave):
-        return Note(self.tone + self.accidental + str(octave))
+        return Note(self.tone.name + self.accidental + str(octave))
 
     def lilypond_notation(self):
         return str(self).replace('b', 'es').replace('#', 'is').lower()
@@ -97,7 +117,7 @@ class Note():
         return 'Note({!r})'.format(self.scientific_notation())
 
     def __str__(self):
-        return self.tone + self.accidental
+        return self.tone.name + self.accidental
 
     def __eq__(self, other):
         return self.scientific_notation() == other.scientific_notation()
