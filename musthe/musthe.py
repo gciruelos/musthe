@@ -171,8 +171,8 @@ class Interval:
         interval1 = self.quality + str(number)
 
         try:
-            self.semitones = self.intervals[interval1]
-        except:
+            self.semitones += self.intervals[interval1]
+        except KeyError:
             raise Exception('Invalid interval {!r}.'.format(interval))
 
     def __str__(self):
