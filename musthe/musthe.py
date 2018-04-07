@@ -281,6 +281,7 @@ class Scale:
         'minor_pentatonic': ['P1',       'm3', 'P4', 'P5',       'm7']
     }
 
+    @staticmethod
     def all():
         for note in Note.tones:
             for accidental in ('b', '', '#'):
