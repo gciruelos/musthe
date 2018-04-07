@@ -225,12 +225,22 @@ class Chord:
         'ø7':     'm7dim5',
         'm7b5':   'm7dim5',
     }
+    valid_types = list(recipes.keys()) + list(aliases.keys())
 
     def __init__(self, root, chord_type='M'):
+        if isinstance(root, str):
+            for s in sorted(self.valid_types, key=lambda x: -len(x)):
+                if root.endswith(s):
+                    chord_type = s
+                    root = Note(root[:-len(s)])
+                    break
+            if not isinstance(root, Note):
+                raise ValueError('Invalid chord: {!r}'.format(root))
+
         if chord_type in self.aliases:
             chord_type = self.aliases[chord_type]
         if chord_type not in self.recipes.keys():
-            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.recipes.keys())))
+            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.valid_types)))
 
         self.chord_type = chord_type
         self.notes = [root + Interval(i) for i in self.recipes[chord_type]]
