@@ -289,6 +289,9 @@ class Scale:
                     yield Scale(root, name)
 
     def __init__(self, root, name):
+        if isinstance(root, str):
+            root = Note(root)
+
         if not isinstance(root, Note):
             raise TypeError('Invalid root note type: {}'.format(type(root)))
         if name not in self.scales:
