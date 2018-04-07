@@ -319,6 +319,8 @@ class Scale:
             return k.to_octave(0) in self.notes
         elif isinstance(k, Chord):
             return all(n in self for n in k.notes)
+        elif isinstance(k, (list, set, tuple)):
+            return all(x in self for x in k)
         else:
             raise TypeError('Cannot check scale containment for an object of type {}'.format(type(k)))
 
