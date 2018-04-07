@@ -46,6 +46,9 @@ class TestsForJesus(unittest.TestCase):
         self.assertEqual(list(map(str, Scale(Note('C'),'major_pentatonic').notes)),['C', 'D', 'E', 'G', 'A'])
         self.assertEqual(list(map(str, Scale(Note('C'),'minor_pentatonic').notes)),['C', 'Eb','F', 'G', 'Bb'])
         self.assertRaises(Exception, Scale, Note('C'), 'non-existent scale')
+        # try to create all scales
+        for scale in Scale.all():
+            pass
 
 class TestsForJesusChords(unittest.TestCase):
     def setUp(self):
