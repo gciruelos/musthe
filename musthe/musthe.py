@@ -23,7 +23,7 @@ class Tone:
 
     tones = 'CDEFGAB'
     tones_idx = {x: i for i, x in enumerate(tones)}
-    tones_note_id = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
+    tones_number = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     @staticmethod
     def all():
@@ -61,8 +61,8 @@ class Tone:
     def __repr__(self):
         return 'Tone({!r})'.format(str(self))
 
-    def note_id(self):
-        return self.tones_note_id[self.name]
+    def number(self):
+        return self.tones_number[self.name]
 
     def has_flat(self):
         return self.name not in 'CF'
@@ -94,6 +94,14 @@ class Note:
                 for var in varz:
                     yield Note('{}{}{:d}'.format(tone.name, var, octave))
 
+    @staticmethod
+    def accidental_value(acc):
+        return 0 if acc == '' else {'#': 1, 'b': -1}[acc[0]] + Note.accidental_value(acc[1:])
+
+    @staticmethod
+    def accidental_str(val):
+        return 'b' * max(0, -val) + '#' * max(0, val)
+
     def __init__(self, note):
         m = self.pattern.match(note)
         if m is None: raise Exception('Could not parse the note {!r}'.format(note))
@@ -102,42 +110,36 @@ class Note:
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.note_id = self.tone.note_id()
-        for change in self.accidental:
-            if change == '#': self.note_id += 1
-            elif change == 'b': self.note_id -= 1
-        self.note_id %= 12
+        self.number = self.tone.number() + self.octave * 12 + Note.accidental_value(self.accidental)
 
     def __add__(self, interval):
         if not isinstance(interval, Interval):
             raise Exception('Cannot add {} to a note.'.format(type(interval)))
 
         if interval.is_compound():
-            ii = interval.split()
             from functools import reduce
-            return reduce(lambda a, b: a + b, ii, self)
+            return reduce(lambda a, b: a + b, interval.split(), self)
 
         new_tone = self.tone + interval.number
-
-        new_note_id = (self.note_id + interval.semitones) % 12
-
-        new_note_octave = (self.note_id + interval.semitones) // 12 + self.octave
-        # fix the case of B# + d2 not jumping octave:
-        if str(interval) == 'd2' and self.tone.name == 'B' and new_tone.name == 'C':
-            new_note_octave += 1
-
-        difference = new_note_id - new_tone.note_id()
+        new_number = self.number + interval.semitones
+        new_note_octave = self.octave + int(self.tone.name in Tone.tones[8 - interval.number:])
+        difference = new_number % 12 - new_tone.number()
         if difference < 3: difference += 12
         if difference > 3: difference -= 12
-        accidental = 'b' * max(0, -difference) + '#' * max(0, difference)
-
-        return Note(new_tone.name + accidental + str(new_note_octave))
+        return Note(new_tone.name + Note.accidental_str(difference) + str(new_note_octave))
 
     def __sub__(self, interval):
-        return self + -interval
+        if not isinstance(interval, Interval):
+            raise Exception('Cannot add {} to a note.'.format(type(interval)))
+
+        if interval.is_compound():
+            from functools import reduce
+            return reduce(lambda a, b: a - b, interval.split(), self)
+
+        return self.to_octave(self.octave - 1) + interval.complement()
 
     def midi_note(self):
-        return self.note_id + (1 + self.octave) * 12
+        return self.number + 12
 
     def frequency(self):
         from math import pow
@@ -211,6 +213,9 @@ class Interval:
 
     def __repr__(self):
         return 'Interval({!r})'.format(str(self))
+
+    def __eq__(self, o):
+        return str(self) == str(o)
 
     def is_compound(self):
         return self.number > 8
