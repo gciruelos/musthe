@@ -68,7 +68,6 @@ class TestsForJesus(unittest.TestCase):
             self.assertEqual(str(c), y)
             c4, c5 = Note('C4'), Note('C5')
             if x != 'A8':
-                print('testing {}+{}=P8 ?'.format(i, c))
                 self.assertEqual(c4 + i + c, c5)
 
     def test_note_scales(self):
