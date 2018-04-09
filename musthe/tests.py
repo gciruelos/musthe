@@ -1,145 +1,150 @@
-
 import unittest
 from musthe import *
 
 
-class TestsForJesus(unittest.TestCase):
+class TestsForTone(unittest.TestCase):
+    def test_tone_arithmetic(self):
+        def test1(tone, difference, result):
+            self.assertEqual(str(Tone(tone) + difference), result)
+        test1('A', 2, 'B')
+        test1('A', 3, 'C')
+        test1('A', 5, 'E')
+        test1('G', 11, 'C')
+        test1('D', 1, 'D')
+        test1('D', -2, 'C')
+
+        def test2(tone1, tone2, difference):
+            self.assertEqual(Tone(tone1) - Tone(tone2), difference)
+        test2('D', 'C', 2)
+
+
+class TestsForNote(unittest.TestCase):
     def test_note_parsing(self):
-        self.assertEqual(str(Note('A4')), 'A')
-        self.assertEqual(str(Note('Ab6')), 'Ab')
-        self.assertEqual(str(Note('Dbb')), 'Dbb')
-        self.assertEqual(str(Note('G###0')), 'G###')
+        def test1(note, strnote):
+            self.assertEqual(str(Note(note)), strnote)
+        test1('A4', 'A')
+        test1('Ab6', 'Ab')
+        test1('Dbb', 'Dbb')
+        test1('G###0', 'G###')
 
-        self.assertRaises(Exception, Note, 'A99')
-        self.assertRaises(Exception, Note, 'Ab#')
-        self.assertRaises(Exception, Note, 'E####')
-
-    def test_interval_parsing(self):
-        self.assertEqual(Interval('d5').semitones, 6)
-        self.assertRaises(Exception, Interval, 'P3')
+        def test2(badnote):
+            self.assertRaises(Exception, Note, badnote)
+        test2('A99')
+        test2('Ab#')
+        test2('E####')
 
     def test_note_sum(self):
-        self.assertEqual(str(Note('A4')+Interval('d5')), str(Note('Eb')))
-        self.assertEqual(str(Note('A')+Interval('P1')), str(Note('A')))
-        self.assertEqual(str(Note('G##')+Interval('m3')), str(Note('B#')))
-        self.assertEqual(str(Note('F')+Interval('P5')), str(Note('C')))
-        self.assertEqual(Note('B#4')+Interval('d2'), Note('C5'))
+        def test1(note, interval, result):
+            self.assertEqual(Note(note) + Interval(interval), Note(result))
+        test1('A4', 'd5', 'Eb5')
+        test1('A4', 'P1', 'A4')
+        test1('G##4', 'm3', 'B#4')
+        test1('F3', 'P5', 'C4')
+        test1('B#4', 'd2', 'C5')
 
-    def test_tone_arithmetic(self):
-        self.assertEqual(str(Tone('A')+2), 'B')
-        self.assertEqual(str(Tone('A')+3), 'C')
-        self.assertEqual(str(Tone('A')+5), 'E')
-        self.assertEqual(str(Tone('G')+11), 'C')
-        self.assertEqual(str(Tone('D')+1), 'D')
-        self.assertEqual(str(Tone('D')-2), 'C')
-        self.assertEqual(Tone('D')-Tone('C'), 2)
 
-    def test_intercval_arithmetic(self):
-        for x, y in {
-            'P1': 'P8',
-            'A1': 'd8',
-            'd2': 'A7',
-            'm2': 'M7',
-            'M2': 'm7',
-            'A2': 'd7',
-            'd3': 'A6',
-            'm3': 'M6',
-            'M3': 'm6',
-            'A3': 'd6',
-            'd4': 'A5',
-            'P4': 'P5',
-            'A4': 'd5',
-            'd5': 'A4',
-            'P5': 'P4',
-            'A5': 'd4',
-            'd6': 'A3',
-            'm6': 'M3',
-            'M6': 'm3',
-            'A6': 'd3',
-            'd7': 'A2',
-            'm7': 'M2',
-            'M7': 'm2',
-            'A7': 'd2',
-            'd8': 'A1',
-            'P8': 'P1',#unnorm
-            'A8': 'd8',#unnorm
-        }.items():
-            i = Interval(x)
-            c = i.complement()
-            self.assertEqual(str(c), y)
-            c4, c5 = Note('C4'), Note('C5')
-            if x != 'A8':
-                self.assertEqual(c4 + i + c, c5)
+class TestsForInterval(unittest.TestCase):
+    def test_interval_parsing(self):
+        def test1(interval, semitones, number):
+            i = Interval(interval)
+            self.assertEqual(i.semitones, semitones)
+            self.assertEqual(i.number, number)
+        test1('d5', 6, 5)
+        test1('P8', 12, 8)
+        test1('A8', 13, 8)
 
+        def test2(badinterval):
+            self.assertRaises(Exception, Interval, badinterval)
+        test2('P3')
+
+    def test_interval_complement(self):
+        def test1(i, c):
+            i = Interval(i)
+            c = Interval(c)
+            self.assertEqual(i.complement(), c)
+        test1('P1', 'P8')
+        test1('A1', 'd8')
+        test1('d2', 'A7')
+        test1('m2', 'M7')
+        test1('M2', 'm7')
+        test1('A2', 'd7')
+        test1('d3', 'A6')
+        test1('m3', 'M6')
+        test1('M3', 'm6')
+        test1('A3', 'd6')
+        test1('d4', 'A5')
+        test1('P4', 'P5')
+        test1('A4', 'd5')
+        test1('d5', 'A4')
+        test1('P5', 'P4')
+        test1('A5', 'd4')
+        test1('d6', 'A3')
+        test1('m6', 'M3')
+        test1('M6', 'm3')
+        test1('A6', 'd3')
+        test1('d7', 'A2')
+        test1('m7', 'M2')
+        test1('M7', 'm2')
+        test1('A7', 'd2')
+        test1('d8', 'A1')
+        test1('P8', 'P1')
+        test1('A8', 'd8') # exception to the rule
+
+    def test_interval_complement_2(self):
+        for n in Note.all(2, 3):
+            n1 = n.to_octave(n.octave + 1)
+            for i in Interval.all():
+                if str(i) == 'A8': continue
+                self.assertEqual(n + i + i.complement(), n1)
+                self.assertEqual(n + i.complement() + i, n1)
+
+
+class TestsForChord(unittest.TestCase):
+    def test_chord_creation(self):
+        def test1(root, name, strchord):
+            self.assertEqual(str(Chord(Note(root), name)), strchord)
+        test1('A', 'M', 'Amaj')
+        test1('B', 'm', 'Bmin')
+        test1('C', 'dim', 'Cdim')
+        test1('D', 'aug', 'Daug')
+        test1('A#', 'M', 'A#maj')
+        test1('Bb', 'M', 'Bbmaj')
+
+        def test2(badname):
+            self.assertRaises(Exception, Chord, badname)
+        test2('A$')
+        test2('H')
+
+    def test_chord_recipes(self):
+        def test1(root, name, intervals):
+            r = Note(root)
+            c = Chord(r, name)
+            self.assertEqual(c.notes, [r + Interval(i) for i in intervals])
+        test1('A', 'maj', ['P1', 'M3', 'P5'])
+        test1('A', 'min', ['P1', 'm3', 'P5'])
+        test1('A', 'dim', ['P1', 'm3', 'd5'])
+        test1('A', 'aug', ['P1', 'M3', 'A5'])
+
+
+class TestsForScale(unittest.TestCase):
     def test_note_scales(self):
-        self.assertEqual(list(map(str, Scale(Note('C'), 'major').notes)),          ['C', 'D', 'E', 'F', 'G', 'A', 'B'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'natural_minor').notes)),  ['C', 'D', 'Eb','F', 'G', 'Ab','Bb'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'harmonic_minor').notes)), ['C', 'D', 'Eb','F', 'G', 'Ab','B'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'melodic_minor').notes)),  ['C', 'D', 'Eb','F', 'G', 'A', 'B'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'dorian').notes)),         ['C', 'D', 'Eb','F', 'G', 'A', 'Bb'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'locrian').notes)),        ['C', 'Db','Eb','F', 'Gb','Ab','Bb'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'lydian').notes)),         ['C', 'D', 'E', 'F#','G', 'A', 'B'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'mixolydian').notes)),     ['C', 'D', 'E', 'F', 'G', 'A', 'Bb'])
-        self.assertEqual(list(map(str, Scale(Note('C'), 'phrygian').notes)),       ['C', 'Db','Eb','F', 'G', 'Ab','Bb'])
-        self.assertEqual(list(map(str, Scale(Note('C'),'major_pentatonic').notes)),['C', 'D', 'E', 'G', 'A'])
-        self.assertEqual(list(map(str, Scale(Note('C'),'minor_pentatonic').notes)),['C', 'Eb','F', 'G', 'Bb'])
+        def test1(root, name, notes):
+            self.assertEqual(list(map(str, Scale(Note(root), name).notes)), notes)
+        test1('C', 'major',            ['C', 'D', 'E', 'F', 'G', 'A', 'B'])
+        test1('C', 'natural_minor',    ['C', 'D', 'Eb','F', 'G', 'Ab','Bb'])
+        test1('C', 'harmonic_minor',   ['C', 'D', 'Eb','F', 'G', 'Ab','B'])
+        test1('C', 'melodic_minor',    ['C', 'D', 'Eb','F', 'G', 'A', 'B'])
+        test1('C', 'dorian',           ['C', 'D', 'Eb','F', 'G', 'A', 'Bb'])
+        test1('C', 'locrian',          ['C', 'Db','Eb','F', 'Gb','Ab','Bb'])
+        test1('C', 'lydian',           ['C', 'D', 'E', 'F#','G', 'A', 'B'])
+        test1('C', 'mixolydian',       ['C', 'D', 'E', 'F', 'G', 'A', 'Bb'])
+        test1('C', 'phrygian',         ['C', 'Db','Eb','F', 'G', 'Ab','Bb'])
+        test1('C', 'major_pentatonic', ['C', 'D', 'E', 'G', 'A'])
+        test1('C', 'minor_pentatonic', ['C', 'Eb','F', 'G', 'Bb'])
         self.assertRaises(Exception, Scale, Note('C'), 'non-existent scale')
         # try to create all scales
         for scale in Scale.all():
             pass
 
-class TestsForJesusChords(unittest.TestCase):
-    def setUp(self):
-        '''put here for later building of test chords, one for each
-        chord_type in chord_recipes'''
-        self.chord_types = [k for k in Chord(Note('Bb')).recipes.keys()]
-        self.chords = {k:Chord(Note('A'), k) for k in self.chord_types}
-        self.rootNote = Note('A')
-
-    def tearDown(self):
-        self.chords = {}
-        self.chord_types = []
-        self.rootNote = None
-
-    def test_chord_creation(self):
-        #check __str__ returns
-        self.assertEqual(str(Chord(Note('A'))), 'Amaj')
-        self.assertEqual(str(Chord(Note('B'), 'm')), 'Bmin')
-        self.assertEqual(str(Chord(Note('C'), 'dim')), 'Cdim')
-        self.assertEqual(str(Chord(Note('D'), 'aug')), 'Daug')
-        self.assertEqual(str(Chord(Note('A#'))), 'A#maj')
-        self.assertEqual(str(Chord(Note('Bb'))), 'Bbmaj')
-
-        #check __repr__ returns
-        #//todo
-        
-        #check __eq__
-        #//todo
-
-        #check faulty inputs
-        self.assertRaises(Exception, Chord, 'A$')
-        self.assertRaises(Exception, Chord, 'H')
-
-        #check recipe notes
-        self.assertEqual(self.chords['maj'].notes,
-                         [self.rootNote,
-                          self.rootNote+Interval('M3'),
-                          self.rootNote+Interval('P5')
-                          ])
-        self.assertEqual(self.chords['min'].notes,
-                         [self.rootNote,
-                          self.rootNote+Interval('m3'),
-                          self.rootNote+Interval('P5')
-                          ])
-        self.assertEqual(self.chords['dim'].notes,
-                         [self.rootNote,
-                          self.rootNote+Interval('m3'),
-                          self.rootNote+Interval('d5')
-                          ])
-        self.assertEqual(self.chords['aug'].notes,
-                         [self.rootNote,
-                          self.rootNote+Interval('M3'),
-                          self.rootNote+Interval('A5')
-                          ])
 
 unittest.main()
