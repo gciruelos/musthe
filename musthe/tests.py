@@ -33,6 +33,44 @@ class TestsForJesus(unittest.TestCase):
         self.assertEqual(str(Tone('D')-2), 'C')
         self.assertEqual(Tone('D')-Tone('C'), 2)
 
+    def test_intercval_arithmetic(self):
+        for x, y in {
+            'P1': 'P8',
+            'A1': 'd8',
+            'd2': 'A7',
+            'm2': 'M7',
+            'M2': 'm7',
+            'A2': 'd7',
+            'd3': 'A6',
+            'm3': 'M6',
+            'M3': 'm6',
+            'A3': 'd6',
+            'd4': 'A5',
+            'P4': 'P5',
+            'A4': 'd5',
+            'd5': 'A4',
+            'P5': 'P4',
+            'A5': 'd4',
+            'd6': 'A3',
+            'm6': 'M3',
+            'M6': 'm3',
+            'A6': 'd3',
+            'd7': 'A2',
+            'm7': 'M2',
+            'M7': 'm2',
+            'A7': 'd2',
+            'd8': 'A1',
+            'P8': 'P1',#unnorm
+            'A8': 'd8',#unnorm
+        }.items():
+            i = Interval(x)
+            c = i.complement()
+            self.assertEqual(str(c), y)
+            c4, c5 = Note('C4'), Note('C5')
+            if x != 'A8':
+                print('testing {}+{}=P8 ?'.format(i, c))
+                self.assertEqual(c4 + i + c, c5)
+
     def test_note_scales(self):
         self.assertEqual(list(map(str, Scale(Note('C'), 'major').notes)),          ['C', 'D', 'E', 'F', 'G', 'A', 'B'])
         self.assertEqual(list(map(str, Scale(Note('C'), 'natural_minor').notes)),  ['C', 'D', 'Eb','F', 'G', 'Ab','Bb'])

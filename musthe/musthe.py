@@ -181,11 +181,38 @@ class Interval:
     def __repr__(self):
         return 'Interval({!r})'.format(str(self))
 
-    def __neg__(self):
-        i = Interval(self.quality + str(self.number))
-        i.number *= -1
-        i.semitones *= -1
-        return i
+    def is_compound(self):
+        return self.number > 8
+
+    def split(self):
+        """
+        Split a compound interval into simple intervals.
+        The sum of splitted intervals is equal to the compound interval.
+        """
+        ret = []
+        i = Interval(str(self))
+        while i.is_compound():
+            i.number -= 7
+            i.semitones -= 12
+            ret.append(Interval('P8'))
+        ret.append(i)
+        return ret
+
+    def complement(self):
+        """
+        Return the complement of this interval, also known as inverted interval.
+        The sum of this interval plus its complement is equal to one octave (P8),
+        except for the case of A8, for which there is no d1 interval.
+        """
+        if self.is_compound():
+            raise ValueError('Cannot invert a compound interval')
+        if str(self) == 'A8':
+            # A8 is an exception to the rule, since there is no 'd1' interval
+            return Interval('d8')
+        else:
+            n = 9 - self.number
+            q = {'P': 'P', 'd': 'A', 'A': 'd', 'm': 'M', 'M': 'm'}[self.quality]
+            return Interval(q + str(n))
 
 
 class Chord:
