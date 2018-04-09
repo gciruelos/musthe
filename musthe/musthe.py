@@ -432,7 +432,3 @@ class Scale:
     def __repr__(self):
         return 'Scale({!r}, {!r})'.format(self.root, self.name)
 
-
-if __name__ == '__main__':
-    add = Note('Ab') + Interval('m3')
-    print(add)
