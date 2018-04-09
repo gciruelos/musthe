@@ -129,7 +129,7 @@ class Note:
             if difference > 3: difference -= 12
             return Note(new_tone.name + Note.accidental_str(difference) + str(new_note_octave))
         else:
-            raise Exception('Cannot add {} to a note.'.format(type(o)))
+            raise TypeError('Cannot add {} to a note.'.format(type(o)))
 
     def __sub__(self, o):
         if isinstance(o, Interval):
@@ -139,7 +139,7 @@ class Note:
 
             return self.to_octave(self.octave - 1) + o.complement()
         else:
-            raise Exception('Cannot subtract {} from a note.'.format(type(interval)))
+            raise TypeError('Cannot subtract {} from a note.'.format(type(interval)))
 
     def midi_note(self):
         return self.number + 12
