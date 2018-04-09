@@ -101,10 +101,6 @@ class Note:
         if difference > 3: difference -= 12
         accidental = 'b' * max(0, -difference) + '#' * max(0, difference)
 
-        # corrects cases like B#, B##, B### and A###.
-        if new_tone.name + accidental in ['B#', 'B##', 'B###', 'A###']:
-            new_note_octave -= 1
-
         return Note(new_tone.name + accidental + str(new_note_octave))
 
     def __sub__(self, interval):
