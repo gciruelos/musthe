@@ -61,6 +61,9 @@ class Tone:
     def __repr__(self):
         return 'Tone({!r})'.format(str(self))
 
+    def __eq__(self, o):
+        return str(self) == str(o)
+
     def number(self):
         return self.tones_number[self.name]
 
