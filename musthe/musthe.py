@@ -107,7 +107,7 @@ class Note:
 
     def __init__(self, note):
         m = self.pattern.match(note)
-        if m is None: raise Exception('Could not parse the note {!r}'.format(note))
+        if m is None: raise ValueError('Could not parse the note {!r}'.format(note))
 
         self.tone = Tone(m.group(1))
         self.accidental = m.group(2)
@@ -221,7 +221,7 @@ class Interval:
         try:
             self.semitones += self.intervals[interval1]
         except KeyError:
-            raise Exception('Invalid interval {!r}.'.format(interval))
+            raise ValueError('Invalid interval {!r}.'.format(interval))
 
     def __str__(self):
         return self.quality + str(self.number)
@@ -325,7 +325,7 @@ class Chord:
         if chord_type in self.aliases:
             chord_type = self.aliases[chord_type]
         if chord_type not in self.recipes.keys():
-            raise Exception('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.valid_types)))
+            raise ValueError('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.valid_types)))
 
         self.chord_type = chord_type
         self.notes = [root + Interval(i) for i in self.recipes[chord_type]]
