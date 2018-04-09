@@ -3,6 +3,25 @@ from musthe import *
 
 
 class TestsForTone(unittest.TestCase):
+    def test_tone_parsing(self):
+        def test1(name):
+            self.assertEqual(str(Tone(name)), name)
+        for name in 'CDEFGAB':
+            test1(name)
+
+        def test2(badname):
+            self.assertRaises(ValueError, Tone, badname)
+        test2('C#')
+        test2('Db')
+        test2('H')
+        test2('$')
+
+    def test_tone_stuff(self):
+        for i in 'DEGAB':
+            self.assertTrue(Tone(i).has_flat())
+        for i in 'CDFGA':
+            self.assertTrue(Tone(i).has_sharp())
+
     def test_tone_arithmetic(self):
         def test1(tone, difference, result):
             self.assertEqual(str(Tone(tone) + difference), result)
@@ -16,6 +35,12 @@ class TestsForTone(unittest.TestCase):
         def test2(tone1, tone2, difference):
             self.assertEqual(Tone(tone1) - Tone(tone2), difference)
         test2('D', 'C', 2)
+        test2('C', 'B', -7)
+
+        def test3(tone1, difference, tone2):
+            self.assertEqual(Tone(tone1) - difference, Tone(tone2))
+        test3('D', 2, 'C')
+        test3('C', 2, 'B')
 
 
 class TestsForNote(unittest.TestCase):
@@ -32,6 +57,27 @@ class TestsForNote(unittest.TestCase):
         test2('A99')
         test2('Ab#')
         test2('E####')
+
+    def test_note_gen(self):
+        self.assertEqual([n.scientific_notation() for n in Note.all(4,5)],
+            ['C4', 'C#4', 'Db4', 'D4', 'D#4', 'Eb4', 'E4', 'F4', 'F#4',
+                'Gb4', 'G4', 'G#4', 'Ab4', 'A4', 'A#4', 'Bb4', 'B4', 'C5',
+                'C#5', 'Db5', 'D5', 'D#5', 'Eb5', 'E5', 'F5', 'F#5', 'Gb5',
+                'G5', 'G#5', 'Ab5', 'A5', 'A#5', 'Bb5', 'B5'])
+
+    def test_note_oct(self):
+        def test1(n1, oc, n2):
+            self.assertEqual(Note(n1).to_octave(oc), Note(n2))
+        test1('C#2', 5, 'C#5')
+        test1('B#6', 3, 'B#3')
+        test1('Cbbb6', 6, 'Cbbb6')
+        test1('Ebb5', 1, 'Ebb1')
+
+    def test_note_midi(self):
+        def test1(note, midi):
+            self.assertEquals(Note(note).midi_note(), midi)
+        test1('C4', 60)
+        test1('D5', 74)
 
     def test_note_sum(self):
         def test1(note, interval, result):
@@ -97,6 +143,13 @@ class TestsForInterval(unittest.TestCase):
                 if str(i) == 'A8': continue
                 self.assertEqual(n + i + i.complement(), n1)
                 self.assertEqual(n + i.complement() + i, n1)
+
+    def test_interval_split(self):
+        def test1(i, *args):
+            self.assertEquals([str(i1) for i1 in Interval(i).split()], list(args))
+        test1('M9', 'P8', 'M2')
+        test1('m17', 'P8', 'P8', 'm3')
+        test1('P29', 'P8', 'P8', 'P8', 'P8')
 
 
 class TestsForChord(unittest.TestCase):
