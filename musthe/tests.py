@@ -195,9 +195,17 @@ class TestsForScale(unittest.TestCase):
         test1('C', 'major_pentatonic', ['C', 'D', 'E', 'G', 'A'])
         test1('C', 'minor_pentatonic', ['C', 'Eb','F', 'G', 'Bb'])
         self.assertRaises(Exception, Scale, Note('C'), 'non-existent scale')
-        # try to create all scales
+
+    def test_create_all_scales(self):
         for scale in Scale.all():
             pass
+
+    def test_greek_modes_equivalence(self):
+        cmaj = Scale('C', 'major')
+        for i in range(7):
+            s = Scale(cmaj[i], Scale.greek_modes[i + 1])
+            for j in range(8):
+                self.assertEqual(s[j], cmaj[i + j])
 
 
 if __name__ == '__main__':
