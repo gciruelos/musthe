@@ -138,6 +138,18 @@ class Note:
                 return reduce(lambda a, b: a - b, o.split(), self)
 
             return self.to_octave(self.octave - 1) + o.complement()
+        elif isinstance(o, Note):
+            notes = list(sorted((n.midi_note(), n) for n in (self, o)))
+            semitones = notes[1][0] - notes[0][0]
+            number = notes[1][1].tone - notes[0][1].tone
+            octaves = 0
+            while semitones >= 12:
+                semitones -= 12
+                octaves += 1
+            for i in Interval.all():
+                if i.number == number and i.semitones == semitones:
+                    return Interval(i.quality + str(octaves * 7 + number))
+            raise ValueError('Cannot find interval N={} S={}'.format(number, semitones))
         else:
             raise TypeError('Cannot subtract {} from a note.'.format(type(interval)))
 
