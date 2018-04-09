@@ -112,6 +112,11 @@ class Note:
         if not isinstance(interval, Interval):
             raise Exception('Cannot add {} to a note.'.format(type(interval)))
 
+        if interval.is_compound():
+            ii = interval.split()
+            from functools import reduce
+            return reduce(lambda a, b: a + b, ii, self)
+
         new_tone = self.tone + interval.number
 
         new_note_id = (self.note_id + interval.semitones) % 12
