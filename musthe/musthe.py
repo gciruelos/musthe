@@ -277,6 +277,13 @@ class Chord:
     }
     valid_types = list(recipes.keys()) + list(aliases.keys())
 
+    @staticmethod
+    def all(min_octave=4, max_octave=4, root=None):
+        roots = Note.all() if root is None else root
+        for root in roots:
+            for name in Chord.recipes:
+                yield Chord(root, name)
+
     def __init__(self, root, chord_type='M'):
         if isinstance(root, str):
             for s in sorted(self.valid_types, key=lambda x: -len(x)):
