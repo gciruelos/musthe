@@ -115,21 +115,21 @@ class Note:
 
         self.number = self.tone.number() + self.octave * 12 + Note.accidental_value(self.accidental)
 
-    def __add__(self, interval):
-        if isinstance(interval, Interval):
-            if interval.is_compound():
+    def __add__(self, o):
+        if isinstance(o, Interval):
+            if o.is_compound():
                 from functools import reduce
-                return reduce(lambda a, b: a + b, interval.split(), self)
+                return reduce(lambda a, b: a + b, o.split(), self)
 
-            new_tone = self.tone + interval.number
-            new_number = self.number + interval.semitones
-            new_note_octave = self.octave + int(self.tone.name in Tone.tones[8 - interval.number:])
+            new_tone = self.tone + o.number
+            new_number = self.number + o.semitones
+            new_note_octave = self.octave + int(self.tone.name in Tone.tones[8 - o.number:])
             difference = new_number % 12 - new_tone.number()
             if difference < 3: difference += 12
             if difference > 3: difference -= 12
             return Note(new_tone.name + Note.accidental_str(difference) + str(new_note_octave))
         else:
-            raise Exception('Cannot add {} to a note.'.format(type(interval)))
+            raise Exception('Cannot add {} to a note.'.format(type(o)))
 
     def __sub__(self, o):
         if isinstance(o, Interval):
