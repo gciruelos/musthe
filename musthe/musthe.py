@@ -23,6 +23,7 @@ class Tone:
 
     tones = 'CDEFGAB'
     tones_idx = {x: i for i, x in enumerate(tones)}
+    tones_note_id = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     def __init__(self, tone):
         if tone not in self.tones_idx:
@@ -55,6 +56,9 @@ class Tone:
     def __repr__(self):
         return 'Tone({!r})'.format(str(self))
 
+    def note_id(self):
+        return self.tones_note_id[self.name]
+
 
 class Note:
     """
@@ -70,7 +74,6 @@ class Note:
     """
 
     pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d{0,1})$')
-    tones = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     def __init__(self, note):
         m = self.pattern.match(note)
@@ -80,7 +83,7 @@ class Note:
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.note_id = self.tones[self.tone.name]
+        self.note_id = self.tone.note_id()
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
@@ -96,7 +99,7 @@ class Note:
 
         new_note_octave = (self.note_id + interval.semitones) // 12 + self.octave
 
-        difference = new_note_id - self.tones[new_tone.name]
+        difference = new_note_id - new_tone.note_id()
         if difference < 3: difference += 12
         if difference > 3: difference -= 12
         accidental = 'b' * max(0, -difference) + '#' * max(0, difference)
