@@ -139,7 +139,7 @@ class Note:
 
             return self.to_octave(self.octave - 1) + o.complement()
         else:
-            raise Exception('Cannot add {} to a note.'.format(type(interval)))
+            raise Exception('Cannot subtract {} from a note.'.format(type(interval)))
 
     def midi_note(self):
         return self.number + 12
