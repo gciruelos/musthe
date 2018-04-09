@@ -157,6 +157,11 @@ class Interval:
         'd8': 11,           'P8': 12,           'A8': 13,
     }
 
+    @staticmethod
+    def all():
+        for name in Interval.intervals:
+            yield Interval(name)
+
     def __init__(self, interval):
         self.quality = interval[0]
         self.number = int(interval[1:])
