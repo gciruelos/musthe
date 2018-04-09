@@ -23,6 +23,7 @@ class TestsForJesus(unittest.TestCase):
         self.assertEqual(str(Note('A')+Interval('P1')), str(Note('A')))
         self.assertEqual(str(Note('G##')+Interval('m3')), str(Note('B#')))
         self.assertEqual(str(Note('F')+Interval('P5')), str(Note('C')))
+        self.assertEqual(Note('B#4')+Interval('d2'), Note('C5'))
 
     def test_tone_arithmetic(self):
         self.assertEqual(str(Tone('A')+2), 'B')

@@ -122,6 +122,9 @@ class Note:
         new_note_id = (self.note_id + interval.semitones) % 12
 
         new_note_octave = (self.note_id + interval.semitones) // 12 + self.octave
+        # fix the case of B# + d2 not jumping octave:
+        if str(interval) == 'd2' and self.tone.name == 'B' and new_tone.name == 'C':
+            new_note_octave += 1
 
         difference = new_note_id - new_tone.note_id()
         if difference < 3: difference += 12
