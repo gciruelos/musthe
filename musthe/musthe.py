@@ -25,6 +25,11 @@ class Tone:
     tones_idx = {x: i for i, x in enumerate(tones)}
     tones_note_id = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
+    @staticmethod
+    def all():
+        for name in Tone.tones:
+            yield Tone(name)
+
     def __init__(self, tone):
         if tone not in self.tones_idx:
             raise ValueError('Invalid tone {!r}'.format(tone))
@@ -59,6 +64,12 @@ class Tone:
     def note_id(self):
         return self.tones_note_id[self.name]
 
+    def has_flat(self):
+        return self.name not in 'CF'
+
+    def has_sharp(self):
+        return self.name not in 'EB'
+
 
 class Note:
     """
@@ -74,6 +85,14 @@ class Note:
     """
 
     pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d{0,1})$')
+
+    @staticmethod
+    def all(min_octave=4, max_octave=4):
+        for octave in range(min_octave, max_octave + 1):
+            for tone in Tone.all():
+                varz = ['b'][:int(tone.has_flat())] + [''] + ['#'][:int(tone.has_sharp())]
+                for var in varz:
+                    yield Note('{}{}{:d}'.format(tone.name, var, octave))
 
     def __init__(self, note):
         m = self.pattern.match(note)
@@ -314,11 +333,9 @@ class Scale:
 
     @staticmethod
     def all():
-        for note in Note.tones:
-            for accidental in ('b', '', '#'):
-                root = Note(note + accidental)
-                for name in Scale.scales:
-                    yield Scale(root, name)
+        for root in Note.all():
+            for name in Scale.scales:
+                yield Scale(root, name)
 
     def __init__(self, root, name):
         if isinstance(root, str):
