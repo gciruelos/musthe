@@ -88,6 +88,13 @@ class TestsForNote(unittest.TestCase):
         test1('F3', 'P5', 'C4')
         test1('B#4', 'd2', 'C5')
 
+    def test_note_freq(self):
+        def test1(note, freq):
+            self.assertAlmostEqual(Note(note).frequency(), freq, 1)
+        test1('A4', 440.0)
+        test1('A5', 880.0)
+        test1('C5', 523.3)
+
 
 class TestsForInterval(unittest.TestCase):
     def test_interval_parsing(self):
