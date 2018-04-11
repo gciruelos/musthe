@@ -307,7 +307,14 @@ class Chord:
 
     @staticmethod
     def all(min_octave=4, max_octave=4, root=None):
-        roots = Note.all() if root is None else root
+        if root is None:
+            roots = Note.all()
+        elif isinstance(root, (list, set, tuple)):
+            roots = root
+        elif isinstance(root, Note):
+            roots = [root]
+        else:
+            raise TypeError('Invalid root type: {}'.format(type(root)))
         for root in roots:
             for name in Chord.recipes:
                 yield Chord(root, name)
