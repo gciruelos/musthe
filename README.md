@@ -108,6 +108,7 @@ In alphabetical order
 * [David H](https://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
 * [Federico Ferri](https://github.com/fferri)
+* [Gonzalo Ciruelos](https://github.com/gciruelos)
 * [Marco Heins](https://github.com/barrio)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
@@ -117,7 +118,4 @@ License
 =======
 
 See license file.
-
-This was made by Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
-
 
