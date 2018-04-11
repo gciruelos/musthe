@@ -158,7 +158,7 @@ class Note:
 
     def frequency(self):
         from math import pow
-        return 440.0 * pow(2, 1./12.)**(self.midi_note() - Note('A4').midi_note())
+        return 440.0 * pow(2, (self.number - Note('A4').number) / 12.)
 
     def to_octave(self, octave):
         return Note(self.tone.name + self.accidental + str(octave))
