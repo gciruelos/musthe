@@ -191,7 +191,7 @@ class Interval:
     """
 
     intervals = {
-                            'P1': 0,            'A1': 1,
+        'd1': -1,           'P1': 0,            'A1': 1,
         'd2': 0,  'm2': 1,            'M2': 2,  'A2': 3,
         'd3': 2,  'm3': 3,            'M3': 4,  'A3': 5,
         'd4': 4,            'P4': 5,            'A4': 6,
@@ -257,9 +257,6 @@ class Interval:
         """
         if self.is_compound():
             raise ValueError('Cannot invert a compound interval')
-        if str(self) == 'A8':
-            # A8 is an exception to the rule, since there is no 'd1' interval
-            return Interval('d8')
         else:
             n = 9 - self.number
             q = {'P': 'P', 'd': 'A', 'A': 'd', 'm': 'M', 'M': 'm'}[self.quality]

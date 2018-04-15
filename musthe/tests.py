@@ -141,13 +141,12 @@ class TestsForInterval(unittest.TestCase):
         test1('A7', 'd2')
         test1('d8', 'A1')
         test1('P8', 'P1')
-        test1('A8', 'd8') # exception to the rule
+        test1('A8', 'd1')
 
     def test_interval_complement_2(self):
         for n in Note.all(2, 3):
             n1 = n.to_octave(n.octave + 1)
             for i in Interval.all():
-                if str(i) == 'A8': continue
                 self.assertEqual(n + i + i.complement(), n1)
                 self.assertEqual(n + i.complement() + i, n1)
 
