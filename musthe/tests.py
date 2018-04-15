@@ -79,7 +79,7 @@ class TestsForNote(unittest.TestCase):
         test1('C4', 60)
         test1('D5', 74)
 
-    def test_note_sum(self):
+    def test_note_add(self):
         def test1(note, interval, result):
             self.assertEqual(Note(note) + Interval(interval), Note(result))
         test1('A4', 'd5', 'Eb5')
@@ -87,6 +87,14 @@ class TestsForNote(unittest.TestCase):
         test1('G##4', 'm3', 'B#4')
         test1('F3', 'P5', 'C4')
         test1('B#4', 'd2', 'C5')
+
+    def test_note_sub(self):
+        def test1(note1, note2, result):
+            self.assertEqual(Note(note1) - Note(note2), Interval(result))
+        test1('E', 'C', 'M3')
+        test1('G', 'C', 'P5')
+        test1('C#', 'C', 'A1')
+        test1('Cb', 'C', 'd1')
 
     def test_note_freq(self):
         def test1(note, freq):
