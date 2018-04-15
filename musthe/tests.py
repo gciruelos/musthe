@@ -24,7 +24,12 @@ class TestsForTone(unittest.TestCase):
 
     def test_tone_arithmetic(self):
         def test1(tone, difference, result):
-            self.assertEqual(str(Tone(tone) + difference), result)
+            norm = lambda n: (n + (1 if n < 1 else -1)) % 7 + 1
+            tone = Tone(tone)
+            result = Tone(result)
+            self.assertEqual(tone + difference, result)
+            self.assertEqual(result - difference, tone)
+            self.assertEqual(norm(result - tone), norm(difference))
         test1('A', 2, 'B')
         test1('A', 3, 'C')
         test1('A', 5, 'E')
@@ -81,8 +86,12 @@ class TestsForNote(unittest.TestCase):
 
     def test_note_add(self):
         def test1(note, interval, result):
-            self.assertEqual(Note(note) + Interval(interval), Note(result))
-            self.assertEqual(Note(result) - Interval(interval), Note(note))
+            note = Note(note)
+            interval = Interval(interval)
+            result = Note(result)
+            self.assertEqual(note + interval, result)
+            self.assertEqual(result - interval, note)
+            self.assertEqual(result - note, interval)
         test1('A4', 'd5', 'Eb5')
         test1('A4', 'P1', 'A4')
         test1('G##4', 'm3', 'B#4')
