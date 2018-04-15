@@ -82,11 +82,15 @@ class TestsForNote(unittest.TestCase):
     def test_note_add(self):
         def test1(note, interval, result):
             self.assertEqual(Note(note) + Interval(interval), Note(result))
+            self.assertEqual(Note(result) - Interval(interval), Note(note))
         test1('A4', 'd5', 'Eb5')
         test1('A4', 'P1', 'A4')
         test1('G##4', 'm3', 'B#4')
         test1('F3', 'P5', 'C4')
         test1('B#4', 'd2', 'C5')
+        test1('C4', 'd1', 'Cb4')
+        test1('B4', 'd1', 'Bb4')
+        test1('C#4', 'd1', 'C4')
 
     def test_note_sub(self):
         def test1(note1, note2, result):
