@@ -148,6 +148,7 @@ class Note:
             while semitones >= 12:
                 semitones -= 12
                 octaves += 1
+            number = (number + (1 if number < 0 else -1)) % 7 + 1
             for i in Interval.all():
                 if i.number == number and i.semitones == semitones:
                     return Interval(i.quality + str(octaves * 7 + number))
