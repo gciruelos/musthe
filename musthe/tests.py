@@ -199,6 +199,8 @@ class TestsForInterval(unittest.TestCase):
         test1('P8', 'P1')
         test1('A8', 'd1')
 
+        self.assertRaises(ValueError, lambda: Interval('M10').complement())
+
     def test_interval_complement_2(self):
         for n in Note.all(2, 3):
             n1 = n.to_octave(n.octave + 1)
@@ -212,6 +214,9 @@ class TestsForInterval(unittest.TestCase):
         test1('M9', 'P8', 'M2')
         test1('m17', 'P8', 'P8', 'm3')
         test1('P29', 'P8', 'P8', 'P8', 'P8')
+
+    def test_interval_repr(self):
+        self.assertEqual(repr(Interval('P4')), 'Interval({!r})'.format('P4'))
 
 
 class TestsForChord(unittest.TestCase):
@@ -229,6 +234,32 @@ class TestsForChord(unittest.TestCase):
             self.assertRaises(Exception, Chord, badname)
         test2('A$')
         test2('H')
+
+        def test3(root, badtype):
+            self.assertRaises(ValueError, Chord, Note(root), badtype)
+        test3('C', 'nice')
+        test3('C', '$')
+        test3('C', 'diminished')
+
+    def test_chord_parsing(self):
+        def test1(name, root, chord_type):
+            self.assertEqual(Chord(name), Chord(Note(root), chord_type))
+        test1('CM', 'C', 'maj')
+        test1('Cmaj', 'C', 'maj')
+        test1('Cmaj', 'C', 'M')
+        test1('Cmaj7', 'C', 'M7')
+        test1('D#aug7', 'D#', 'aug7')
+        test1('Cbdim', 'Cb', 'dim')
+
+    def test_chord_gen(self):
+        roots = (Note('C'), Note('D'))
+        list(Chord.all())
+        list(Chord.all(root=tuple(roots)))
+        list(Chord.all(root=list(roots)))
+        #list(Chord.all(root=set(roots))) # Note is not hashable
+        list(Chord.all(root=roots[0]))
+
+        self.assertRaises(TypeError, lambda: list(Chord.all(root='vdfjy#$')))
 
     def test_chord_recipes(self):
         def test1(root, name, intervals):
@@ -249,6 +280,12 @@ class TestsForChord(unittest.TestCase):
                 derivedRecipe = [str(n - root) for n in notes]
                 print(derivedRecipe)
                 self.assertEqual(derivedRecipe, recipe)
+
+    def test_chord_repr(self):
+        self.assertEqual(repr(Chord(Note('C'), 'dim7')), 'Chord({!r}, {!r})'.format(Note('C'), 'dim7'))
+
+    def test_chord_equality(self):
+        self.assertNotEqual(Chord('Cdim'), Chord('Cdim7'))
 
 
 class TestsForScale(unittest.TestCase):
