@@ -108,6 +108,15 @@ class TestsForNote(unittest.TestCase):
         test1('C4', 'd1', 'Cb4')
         test1('B4', 'd1', 'Bb4')
         test1('C#4', 'd1', 'C4')
+        # compound intervals:
+        test1('C4', 'M10', 'E5')
+        test1('Cb4', 'A10', 'E5')
+        test1('Cb4', 'm10', 'Ebb5')
+        test1('B3', 'm10', 'D5')
+        test1('B3', 'M17', 'D#6')
+
+        self.assertRaises(TypeError, lambda: Note('C') + object())
+        self.assertRaises(TypeError, lambda: Note('C') + 'sdfgh#$%')
 
     def test_note_sub(self):
         def test1(note1, note2, result):
@@ -117,12 +126,30 @@ class TestsForNote(unittest.TestCase):
         test1('C#', 'C', 'A1')
         test1('Cb', 'C', 'd1')
 
+        self.assertRaises(ArithmeticError, lambda: Note('C4') - Note('C5'))
+
+        self.assertRaises(TypeError, lambda: Note('C') - object())
+        self.assertRaises(TypeError, lambda: Note('C') - 'sdfgh#$%')
+
+        # remove this test if doubly augmented/diminished intervals are introduced:
+        self.assertRaises(ValueError, lambda: Note('A#4') - Note('Gb4'))
+
     def test_note_freq(self):
         def test1(note, freq):
             self.assertAlmostEqual(Note(note).frequency(), freq, 1)
         test1('A4', 440.0)
         test1('A5', 880.0)
         test1('C5', 523.3)
+
+    def test_note_lilypond(self):
+        def test1(n, l):
+            self.assertEqual(Note(n).lilypond_notation(), l)
+        test1('C', 'c')
+        test1('C#', 'cis')
+        test1('Cb', 'ces')
+
+    def test_note_repr(self):
+        self.assertEqual(repr(Note('C#4')), 'Note({!r})'.format('C#4'))
 
 
 class TestsForInterval(unittest.TestCase):

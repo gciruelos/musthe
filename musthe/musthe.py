@@ -154,7 +154,7 @@ class Note:
                     return Interval(i.quality + str(octaves * 7 + number))
             raise ValueError('Cannot find interval N={} S={}'.format(number, semitones))
         else:
-            raise TypeError('Cannot subtract {} from a note.'.format(type(interval)))
+            raise TypeError('Cannot subtract {} from a note.'.format(type(o)))
 
     def midi_note(self):
         return self.number + 12
