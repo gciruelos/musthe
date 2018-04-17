@@ -37,6 +37,14 @@ class TestsForTone(unittest.TestCase):
         test1('D', 1, 'D')
         test1('D', -2, 'C')
 
+        self.assertRaises(ValueError, lambda: Tone('D') + 0)
+
+        self.assertRaises(TypeError, lambda: Tone('E') + object())
+        self.assertRaises(TypeError, lambda: Tone('F') - object())
+
+    def test_tone_repr(self):
+        self.assertEqual(repr(Tone('C')), 'Tone({!r})'.format('C'))
+
         def test2(tone1, tone2, difference):
             self.assertEqual(Tone(tone1) - Tone(tone2), difference)
         test2('D', 'C', 2)
@@ -80,7 +88,7 @@ class TestsForNote(unittest.TestCase):
 
     def test_note_midi(self):
         def test1(note, midi):
-            self.assertEquals(Note(note).midi_note(), midi)
+            self.assertEqual(Note(note).midi_note(), midi)
         test1('C4', 60)
         test1('D5', 74)
 
@@ -173,7 +181,7 @@ class TestsForInterval(unittest.TestCase):
 
     def test_interval_split(self):
         def test1(i, *args):
-            self.assertEquals([str(i1) for i1 in Interval(i).split()], list(args))
+            self.assertEqual([str(i1) for i1 in Interval(i).split()], list(args))
         test1('M9', 'P8', 'M2')
         test1('m17', 'P8', 'P8', 'm3')
         test1('P29', 'P8', 'P8', 'P8', 'P8')
