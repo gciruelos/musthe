@@ -303,7 +303,16 @@ class TestsForScale(unittest.TestCase):
         test1('C', 'phrygian',         ['C', 'Db','Eb','F', 'G', 'Ab','Bb'])
         test1('C', 'major_pentatonic', ['C', 'D', 'E', 'G', 'A'])
         test1('C', 'minor_pentatonic', ['C', 'Eb','F', 'G', 'Bb'])
+
+    def test_scale_parsing(self):
         self.assertRaises(Exception, Scale, Note('C'), 'non-existent scale')
+        self.assertRaises(TypeError, Scale, object(), 'major')
+
+    def test_scale_getitem(self):
+        s = Scale('C', 'harmonic_minor')
+        self.assertRaises(IndexError, lambda: s[-1357788])
+        self.assertRaises(TypeError, lambda: s[object()])
+        self.assertEqual(s[10:15], [Note(x) for x in ('F5', 'G5', 'Ab5', 'B5', 'C6')])
 
     def test_create_all_scales(self):
         for scale in Scale.all():
@@ -315,6 +324,31 @@ class TestsForScale(unittest.TestCase):
             s = Scale(cmaj[i], Scale.greek_modes[i + 1])
             for j in range(8):
                 self.assertEqual(s[j], cmaj[i + j])
+
+    def test_scale_containment(self):
+        scale = Scale('C', 'major')
+
+        notes = (Note('E'), Note('F'))
+        notes2 = (Note('Eb'), Note('F#'))
+        self.assertTrue(notes[0] in scale)
+        self.assertFalse(notes2[0] in scale)
+        self.assertTrue(notes in scale)
+        self.assertTrue(list(notes) in scale)
+        self.assertFalse(notes2 in scale)
+
+        chords = (Chord('Fmaj'), Chord('Emin'))
+        chords2 = (Chord('Edim7'), Chord('Fdom7'))
+        self.assertTrue(chords[0] in scale)
+        self.assertFalse(chords2[0] in scale)
+        self.assertTrue(chords in scale)
+        self.assertFalse(chords2 in scale)
+
+        self.assertRaises(TypeError, lambda: object() in scale)
+
+    def test_scale_repr(self):
+        scale = Scale('C', 'major')
+        self.assertEqual(str(scale), 'C major')
+        self.assertEqual(repr(scale), 'Scale({!r}, {!r})'.format(scale.root, scale.name))
 
 
 if __name__ == '__main__':
