@@ -10,6 +10,16 @@ Federico Ferri <federico.ferri.it@gmail.com>
 import re
 
 
+def UnsupportedOperands(op, type1, type2):
+    def as_type(x):
+        return x if isinstance(x, type) else type(x)
+
+    fmt = "unsupported operand type(s) for {}: '{}' and '{}'"
+    type1 = as_type(type1)
+    type2 = as_type(type2)
+    return TypeError(fmt.format(op, type1.__name__, type2.__name__))
+
+
 class Tone:
     """
     The tone class.
@@ -43,7 +53,7 @@ class Tone:
             new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.tones)
             return Tone(self.tones[new_idx])
         else:
-            raise TypeError('Cannot add {} to Tone'.format(type(o)))
+            raise UnsupportedOperands('+', self, o)
 
     def __sub__(self, o):
         if isinstance(o, Tone):
@@ -53,7 +63,7 @@ class Tone:
         elif isinstance(o, int):
             return self + -o
         else:
-            raise TypeError('Cannot subtract {} from Tone'.format(type(o)))
+            raise UnsupportedOperands('-', self, o)
 
     def __str__(self):
         return self.name
@@ -93,13 +103,19 @@ class Note:
     def all(min_octave=4, max_octave=4):
         for octave in range(min_octave, max_octave + 1):
             for tone in Tone.all():
-                varz = ['b'][:int(tone.has_flat())] + [''] + ['#'][:int(tone.has_sharp())]
-                for var in varz:
-                    yield Note('{}{}{:d}'.format(tone.name, var, octave))
+                tone_accidentals = ['']
+                if tone.has_flat():
+                    tone_accidentals.insert(0, 'b')
+                if tone.has_sharp():
+                    tone_accidentals.append('#')
+                for acc in tone_accidentals:
+                    yield Note('{}{}{:d}'.format(tone.name, acc, octave))
 
     @staticmethod
     def accidental_value(acc):
-        return 0 if acc == '' else {'#': 1, 'b': -1}[acc[0]] + Note.accidental_value(acc[1:])
+        if acc == '':
+            return 0
+        return {'#': 1, 'b': -1}[acc[0]] + Note.accidental_value(acc[1:])
 
     @staticmethod
     def accidental_str(val):
@@ -107,13 +123,15 @@ class Note:
 
     def __init__(self, note):
         m = self.pattern.match(note)
-        if m is None: raise ValueError('Could not parse the note {!r}'.format(note))
+        if m is None:
+            raise ValueError('Could not parse the note {!r}'.format(note))
 
         self.tone = Tone(m.group(1))
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.number = self.tone.number() + self.octave * 12 + Note.accidental_value(self.accidental)
+        self.number = self.tone.number() + self.octave * 12 + \
+            Note.accidental_value(self.accidental)
 
     def __add__(self, o):
         if isinstance(o, Interval):
@@ -123,13 +141,17 @@ class Note:
 
             new_tone = self.tone + o.number
             new_number = self.number + o.semitones
-            new_note_octave = self.octave + int(self.tone.name in Tone.tones[8 - o.number:])
+            new_note_octave = self.octave + \
+                int(self.tone.name in Tone.tones[8 - o.number:])
             difference = new_number % 12 - new_tone.number()
-            if difference < 3: difference += 12
-            if difference > 3: difference -= 12
-            return Note(new_tone.name + Note.accidental_str(difference) + str(new_note_octave))
+            if difference < -3:
+                difference += 12
+            if difference > 3:
+                difference -= 12
+            return Note(new_tone.name + Note.accidental_str(difference) +
+                        str(new_note_octave))
         else:
-            raise TypeError('Cannot add {} to a note.'.format(type(o)))
+            raise UnsupportedOperands('+', self, o)
 
     def __sub__(self, o):
         if isinstance(o, Interval):
@@ -152,9 +174,9 @@ class Note:
             for i in Interval.all():
                 if i.number == number and i.semitones == semitones:
                     return Interval(i.quality + str(octaves * 7 + number))
-            raise ValueError('Cannot find interval N={} S={}'.format(number, semitones))
+            raise ValueError('Interval N={} S={}'.format(number, semitones))
         else:
-            raise TypeError('Cannot subtract {} from a note.'.format(type(o)))
+            raise UnsupportedOperands('-', self, o)
 
     def midi_note(self):
         return self.number + 12
@@ -202,6 +224,13 @@ class Interval:
         'd6': 7,  'm6': 8,            'M6': 9,  'A6': 10,
         'd7': 9,  'm7': 10,           'M7': 11, 'A7': 12,
         'd8': 11,           'P8': 12,           'A8': 13,
+    }
+    quality_inverse = {
+        'P': 'P',
+        'd': 'A',
+        'A': 'd',
+        'm': 'M',
+        'M': 'm'
     }
 
     @staticmethod
@@ -254,15 +283,15 @@ class Interval:
 
     def complement(self):
         """
-        Return the complement of this interval, also known as inverted interval.
-        The sum of this interval plus its complement is equal to one octave (P8),
+        Return the complement of this interval also known as inverted interval.
+        The sum of this interval plus its complement is equal to 1 octave (P8),
         except for the case of A8, for which there is no d1 interval.
         """
         if self.is_compound():
             raise ValueError('Cannot invert a compound interval')
         else:
             n = 9 - self.number
-            q = {'P': 'P', 'd': 'A', 'A': 'd', 'm': 'M', 'M': 'm'}[self.quality]
+            q = self.quality_inverse[self.quality]
             return Interval(q + str(n))
 
 
@@ -332,7 +361,7 @@ class Chord:
         if chord_type in self.aliases:
             chord_type = self.aliases[chord_type]
         if chord_type not in self.recipes.keys():
-            raise ValueError('Invalid chord type supplied. Valid types: {}.'.format(' '.join(self.valid_types)))
+            raise ValueError('Invalid chord type: {}.'.format(chord_type))
 
         self.chord_type = chord_type
         self.notes = [root + Interval(i) for i in self.recipes[chord_type]]
@@ -343,12 +372,14 @@ class Chord:
     def __str__(self):
         return "{}{}".format(str(self.notes[0]), self.chord_type)
 
-    def __eq__(self, other):
-        if len(self.notes) != len(other.notes):
-            #if chords dont have the same number of notes, def not equal
+    def __eq__(self, o):
+        if len(self.notes) != len(o.notes):
+            # if chords dont have the same number of notes, def not equal
             return False
         else:
-            return all(self.notes[i] == other.notes[i] for i in range(len(self.notes)))
+            return all(self.notes[i] == o.notes[i]
+                       for i in range(len(self.notes)))
+
 
 class Scale:
     """
@@ -390,7 +421,8 @@ class Scale:
     def all(include_greek_modes=False):
         for root in Note.all():
             for name in Scale.scales:
-                if not include_greek_modes and name in Scale.greek_modes_set: continue
+                if not include_greek_modes and name in Scale.greek_modes_set:
+                    continue
                 yield Scale(root, name)
 
     def __init__(self, root, name):
@@ -412,11 +444,15 @@ class Scale:
             try:
                 octaves = k // len(self)
                 offset = k - octaves * len(self)
-                return self.root.to_octave(self.root.octave + octaves) + self.intervals[offset]
-            except:
+                return self.root.to_octave(self.root.octave + octaves) + \
+                    self.intervals[offset]
+            except ValueError:
                 raise IndexError('Index out of range')
         elif isinstance(k, slice):
-            return [self[i] for i in range(k.start or 0, k.stop or self.max_index, k.step or 1)]
+            start = k.start or 0
+            stop = k.stop or self.max_index
+            step = k.step or 1
+            return [self[i] for i in range(start, stop, step)]
         else:
             raise TypeError('Scale cannot be indexed by {}.'.format(type(k)))
 
@@ -431,11 +467,10 @@ class Scale:
         elif isinstance(k, (list, set, tuple)):
             return all(x in self for x in k)
         else:
-            raise TypeError('Cannot check scale containment for an object of type {}'.format(type(k)))
+            return False
 
     def __str__(self):
         return '{} {}'.format(self.root, self.name)
 
     def __repr__(self):
         return 'Scale({!r}, {!r})'.format(self.root, self.name)
-
