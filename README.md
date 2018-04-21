@@ -89,12 +89,7 @@ Now let's try some advanced stuff: given a list of chords, find all scales that 
     ...         print(scale)
     ...
     C natural_minor
-    D locrian
     Eb major
-    F dorian
-    G phrygian
-    Ab lydian
-    Bb mixolydian
 
 
 If you have lilypond installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
