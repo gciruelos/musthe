@@ -343,7 +343,7 @@ class TestsForScale(unittest.TestCase):
         self.assertTrue(chords in scale)
         self.assertFalse(chords2 in scale)
 
-        self.assertRaises(TypeError, lambda: object() in scale)
+        self.assertFalse(object() in scale)
 
     def test_scale_repr(self):
         scale = Scale('C', 'major')
