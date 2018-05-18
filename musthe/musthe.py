@@ -199,4 +199,4 @@ class Chord():
 
 if __name__ == '__main__':
     add = Note('Ab')+Interval('m3')
-    print add
+    print(add)
