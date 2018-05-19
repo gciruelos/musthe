@@ -69,23 +69,23 @@ class Note():
         if not isinstance(interval, Interval):
             raise Exception('Cannot add '+ type(interval).__name__ +' to a note.')
 
-        # * _old_note is the index in the list of the old note tone.
-        # * new_note_tone is calculated adding the interval_number-1 because
+        # * _old_note_letter is the index in the list of the old note tone.
+        # * new_note_letter is calculated adding the interval_number-1 because
         # you have start counting in the current tone. e.g. the fifth of
         # E is: (E F G A) B.
-        _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.letter)
+        _old_note_letter = 'CDEFGABCDEFGABCDEFGAB'.index(self.letter)
         # Fixing Issue #7: Note('Ab')+Interval('m3') --> Exception
         if self.letter == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
-            new_note_tone = 'B'
+            new_note_letter = 'B'
         else:
-            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
+            new_note_letter = 'CDEFGABCDEFGABCDEFGAB'[_old_note_letter+interval.number-1]
 
         # %12 because it wraps in B->C and starts over.
         new_note_id = (self.note_id+interval.semitones)%12
 
         # First calculates the note, and then the difference from the note
         # without accidentals, then adds proper accidentals.
-        difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_tone]
+        difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_letter]
         # In some cases, like G##+m3, difference is -11, and it should be
         # 1, so this corrects the error.
         if abs(difference)>3:
@@ -100,10 +100,10 @@ class Note():
         new_note_octave = (self.note_id+interval.semitones)//12+self.octave
         # corrects cases like B#, B##, B### and A###.
         # http://en.wikipedia.org/wiki/Scientific_pitch_notation#C-flat_and_B-sharp_problems
-        if new_note_tone+accidental in ['B#', 'B##', 'B###', 'A###']:
+        if new_note_letter+accidental in ['B#', 'B##', 'B###', 'A###']:
             new_note_octave -= 1
 
-        return Note(new_note_tone+accidental+str(new_note_octave))
+        return Note(new_note_letter+accidental+str(new_note_octave))
 
     def frequency(self):
         """
