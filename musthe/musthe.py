@@ -44,7 +44,7 @@ class Note():
         if note_pattern.search(note) == None:
             raise Exception('Could not parse the note: '+note)
 
-        self.tone = note[0]
+        self.letter = note[0]
         self.accidental = re.findall('[b#]{1,3}', note)
         self.octave = re.findall('[0-9]', note)
 
@@ -58,7 +58,7 @@ class Note():
         else:
             self.octave = int(self.octave[0])
 
-        self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.tone]
+        self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.letter]
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
@@ -73,9 +73,9 @@ class Note():
         # * new_note_tone is calculated adding the interval_number-1 because
         # you have start counting in the current tone. e.g. the fifth of
         # E is: (E F G A) B.
-        _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.tone)
+        _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.letter)
         # Fixing Issue #7: Note('Ab')+Interval('m3') --> Exception
-        if self.tone == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
+        if self.letter == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
             new_note_tone = 'B'
         else:
             new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
@@ -122,7 +122,7 @@ class Note():
         return "Note(\"%s\")" % self.scientific_notation()
 
     def __str__(self):
-        return self.tone+self.accidental
+        return self.letter+self.accidental
 
     def __eq__(self, other):
         return self.scientific_notation() == other.scientific_notation()
