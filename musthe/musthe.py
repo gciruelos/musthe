@@ -44,7 +44,7 @@ class Note():
         if note_pattern.search(note) == None:
             raise Exception('Could not parse the note: '+note)
 
-        self.tone = note[0]
+        self.letter = note[0]
         self.accidental = re.findall('[b#]{1,3}', note)
         self.octave = re.findall('[0-9]', note)
 
@@ -58,7 +58,7 @@ class Note():
         else:
             self.octave = int(self.octave[0])
 
-        self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.tone]
+        self.note_id = {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[self.letter]
         for change in self.accidental:
             if change == '#': self.note_id += 1
             elif change == 'b': self.note_id -= 1
@@ -67,25 +67,25 @@ class Note():
 
     def __add__(self, interval):
         if not isinstance(interval, Interval):
-            raise Exception('Cannot add '+type(interval)+' to a note.')
+            raise Exception('Cannot add '+ type(interval).__name__ +' to a note.')
 
-        # * _old_note is the index in the list of the old note tone.
-        # * new_note_tone is calculated adding the interval_number-1 because
+        # * _old_note_letter is the index in the list of the old note tone.
+        # * new_note_letter is calculated adding the interval_number-1 because
         # you have start counting in the current tone. e.g. the fifth of
         # E is: (E F G A) B.
-        _old_tone = 'CDEFGABCDEFGABCDEFGAB'.index(self.tone)
+        _old_note_letter = 'CDEFGABCDEFGABCDEFGAB'.index(self.letter)
         # Fixing Issue #7: Note('Ab')+Interval('m3') --> Exception
-        if self.tone == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
-            new_note_tone = 'B'
+        if self.letter == 'A' and self.accidental.startswith('b') and interval.number == 3 and interval.semitones == 3:
+            new_note_letter = 'B'
         else:
-            new_note_tone = 'CDEFGABCDEFGABCDEFGAB'[_old_tone+interval.number-1]
+            new_note_letter = 'CDEFGABCDEFGABCDEFGAB'[_old_note_letter+interval.number-1]
 
         # %12 because it wraps in B->C and starts over.
         new_note_id = (self.note_id+interval.semitones)%12
 
         # First calculates the note, and then the difference from the note
         # without accidentals, then adds proper accidentals.
-        difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_tone]
+        difference = new_note_id - {'C':0, 'D':2, 'E':4, 'F':5, 'G':7, 'A':9, 'B':11}[new_note_letter]
         # In some cases, like G##+m3, difference is -11, and it should be
         # 1, so this corrects the error.
         if abs(difference)>3:
@@ -100,10 +100,10 @@ class Note():
         new_note_octave = (self.note_id+interval.semitones)//12+self.octave
         # corrects cases like B#, B##, B### and A###.
         # http://en.wikipedia.org/wiki/Scientific_pitch_notation#C-flat_and_B-sharp_problems
-        if new_note_tone+accidental in ['B#', 'B##', 'B###', 'A###']:
+        if new_note_letter+accidental in ['B#', 'B##', 'B###', 'A###']:
             new_note_octave -= 1
 
-        return Note(new_note_tone+accidental+str(new_note_octave))
+        return Note(new_note_letter+accidental+str(new_note_octave))
 
     def frequency(self):
         """
@@ -122,7 +122,7 @@ class Note():
         return "Note(\"%s\")" % self.scientific_notation()
 
     def __str__(self):
-        return self.tone+self.accidental
+        return self.letter+self.accidental
 
     def __eq__(self, other):
         return self.scientific_notation() == other.scientific_notation()
@@ -141,7 +141,7 @@ class Interval():
     def __init__(self, interval):
         try:
             self.semitones = {'P1': 0, 'A1':1, 'd2':0, 'm2':1, 'M2':2, 'A2':3,
-                              'd3':3, 'm3':3, 'M3':4, 'A3':5, 'd4':4, 'P4':5,
+                              'd3':2, 'm3':3, 'M3':4, 'A3':5, 'd4':4, 'P4':5,
                               'A4':6, 'd5':6, 'P5':7, 'A5':8, 'd6':7, 'm6':8,
                               'M6':9, 'A6':10,'d7':9, 'm7':10, 'M7':11, 'A7':12,
                               'd8':11, 'P8':12}[interval]
@@ -199,4 +199,4 @@ class Chord():
 
 if __name__ == '__main__':
     add = Note('Ab')+Interval('m3')
-    print add
+    print(add)
