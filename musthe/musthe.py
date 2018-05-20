@@ -20,43 +20,43 @@ def UnsupportedOperands(op, type1, type2):
     return TypeError(fmt.format(op, type1.__name__, type2.__name__))
 
 
-class Tone:
+class Letter:
     """
-    The tone class.
+    The letter class.
 
-    There are 7 tones: C, D, E, F, G, A, and B.
+    There are 7 letters: C, D, E, F, G, A, and B.
 
-    This class implements basic tone arithmetic, such as adding and
+    This class implements basic letter arithmetic, such as adding and
     subtracting interval numbers, or computing a difference between
-    two tones.
+    two letters.
     """
 
-    tones = 'CDEFGAB'
-    tones_idx = {x: i for i, x in enumerate(tones)}
-    tones_number = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
+    letters = 'CDEFGAB'
+    letters_idx = {x: i for i, x in enumerate(letters)}
+    letters_number = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
 
     @staticmethod
     def all():
-        for name in Tone.tones:
-            yield Tone(name)
+        for name in Letter.letters:
+            yield Letter(name)
 
-    def __init__(self, tone):
-        if tone not in self.tones_idx:
-            raise ValueError('Invalid tone {!r}'.format(tone))
-        self.name = tone
-        self.idx = self.tones_idx[tone]
+    def __init__(self, letter):
+        if letter not in self.letters_idx:
+            raise ValueError('Invalid letter {!r}'.format(letter))
+        self.name = letter
+        self.idx = self.letters_idx[letter]
 
     def __add__(self, o):
         if isinstance(o, int):
             if o == 0:
                 raise ValueError('Invalid interval number: 0')
-            new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.tones)
-            return Tone(self.tones[new_idx])
+            new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.letters)
+            return Letter(self.letters[new_idx])
         else:
             raise UnsupportedOperands('+', self, o)
 
     def __sub__(self, o):
-        if isinstance(o, Tone):
+        if isinstance(o, Letter):
             d = self.idx - o.idx
             d += 1 if d >= 0 else -1
             return d
@@ -69,13 +69,13 @@ class Tone:
         return self.name
 
     def __repr__(self):
-        return 'Tone({!r})'.format(str(self))
+        return 'Letter({!r})'.format(str(self))
 
     def __eq__(self, o):
         return str(self) == str(o)
 
     def number(self):
-        return self.tones_number[self.name]
+        return self.letters_number[self.name]
 
     def has_flat(self):
         return self.name not in 'CF'
@@ -102,14 +102,14 @@ class Note:
     @staticmethod
     def all(min_octave=4, max_octave=4):
         for octave in range(min_octave, max_octave + 1):
-            for tone in Tone.all():
-                tone_accidentals = ['']
-                if tone.has_flat():
-                    tone_accidentals.insert(0, 'b')
-                if tone.has_sharp():
-                    tone_accidentals.append('#')
-                for acc in tone_accidentals:
-                    yield Note('{}{}{:d}'.format(tone.name, acc, octave))
+            for letter in Letter.all():
+                letter_accidentals = ['']
+                if letter.has_flat():
+                    letter_accidentals.insert(0, 'b')
+                if letter.has_sharp():
+                    letter_accidentals.append('#')
+                for acc in letter_accidentals:
+                    yield Note('{}{}{:d}'.format(letter.name, acc, octave))
 
     @staticmethod
     def accidental_value(acc):
@@ -126,11 +126,11 @@ class Note:
         if m is None:
             raise ValueError('Could not parse the note {!r}'.format(note))
 
-        self.tone = Tone(m.group(1))
+        self.letter = Letter(m.group(1))
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
-        self.number = self.tone.number() + self.octave * 12 + \
+        self.number = self.letter.number() + self.octave * 12 + \
             Note.accidental_value(self.accidental)
 
     def __add__(self, o):
@@ -139,16 +139,16 @@ class Note:
                 from functools import reduce
                 return reduce(lambda a, b: a + b, o.split(), self)
 
-            new_tone = self.tone + o.number
+            new_letter = self.letter + o.number
             new_number = self.number + o.semitones
             new_note_octave = self.octave + \
-                int(self.tone.name in Tone.tones[8 - o.number:])
-            difference = new_number % 12 - new_tone.number()
+                int(self.letter.name in Letter.letters[8 - o.number:])
+            difference = new_number % 12 - new_letter.number()
             if difference < -3:
                 difference += 12
             if difference > 3:
                 difference -= 12
-            return Note(new_tone.name + Note.accidental_str(difference) +
+            return Note(new_letter.name + Note.accidental_str(difference) +
                         str(new_note_octave))
         else:
             raise UnsupportedOperands('+', self, o)
@@ -165,7 +165,7 @@ class Note:
             semitones = notes[0][0] - notes[1][0]
             if semitones < -1:
                 raise ArithmeticError('Interval smaller than d1')
-            number = notes[0][1].tone - notes[1][1].tone
+            number = notes[0][1].letter - notes[1][1].letter
             octaves = 0
             while semitones >= 12:
                 semitones -= 12
@@ -186,7 +186,7 @@ class Note:
         return 440.0 * pow(2, (self.number - Note('A4').number) / 12.)
 
     def to_octave(self, octave):
-        return Note(self.tone.name + self.accidental + str(octave))
+        return Note(self.letter.name + self.accidental + str(octave))
 
     def lilypond_notation(self):
         return str(self).replace('b', 'es').replace('#', 'is').lower()
@@ -198,7 +198,7 @@ class Note:
         return 'Note({!r})'.format(self.scientific_notation())
 
     def __str__(self):
-        return self.tone.name + self.accidental
+        return self.letter.name + self.accidental
 
     def __eq__(self, other):
         return self.scientific_notation() == other.scientific_notation()
