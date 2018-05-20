@@ -46,24 +46,24 @@ class Letter:
         self.name = letter
         self.idx = self.letters_idx[letter]
 
-    def __add__(self, o):
-        if isinstance(o, int):
-            if o == 0:
+    def __add__(self, other):
+        if isinstance(other, int):
+            if other == 0:
                 raise ValueError('Invalid interval number: 0')
-            new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.letters)
+            new_idx = (self.idx + other - (1 if other > 0 else -1)) % len(self.letters)
             return Letter(self.letters[new_idx])
         else:
-            raise UnsupportedOperands('+', self, o)
+            raise UnsupportedOperands('+', self, other)
 
-    def __sub__(self, o):
-        if isinstance(o, Letter):
-            d = self.idx - o.idx
+    def __sub__(self, other):
+        if isinstance(other, Letter):
+            d = self.idx - other.idx
             d += 1 if d >= 0 else -1
             return d
-        elif isinstance(o, int):
-            return self + -o
+        elif isinstance(other, int):
+            return self + -other
         else:
-            raise UnsupportedOperands('-', self, o)
+            raise UnsupportedOperands('-', self, other)
 
     def __str__(self):
         return self.name
@@ -71,8 +71,8 @@ class Letter:
     def __repr__(self):
         return 'Letter({!r})'.format(str(self))
 
-    def __eq__(self, o):
-        return str(self) == str(o)
+    def __eq__(self, other):
+        return str(self) == str(other)
 
     def number(self):
         return self.letters_number[self.name]
