@@ -2,34 +2,34 @@ import unittest
 from musthe import *
 
 
-class TestsForTone(unittest.TestCase):
-    def test_tone_parsing(self):
+class TestsForLetter(unittest.TestCase):
+    def test_letter_parsing(self):
         def test1(name):
-            self.assertEqual(str(Tone(name)), name)
+            self.assertEqual(str(Letter(name)), name)
         for name in 'CDEFGAB':
             test1(name)
 
         def test2(badname):
-            self.assertRaises(ValueError, Tone, badname)
+            self.assertRaises(ValueError, Letter, badname)
         test2('C#')
         test2('Db')
         test2('H')
         test2('$')
 
-    def test_tone_stuff(self):
+    def test_letter_stuff(self):
         for i in 'DEGAB':
-            self.assertTrue(Tone(i).has_flat())
+            self.assertTrue(Letter(i).has_flat())
         for i in 'CDFGA':
-            self.assertTrue(Tone(i).has_sharp())
+            self.assertTrue(Letter(i).has_sharp())
 
-    def test_tone_arithmetic(self):
-        def test1(tone, difference, result):
+    def test_letter_arithmetic(self):
+        def test1(letter, difference, result):
             norm = lambda n: (n + (1 if n < 1 else -1)) % 7 + 1
-            tone = Tone(tone)
-            result = Tone(result)
-            self.assertEqual(tone + difference, result)
-            self.assertEqual(result - difference, tone)
-            self.assertEqual(norm(result - tone), norm(difference))
+            letter = Letter(letter)
+            result = Letter(result)
+            self.assertEqual(letter + difference, result)
+            self.assertEqual(result - difference, letter)
+            self.assertEqual(norm(result - letter), norm(difference))
         test1('A', 2, 'B')
         test1('A', 3, 'C')
         test1('A', 5, 'E')
@@ -37,21 +37,21 @@ class TestsForTone(unittest.TestCase):
         test1('D', 1, 'D')
         test1('D', -2, 'C')
 
-        self.assertRaises(ValueError, lambda: Tone('D') + 0)
+        self.assertRaises(ValueError, lambda: Letter('D') + 0)
 
-        self.assertRaises(TypeError, lambda: Tone('E') + object())
-        self.assertRaises(TypeError, lambda: Tone('F') - object())
+        self.assertRaises(TypeError, lambda: Letter('E') + object())
+        self.assertRaises(TypeError, lambda: Letter('F') - object())
 
-    def test_tone_repr(self):
-        self.assertEqual(repr(Tone('C')), 'Tone({!r})'.format('C'))
+    def test_letter_repr(self):
+        self.assertEqual(repr(Letter('C')), 'Letter({!r})'.format('C'))
 
-        def test2(tone1, tone2, difference):
-            self.assertEqual(Tone(tone1) - Tone(tone2), difference)
+        def test2(letter1, letter2, difference):
+            self.assertEqual(Letter(letter1) - Letter(letter2), difference)
         test2('D', 'C', 2)
         test2('C', 'B', -7)
 
-        def test3(tone1, difference, tone2):
-            self.assertEqual(Tone(tone1) - difference, Tone(tone2))
+        def test3(letter1, difference, letter2):
+            self.assertEqual(Letter(letter1) - difference, Letter(letter2))
         test3('D', 2, 'C')
         test3('C', 2, 'B')
 
