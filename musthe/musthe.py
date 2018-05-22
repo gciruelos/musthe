@@ -46,24 +46,24 @@ class Tone:
         self.name = tone
         self.idx = self.tones_idx[tone]
 
-    def __add__(self, o):
-        if isinstance(o, int):
-            if o == 0:
+    def __add__(self, other):
+        if isinstance(other, int):
+            if other == 0:
                 raise ValueError('Invalid interval number: 0')
-            new_idx = (self.idx + o - (1 if o > 0 else -1)) % len(self.tones)
+            new_idx = (self.idx + other - (1 if other > 0 else -1)) % len(self.tones)
             return Tone(self.tones[new_idx])
         else:
-            raise UnsupportedOperands('+', self, o)
+            raise UnsupportedOperands('+', self, other)
 
-    def __sub__(self, o):
-        if isinstance(o, Tone):
-            d = self.idx - o.idx
+    def __sub__(self, other):
+        if isinstance(other, Tone):
+            d = self.idx - other.idx
             d += 1 if d >= 0 else -1
             return d
-        elif isinstance(o, int):
-            return self + -o
+        elif isinstance(other, int):
+            return self + -other
         else:
-            raise UnsupportedOperands('-', self, o)
+            raise UnsupportedOperands('-', self, other)
 
     def __str__(self):
         return self.name
@@ -71,8 +71,8 @@ class Tone:
     def __repr__(self):
         return 'Tone({!r})'.format(str(self))
 
-    def __eq__(self, o):
-        return str(self) == str(o)
+    def __eq__(self, other):
+        return str(self) == str(other)
 
     def number(self):
         return self.tones_number[self.name]
@@ -133,16 +133,16 @@ class Note:
         self.number = self.tone.number() + self.octave * 12 + \
             Note.accidental_value(self.accidental)
 
-    def __add__(self, o):
-        if isinstance(o, Interval):
-            if o.is_compound():
+    def __add__(self, other):
+        if isinstance(other, Interval):
+            if other.is_compound():
                 from functools import reduce
-                return reduce(lambda a, b: a + b, o.split(), self)
+                return reduce(lambda a, b: a + b, other.split(), self)
 
-            new_tone = self.tone + o.number
-            new_number = self.number + o.semitones
+            new_tone = self.tone + other.number
+            new_number = self.number + other.semitones
             new_note_octave = self.octave + \
-                int(self.tone.name in Tone.tones[8 - o.number:])
+                int(self.tone.name in Tone.tones[8 - other.number:])
             difference = new_number % 12 - new_tone.number()
             if difference < -3:
                 difference += 12
@@ -151,17 +151,17 @@ class Note:
             return Note(new_tone.name + Note.accidental_str(difference) +
                         str(new_note_octave))
         else:
-            raise UnsupportedOperands('+', self, o)
+            raise UnsupportedOperands('+', self, other)
 
-    def __sub__(self, o):
-        if isinstance(o, Interval):
-            if o.is_compound():
+    def __sub__(self, other):
+        if isinstance(other, Interval):
+            if other.is_compound():
                 from functools import reduce
-                return reduce(lambda a, b: a - b, o.split(), self)
+                return reduce(lambda a, b: a - b, other.split(), self)
 
-            return self.to_octave(self.octave - 1) + o.complement()
-        elif isinstance(o, Note):
-            notes = list((n.midi_note(), n) for n in (self, o))
+            return self.to_octave(self.octave - 1) + other.complement()
+        elif isinstance(other, Note):
+            notes = list((n.midi_note(), n) for n in (self, other))
             semitones = notes[0][0] - notes[1][0]
             if semitones < -1:
                 raise ArithmeticError('Interval smaller than d1')
@@ -176,7 +176,7 @@ class Note:
                     return Interval(i.quality + str(octaves * 7 + number))
             raise ValueError('Interval N={} S={}'.format(number, semitones))
         else:
-            raise UnsupportedOperands('-', self, o)
+            raise UnsupportedOperands('-', self, other)
 
     def midi_note(self):
         return self.number + 12
@@ -261,8 +261,8 @@ class Interval:
     def __repr__(self):
         return 'Interval({!r})'.format(str(self))
 
-    def __eq__(self, o):
-        return str(self) == str(o)
+    def __eq__(self, other):
+        return str(self) == str(other)
 
     def is_compound(self):
         return self.number > 8
@@ -372,12 +372,12 @@ class Chord:
     def __str__(self):
         return "{}{}".format(str(self.notes[0]), self.chord_type)
 
-    def __eq__(self, o):
-        if len(self.notes) != len(o.notes):
+    def __eq__(self, other):
+        if len(self.notes) != len(other.notes):
             # if chords dont have the same number of notes, def not equal
             return False
         else:
-            return all(self.notes[i] == o.notes[i]
+            return all(self.notes[i] == other.notes[i]
                        for i in range(len(self.notes)))
 
 
