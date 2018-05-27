@@ -1,6 +1,12 @@
 Here are some pretty solid online theory tools. There are probably several different ways to use them, but I would prefer not
 directly interacting with them - that would make for unnecessary maintenance and dependency.
 
+
+I will also be reading through Vincent Persichetti's "Twentieth Century Harmony" and Dariusz Terefenko's "Jazz Theory: from Basic to
+Advanced Study" - as I come across interesting theoretical or compositional concepts I will try to add them to the code (likely as
+separate files to distinguish them from the general theory).
+
+
 Music Theory Calculator: https://theorycalc.pythonanywhere.com/index
 -- contains:
 
