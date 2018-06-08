@@ -105,6 +105,7 @@ In alphabetical order
 * [Federico Ferri](https://github.com/fferri)
 * [Gonzalo Ciruelos](https://github.com/gciruelos)
 * [Marco Heins](https://github.com/barrio)
+* [nvoster](https://github.com/nvoster)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
 
