@@ -5,6 +5,20 @@ Music theory implemented in Python. Notes, scales and chords.
 
 It is still in development so feel free to read the code, fork and make pull requests! They are very welcome!
 
+Installation
+============
+
+To install as development:
+
+(Optional) Create a virtualenv:
+
+    $ python -m venv env
+    $ source env/bin/activate
+
+Then install:
+
+    $ pip install -e .
+
 
 How to use
 ==========
