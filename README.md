@@ -38,29 +38,58 @@ Though it is important to see that the octaves of those notes are different:
     >>> (a+seventh).octave
     5
 
+Now let's see basic chord usage:
+
+	>>> Chord(Note('A'), 'M')
+	Chord(Note('A'), 'M')
+	>>> Chord(Note('A'), 'M').notes
+	[Note("A4"), Note("C#5"), Note("E5")]
+	>>> Chord(Note('Bb'), 'dim').notes
+	[Note("Bb4"), Note("Db5"), Note("Fb5")]
+
+You can use a string to construct a chord:
+
+    >>> Chord('C#aug7') == Chord(Note('C#'), 'aug7')
+    True
+
+Default chord type is 'M' (Major).
+
 Now lets try scales:
 
-    >>> scale(Note('B'), 'major')
-    [Note("B4"), Note("C#5"), Note("D#5"), Note("E5"), Note("F#5"), Note("G#5"), Note("A#5"), Note("B5")]
+    >>> s = Scale(Note('B'), 'major')
+    >>> [s[i] for i in range(len(s))]
+    [Note('B4'), Note('C#5'), Note('D#5'), Note('E5'), Note('F#5'), Note('G#5'), Note('A#5')]
+    >>> s[0]
+    Note('B4')
+    >>> s[-11]
+    Note('E3')
 
 It return a list of Note instances, so if you want a cleaner result should do something like:
 
-    >>> list(map(str, scale(Note('B'), 'major')))
-    ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B']
+    >>> s = Scale(Note('B'), 'major')
+    >>> [str(s[i]) for i in range(len(s))]
+    ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']
     
-Fair enough.
+To check if notes and chords are contained in a given scale:
 
-Now with let's see basic chord usage:
+    >>> Note('D#3') in s
+    True
+    >>> Note('F3') in s
+    False
+    >>> Chord('C#m') in s
+    True
+    >>> Chord('CM') in s
+    False
 
-	>>> Chord(Note('A'),'M')
-	Chord(Note('A'), 'M')
-	>>> Chord(Note('A'),'M').notes
-	[Note("A4"), Note("C#5"), Note("E5")]
-	>>> Chord(Note('Bb'),'dim').notes
-	[Note("Bb4"), Note("Db5"), Note("Fb5")]
+Now let's try some advanced stuff: given a list of chords, find all scales that contain those:
 
-Default chord type is 'M' (Major). Currently, only triads (major, minor, diminished, augmented) are supported.
-
+    >>> chords = [Chord('Cm'), Chord('Fm7'), Chord('Gm')]
+    >>> for scale in Scale.all():
+    ...     if chords in scale:
+    ...         print(scale)
+    ...
+    C natural_minor
+    Eb major
 
 
 If you have lilypond installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
@@ -73,7 +102,10 @@ In alphabetical order
 
 * [David H](https://github.com/bobthenameless)
 * [Edgar Gavrik](https://github.com/edgarasg)
+* [Federico Ferri](https://github.com/fferri)
+* [Gonzalo Ciruelos](https://github.com/gciruelos)
 * [Marco Heins](https://github.com/barrio)
+* [nvoster](https://github.com/nvoster)
 * [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
 
@@ -82,7 +114,4 @@ License
 =======
 
 See license file.
-
-This was made by Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
-
 

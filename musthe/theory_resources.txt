@@ -1,0 +1,38 @@
+Here are some pretty solid online theory tools. There are probably several different ways to use them, but I would prefer not
+directly interacting with them - that would make for unnecessary maintenance and dependency.
+
+
+I will also be reading through Vincent Persichetti's "Twentieth Century Harmony" and Dariusz Terefenko's "Jazz Theory: from Basic to
+Advanced Study" - as I come across interesting theoretical or compositional concepts I will try to add them to the code (likely as
+separate files to distinguish them from the general theory).
+
+
+Music Theory Calculator: https://theorycalc.pythonanywhere.com/index
+-- contains:
+
+0. scale library, chord library
+
+1. Analyze a scale
+  Choose any scale and find all the chords that fit in the scale. See all the modes of the scale and the corresponding
+  chordal harmony stacked in thirds.
+
+2. All scales containing a chord
+  Choose any chord and calculate all the scales with all roots in which the chord exists.
+
+3. Compare chords in two scales.
+  Choose any two scales to find the common chords and notes, and the uncommon chords and notes. This will facilitate
+  changing between keys and scales. Changes can be made smooth using the common chords and established using uncommon chords.
+
+4. Scales containing two chords
+  Choose any two chords and find all the scales that contain both.
+
+5. Chord progressions in any key
+  Choose any tonic note and the key type, major or minor. The program will show a collected list of chord progressions in the chosen key.
+
+
+
+Scales and Chords: https://www.scales-chords.com/
+
+ Chord database, finder, calculator, namer, identifier
+ Scale finder
+ Song analyzer (combines chords, scales, important notes)
