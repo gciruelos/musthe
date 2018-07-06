@@ -1,1 +1,1 @@
-from musthe import *
+from .musthe import *
