@@ -84,6 +84,18 @@ class Letter:
         return self.name not in 'EB'
 
 
+class LetterSolfege(Letter):
+    """
+    Another tone naming.
+
+    There are still 7: Dó, Ré, Mi, Fá, Sol, Lá, and Si.
+    """
+
+    letters = ["Dó", "Ré", "Mi", "Fá", "Sol", "Lá", "Si"]
+    letters_idx = {x: i for i, x in enumerate(letters)}
+    letters_number = {'Dó': 0, 'Ré': 2, 'Mi': 4, 'Fá': 5, 'Sol': 7, 'Lá': 9, 'Si': 11}
+
+
 class Note:
     """
     The note class.
