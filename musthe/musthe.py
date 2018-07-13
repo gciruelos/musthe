@@ -104,16 +104,18 @@ class Note:
     """
     The note class.
 
-    The notes are to be parsed in th following way:
-    * the letter name,
+    The notes are to be parsed in the following way:
+    * the name,
     * accidentals (up to 3),
     * octave (default is 4).
 
-    For example, 'Ab', 'G9', 'B##7' are all valid notes. '#', 'A9b',
+    For example, 'Ab', 'G9', 'B##7', Fá3, Sol#3 are all valid notes. '#', 'A9b',
     'Dbbbb' are not.
     """
 
     pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d{0,1})$')
+    solfege_pattern = re.compile(r'(Dó|Ré|Mi|Fá|Sol|Lá|Si)(b{0,3}|#{0,3})(\d{0,1})$')
+    is_solfege = False
 
     @staticmethod
     def all(min_octave=4, max_octave=4):
@@ -138,11 +140,20 @@ class Note:
         return 'b' * max(0, -val) + '#' * max(0, val)
 
     def __init__(self, note):
-        m = self.pattern.match(note)
-        if m is None:
-            raise ValueError('Could not parse the note {!r}'.format(note))
 
-        self.letter = Letter(m.group(1))
+        m = self.pattern.match(note)
+        s = self.solfege_pattern.match(note)
+
+        if m is None and s is None:
+            raise ValueError('Could not parse the note {!r}'.format(note))
+        if m is None:
+            self.is_solfege = True
+            m = s
+        if self.is_solfege:
+            self.letter = Letter(str(LetterSolfege(m.group(1)).to_letter()))
+        else:
+            self.letter = Letter(m.group(1))
+
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
