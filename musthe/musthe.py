@@ -95,9 +95,9 @@ class LetterSolfege(Letter):
     letters_idx = {x: i for i, x in enumerate(letters)}
     letters_number = {'Dó': 0, 'Ré': 2, 'Mi': 4, 'Fá': 5, 'Sol': 7, 'Lá': 9, 'Si': 11}
 
-    def to_letter(self, letter):
+    def to_letter(self):
         letter_list = [i for i in "CDEFGAB"]
-        return Letter(letter_list[self.letters_idx[letter]])
+        return Letter(letter_list[self.letters_idx[self.name]])
 
 
 class Note:
