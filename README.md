@@ -120,17 +120,16 @@ If you have [lilypond](http://lilypond.org/) installed, you can make little melo
 Contributors
 ============
 
-In alphabetical order
-
-* [David H](https://github.com/bobthenameless)
-* [Edgar Gavrik](https://github.com/edgarasg)
+* [zsinx6](https://github.com/zsinx6)
 * [Federico Ferri](https://github.com/fferri)
 * [Gonzalo Ciruelos](https://github.com/gciruelos)
-* [Marco Heins](https://github.com/barrio)
+* [David H](https://github.com/bobthenameless)
 * [nvoster](https://github.com/nvoster)
-* [Sri Raghavan](https://github.com/srir)
 * [Sylvain](https://github.com/SylvainDe)
-* [zsinx6](https://github.com/zsinx6)
+* [Edgar Gavrik](https://github.com/edgarasg)
+* [Sri Raghavan](https://github.com/srir)
+* [Augustus Wynn](https://github.com/guswynn)
+* [Marco Heins](https://github.com/barrio)
 
 
 License
