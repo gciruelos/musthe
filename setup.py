@@ -18,7 +18,7 @@ URL = 'https://github.com/gciruelos/musthe'
 EMAIL = ' gonzalo.ciruelos@gmail.com '
 AUTHOR = 'Gonzalo Ciruelos'
 REQUIRES_PYTHON = '>=3.4'
-VERSION = 1.0
+VERSION = "1.0.0"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -87,7 +87,7 @@ class UploadCommand(Command):
         self.status('Pushing git tags…')
         os.system('git tag v{0}'.format(about['__version__']))
         os.system('git push --tags')
-        
+
         sys.exit()
 
 
@@ -102,9 +102,9 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    # packages=find_packages(exclude=('tests',)),
+    packages=find_packages(exclude=('tests',)),
     # If your package is a single module, use this instead of 'packages':
-    py_modules=['musthe'],
+    # py_modules=['musthe'],
 
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
