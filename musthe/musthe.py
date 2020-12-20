@@ -224,6 +224,7 @@ class Interval:
         'd6': 7,  'm6': 8,            'M6': 9,  'A6': 10,
         'd7': 9,  'm7': 10,           'M7': 11, 'A7': 12,
         'd8': 11,           'P8': 12,           'A8': 13,
+        'd9': 12, 'm9': 13,           'M9': 14, 'A9': 15,
     }
     quality_inverse = {
         'P': 'P',
@@ -316,6 +317,11 @@ class Chord:
         'sus2':   ['P1', 'P5', 'P8', 'M2'],
         'sus4':   ['P1', 'P5', 'P8', 'P4'],
         'open5':  ['P1', 'P5', 'P8'],
+        'dom9': ['P1', 'M3', 'P5', 'm7', 'M9'],
+        'min9': ['P1', 'm3', 'P5', 'm7', 'M9'],
+        'maj9': ['P1', 'M3', 'P5', 'M7', 'M9'],
+        'aug9': ['P1', 'M3', 'A5', 'm7', 'M9'],
+        'dim9': ['P1', 'm3', 'd5', 'd7', 'M9'],
     }
     aliases = {
         'M':      'maj',
@@ -331,6 +337,11 @@ class Chord:
         '°7':     'm7dim5',
         'ø7':     'm7dim5',
         'm7b5':   'm7dim5',
+        '9': 'dom9',
+        'm9': 'min9',
+        'M9': 'maj9',
+        '+9': 'aug9',
+        '°9': 'dim9',
     }
     valid_types = list(recipes.keys()) + list(aliases.keys())
 
