@@ -84,20 +84,38 @@ class Letter:
         return self.name not in 'EB'
 
 
+class LetterSolfege(Letter):
+    """
+    Another tone naming.
+
+    There are still 7: Dó, Ré, Mi, Fá, Sol, Lá, and Si.
+    """
+
+    letters = ["Dó", "Ré", "Mi", "Fá", "Sol", "Lá", "Si"]
+    letters_idx = {x: i for i, x in enumerate(letters)}
+    letters_number = {'Dó': 0, 'Ré': 2, 'Mi': 4, 'Fá': 5, 'Sol': 7, 'Lá': 9, 'Si': 11}
+
+    def to_letter(self):
+        letter_list = [i for i in "CDEFGAB"]
+        return Letter(letter_list[self.letters_idx[self.name]])
+
+
 class Note:
     """
     The note class.
 
-    The notes are to be parsed in th following way:
-    * the letter name,
+    The notes are to be parsed in the following way:
+    * the name,
     * accidentals (up to 3),
     * octave (default is 4).
 
-    For example, 'Ab', 'G9', 'B##7' are all valid notes. '#', 'A9b',
+    For example, 'Ab', 'G9', 'B##7', Fá3, Sol#3 are all valid notes. '#', 'A9b',
     'Dbbbb' are not.
     """
 
     pattern = re.compile(r'([A-G])(b{0,3}|#{0,3})(\d{0,1})$')
+    solfege_pattern = re.compile(r'(Dó|Ré|Mi|Fá|Sol|Lá|Si)(b{0,3}|#{0,3})(\d{0,1})$')
+    is_solfege = False
 
     @staticmethod
     def all(min_octave=4, max_octave=4):
@@ -122,11 +140,20 @@ class Note:
         return 'b' * max(0, -val) + '#' * max(0, val)
 
     def __init__(self, note):
-        m = self.pattern.match(note)
-        if m is None:
-            raise ValueError('Could not parse the note {!r}'.format(note))
 
-        self.letter = Letter(m.group(1))
+        m = self.pattern.match(note)
+        s = self.solfege_pattern.match(note)
+
+        if m is None and s is None:
+            raise ValueError('Could not parse the note {!r}'.format(note))
+        if m is None:
+            self.is_solfege = True
+            m = s
+        if self.is_solfege:
+            self.letter = Letter(str(LetterSolfege(m.group(1)).to_letter()))
+        else:
+            self.letter = Letter(m.group(1))
+
         self.accidental = m.group(2)
         self.octave = int(m.group(3) or '4')
 
