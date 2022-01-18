@@ -88,7 +88,7 @@ class Note:
     """
     The note class.
 
-    The notes are to be parsed in th following way:
+    The notes are to be parsed in the following way:
     * the letter name,
     * accidentals (up to 3),
     * octave (default is 4).
