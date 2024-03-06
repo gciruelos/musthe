@@ -8,6 +8,7 @@ Federico Ferri <federico.ferri.it@gmail.com>
 """
 
 import re
+from typing import Union
 
 
 def UnsupportedOperands(op, type1, type2):
@@ -332,6 +333,20 @@ class Chord:
         'ø7':     'm7dim5',
         'm7b5':   'm7dim5',
     }
+    
+    lilypond_modifiers = {
+        'maj': None,
+        'min': 'm',
+        'dom7': '7',
+        'min7': 'm7',
+        'm7dim5': '7.5-',
+        'open5':  '1.5.8',        
+    }
+    """Maps Musthe chord modifiers to their LilyPond `\chordmode` equivalents. Any items
+    omitted from this list (``min``, ``aug`` and ``dim``, for example) are
+    assumed to use the same value in LilyPond.
+    """
+
     valid_types = list(recipes.keys()) + list(aliases.keys())
 
     @staticmethod
@@ -379,6 +394,30 @@ class Chord:
         else:
             return all(self.notes[i] == other.notes[i]
                        for i in range(len(self.notes)))
+    
+    def lilypond_notation(self, duration: Union[str,int] = ""):
+        """Returns the chord as string that can be used in a LilyPond
+        ``\chordmode`` block.
+        
+        Examples:
+            >>> Chord(Note('C')).lilypond_notation()
+            'c'
+
+            >>> Chord(Note('G#'), 'dom7').lilypond_notation(4)
+            'gis4:7'
+
+            >>> Chord(Note('Eb'), 'open5').lilypond_notation('8.')
+            'ees8.:1.5.8'            
+        """
+
+        # Get the chord root lilypond_format() string
+        root = f"{self.notes[0].lilypond_notation()}"
+        if self.chord_type in self.lilypond_modifiers.keys():
+            modifier = self.lilypond_modifiers[self.chord_type]
+        else:
+            modifier = self.chord_type
+        
+        return f"{root}{duration}:{modifier}" if modifier is not None else f"{root}{duration}"
 
 
 class Scale:
