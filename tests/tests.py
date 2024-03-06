@@ -291,6 +291,43 @@ class TestsForChord(unittest.TestCase):
     def test_chord_equality(self):
         self.assertNotEqual(Chord('Cdim'), Chord('Cdim7'))
 
+    def test_lilypond_base(self):
+        """Tests LilyPond chord notation with no accidentals, no modifier, and
+        no duration.
+        """
+        self.assertEqual(Chord(Note('C')).lilypond_notation(), 'c')
+
+    def test_lilypond_duration(self):
+        """Tests LilyPond chord notation with duration values.
+        """
+        self.assertEqual(Chord(Note('C')).lilypond_notation(4), 'c4')
+        self.assertEqual(Chord(Note('D')).lilypond_notation(duration=4), 'd4')
+        self.assertEqual(Chord(Note('E')).lilypond_notation(duration='8.'), 'e8.')
+
+    def test_lilypond_accidentals(self):
+        """Tests LilyPond chord notation with accidentals.
+        """
+        self.assertEqual(Chord(Note('G#')).lilypond_notation(), 'gis')
+        self.assertEqual(Chord(Note('Ab')).lilypond_notation(), 'aes')
+
+    def test_lilypond_mod_same(self):
+        """Tests LilyPond chord notation where the Musthe and LilyPond chord
+        modifiers are the same.
+        """
+        self.assertEqual(Chord(Note('C'), 'aug').lilypond_notation(duration=1), 'c1:aug')
+        self.assertEqual(Chord(Note('B'), 'dim').lilypond_notation(duration=2), 'b2:dim')
+        self.assertEqual(Chord(Note('A'), 'maj7').lilypond_notation(), 'a:maj7')
+
+    def test_lilypond_mod_diff(self):
+        """Tests LilyPond chord notation where the Musthe and LilyPond chord
+        modifiers are different.
+        """
+        self.assertEqual(Chord(Note('C'), 'min').lilypond_notation(), 'c:m')
+        self.assertEqual(Chord(Note('C'), 'dom7').lilypond_notation(), 'c:7')
+        self.assertEqual(Chord(Note('C'), 'min7').lilypond_notation(), 'c:m7')
+        self.assertEqual(Chord(Note('C'), 'm7dim5').lilypond_notation(4), 'c4:7.5-')
+        self.assertEqual(Chord(Note('C'), 'open5').lilypond_notation("16."), 'c16.:1.5.8')
+
 
 class TestsForScale(unittest.TestCase):
     def test_note_scales(self):
