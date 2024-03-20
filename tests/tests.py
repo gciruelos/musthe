@@ -199,6 +199,7 @@ class TestsForInterval(unittest.TestCase):
         test1('P8', 'P1')
         test1('A8', 'd1')
 
+        self.assertRaises(ValueError, lambda: Interval('M9').complement())
         self.assertRaises(ValueError, lambda: Interval('M10').complement())
 
     def test_interval_complement_2(self):
@@ -250,6 +251,7 @@ class TestsForChord(unittest.TestCase):
         test1('Cmaj7', 'C', 'M7')
         test1('D#aug7', 'D#', 'aug7')
         test1('Cbdim', 'Cb', 'dim')
+        test1('Eb9', 'Eb', 'dom9')
 
     def test_chord_gen(self):
         roots = (Note('C'), Note('D'))
@@ -270,6 +272,8 @@ class TestsForChord(unittest.TestCase):
         test1('A', 'min', ['P1', 'm3', 'P5'])
         test1('A', 'dim', ['P1', 'm3', 'd5'])
         test1('A', 'aug', ['P1', 'M3', 'A5'])
+        test1('A', 'dom7', ['P1', 'M3', 'P5', 'm7'])
+        test1('A', 'dom9', ['P1', 'M3', 'P5', 'm7', 'M9'])
 
     @unittest.skip('Note.__sub__ is broken')
     def test_recipes_intervals(self):

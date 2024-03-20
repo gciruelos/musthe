@@ -89,7 +89,7 @@ class Note:
     """
     The note class.
 
-    The notes are to be parsed in th following way:
+    The notes are to be parsed in the following way:
     * the letter name,
     * accidentals (up to 3),
     * octave (default is 4).
@@ -317,6 +317,11 @@ class Chord:
         'sus2':   ['P1', 'P5', 'P8', 'M2'],
         'sus4':   ['P1', 'P5', 'P8', 'P4'],
         'open5':  ['P1', 'P5', 'P8'],
+        'dom9': ['P1', 'M3', 'P5', 'm7', 'M9'],
+        'min9': ['P1', 'm3', 'P5', 'm7', 'M9'],
+        'maj9': ['P1', 'M3', 'P5', 'M7', 'M9'],
+        'aug9': ['P1', 'M3', 'A5', 'm7', 'M9'],
+        'dim9': ['P1', 'm3', 'd5', 'd7', 'M9'],
     }
     aliases = {
         'M':      'maj',
@@ -332,6 +337,11 @@ class Chord:
         '°7':     'm7dim5',
         'ø7':     'm7dim5',
         'm7b5':   'm7dim5',
+        '9': 'dom9',
+        'm9': 'min9',
+        'M9': 'maj9',
+        '+9': 'aug9',
+        '°9': 'dim9',
     }
     
     """Maps Musthe chord modifiers to their LilyPond `\chordmode` equivalents. Any items
