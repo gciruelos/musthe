@@ -307,16 +307,20 @@ class TestsForChord(unittest.TestCase):
     def test_lilypond_accidentals(self):
         """Tests LilyPond chord notation with accidentals.
         """
-        self.assertEqual(Chord(Note('C'), 'maj7').lilypond_notation(), 'c:maj7')
-        self.assertEqual(Chord(Note('D'), 'aug').lilypond_notation(1), 'd1:aug')
-        self.assertEqual(Chord(Note('E'), 'dim').lilypond_notation(2), 'e2:dim')
-        self.assertEqual(Chord(Note('F'), 'maj7').lilypond_notation(4), 'f4:maj7')
-        self.assertEqual(Chord(Note('G'), 'aug7').lilypond_notation(8), 'g8:aug7')
-        self.assertEqual(Chord(Note('A'), 'dim7').lilypond_notation(16), 'a16:dim7')
-        self.assertEqual(Chord(Note('B'), 'sus2').lilypond_notation('2.'), 'b2.:sus2')
-        self.assertEqual(Chord(Note('C'), 'sus4').lilypond_notation('4.'), 'c4.:sus4')
-        self.assertEqual(Chord(Note('D'), 'aug').lilypond_notation('8.'), 'd8.:aug')
-        self.assertEqual(Chord(Note('E'), 'dim').lilypond_notation('16.'), 'e16.:dim')
+        self.assertEqual(Chord(Note('Cb'), 'aug').lilypond_notation('1'), 'ces1:aug')
+        self.assertEqual(Chord(Note('C#'), 'dim').lilypond_notation('2'), 'cis2:dim')
+        self.assertEqual(Chord(Note('Db'), 'maj7').lilypond_notation('4'), 'des4:maj7')
+        self.assertEqual(Chord(Note('D#'), 'aug7').lilypond_notation('8'), 'dis8:aug7')
+        self.assertEqual(Chord(Note('Eb'), 'dim7').lilypond_notation('16'), 'ees16:dim7')
+        self.assertEqual(Chord(Note('E#'), 'sus2').lilypond_notation('2.'), 'eis2.:sus2')
+        self.assertEqual(Chord(Note('Fb'), 'sus4').lilypond_notation('4.'), 'fes4.:sus4')
+        self.assertEqual(Chord(Note('F#'), 'maj9').lilypond_notation('8.'), 'fis8.:maj9')
+        self.assertEqual(Chord(Note('Gb'), 'aug9').lilypond_notation('16.'), 'ges16.:aug9')
+        self.assertEqual(Chord(Note('G#'), 'dim9').lilypond_notation('1'), 'gis1:dim9')
+        self.assertEqual(Chord(Note('Ab'), 'aug').lilypond_notation('2'), 'aes2:aug')
+        self.assertEqual(Chord(Note('A#'), 'dim').lilypond_notation('4'), 'ais4:dim')
+        self.assertEqual(Chord(Note('Bb'), 'maj7').lilypond_notation('8'), 'bes8:maj7')
+        self.assertEqual(Chord(Note('B#'), 'aug7').lilypond_notation('16'), 'bis16:aug7')
 
     def test_lilypond_mod_same(self):
         """Tests LilyPond chord notation where the Musthe and LilyPond chord
