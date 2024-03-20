@@ -405,11 +405,22 @@ class Chord:
             return all(self.notes[i] == other.notes[i]
                        for i in range(len(self.notes)))
     
-    def lilypond_notation(self, duration: Union[str,int] = ""):
+    def lilypond_notation(self, duration: Union[str, int] = "") -> str:
         """Returns the chord as string that can be used in a LilyPond
         ``\chordmode`` block.
         
-        Examples:
+        Parameters
+        ----------
+        duration : Union[str, int]
+            A LilyPond note duration, where `1` is a whole note, `2` is a half note, `4` is a quarter note, et cetera. For a dotted note, include a `.` after the number. (See https://lilypond.org/doc/latest/Documentation/notation/durations.)
+
+        Returns
+        -------
+        str
+            A ``str`` representing the chord in LilyPond chord notation. (See: https://lilypond.org/doc/latest/Documentation/notation/chord-notation)
+
+        Examples
+        --------
             >>> Chord(Note('C')).lilypond_notation()
             'c'
 
