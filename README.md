@@ -164,6 +164,14 @@ diatonic and dominant 7th chords for reach note in that scale:
 
 If you have [lilypond](http://lilypond.org/) installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
 
+Running Tests
+=============
+
+From the project root directory, run:
+
+```
+python -m tests.tests
+```
 
 Contributors
 ============
