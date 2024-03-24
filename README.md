@@ -116,6 +116,14 @@ Now let's try some advanced stuff: given a list of chords, find all scales that 
 
 If you have [lilypond](http://lilypond.org/) installed, you can make little melodies using this program, an example is given in 'lilypond_example.py'
 
+Running Tests
+=============
+
+From the project root directory, run:
+
+```
+python -m tests.tests
+```
 
 Contributors
 ============
