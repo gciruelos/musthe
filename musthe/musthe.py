@@ -352,7 +352,7 @@ class Chord:
         'm7dim5': '7.5-',
         'open5':  '1.5.8',        
     }
-    """Maps Musthe chord modifiers to their LilyPond `\chordmode` equivalents. Any items
+    r"""Maps Musthe chord modifiers to their LilyPond `\chordmode` equivalents. Any items
     omitted from this list (``min``, ``aug`` and ``dim``, for example) are
     assumed to use the same value in LilyPond.
     """
@@ -406,7 +406,7 @@ class Chord:
                        for i in range(len(self.notes)))
     
     def lilypond_notation(self, duration: Union[str,int] = ""):
-        """Returns the chord as string that can be used in a LilyPond
+        r"""Returns the chord as string that can be used in a LilyPond
         ``\chordmode`` block.
         
         Examples:
