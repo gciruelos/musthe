@@ -8,7 +8,7 @@ Federico Ferri <federico.ferri.it@gmail.com>
 """
 
 import re
-from typing import Union
+from typing import List, Union
 
 
 def UnsupportedOperands(op, type1, type2):
@@ -343,14 +343,14 @@ class Chord:
         '+9': 'aug9',
         '°9': 'dim9',
     }
-    
+
     lilypond_modifiers = {
         'maj': None,
         'min': 'm',
         'dom7': '7',
         'min7': 'm7',
         'm7dim5': '7.5-',
-        'open5':  '1.5.8',        
+        'open5':  '1.5.8',
     }
     r"""Maps Musthe chord modifiers to their LilyPond `\chordmode` equivalents. Any items
     omitted from this list (``min``, ``aug`` and ``dim``, for example) are
@@ -404,11 +404,11 @@ class Chord:
         else:
             return all(self.notes[i] == other.notes[i]
                        for i in range(len(self.notes)))
-    
+
     def lilypond_notation(self, duration: Union[str,int] = ""):
         r"""Returns the chord as string that can be used in a LilyPond
         ``\chordmode`` block.
-        
+
         Examples:
             >>> Chord(Note('C')).lilypond_notation()
             'c'
@@ -417,7 +417,7 @@ class Chord:
             'gis4:7'
 
             >>> Chord(Note('Eb'), 'open5').lilypond_notation('8.')
-            'ees8.:1.5.8'            
+            'ees8.:1.5.8'
         """
 
         # Get the chord root lilypond_format() string
@@ -426,7 +426,7 @@ class Chord:
             modifier = self.lilypond_modifiers[self.chord_type]
         else:
             modifier = self.chord_type
-        
+
         return f"{root}{duration}:{modifier}" if modifier is not None else f"{root}{duration}"
 
 
@@ -443,6 +443,7 @@ class Scale:
         'major':            ['P1', 'M2', 'M3', 'P4', 'P5', 'M6', 'M7'],
         'natural_minor':    ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'm7'],
         'harmonic_minor':   ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'M7'],
+#        'neapolitan_minor': ['P1', 'm2', 'm3', 'P4', 'P5', 'm6', 'M7'],
         'melodic_minor':    ['P1', 'M2', 'm3', 'P4', 'P5', 'M6', 'M7'],
         'major_pentatonic': ['P1', 'M2', 'M3',       'P5', 'M6'],
         'minor_pentatonic': ['P1',       'm3', 'P4', 'P5',       'm7'],
@@ -523,3 +524,64 @@ class Scale:
 
     def __repr__(self):
         return 'Scale({!r}, {!r})'.format(self.root, self.name)
+
+    def harmonize(self, include_dom7=True) -> List[Union[List[Chord], None]]:
+        """Attempts to find chords matching each :py:class:`Note` in the scale and return them as
+        a list of lists, where each inner list contains matching :py:class:`Chord` objects for
+        the note at the corresponding scale index.
+
+        If no chords are found for a given note, ``None`` will be returned instead.
+
+        Args:
+            include_dom7 (bool, optional): If ``True``, dominant 7th chords will be included, if applicable. Defaults to ``True``.
+
+        Returns:
+            List[Union[List[Chord], None]]: A ``list`` containing either matching :py:class:`Chord` objects for each scale degree, or ``None`` if no chords could be found.
+
+        See Also:
+            - :py:meth:`Scale.harmonize_dict`
+        """
+        chords = [None]*len(self.notes)
+
+        for i, note in enumerate(self.notes):
+            chords_for_note = []
+            for ch in Chord.all(root=Note(str(note))):
+                search_notes = [str(sn) for sn in self.notes]
+
+                if include_dom7:
+                    minor_seventh = note + Interval('m7')
+                    search_notes.append(str(minor_seventh))
+
+                if set(str(n) for n in ch.notes) <= set(search_notes):
+                    chords_for_note.append(ch)
+            if len(chords_for_note) > 0:
+                chords[i] = chords_for_note
+            else:
+                chords[i] = None
+
+        return chords
+
+    def harmonize_dict(self, include_dom7=True) -> dict[str, Union[List[Chord],None]]:
+        """This method attempts to find chords matching each note in the scale, and return them as a
+        dict where each key is a :py:class:`Note` in the scale, and each value is either a list of
+        matching :py:class:`Chord` objects for that note, or ``None`` if no chords could be found.
+
+        Args:
+            include_dom7 (bool, optional): If ``True``, dominant 7th chords will be
+                included, if applicable. Defaults to ``True``.
+
+        Returns:
+            dict[str, Union[List[Chord],None]]: A ``dict`` whose keys are strings representing
+                the :py:class:`Note` objects in the scale, and whose values are either lists of
+                matching :py:class:`Chord` objects for that note,
+                or ``None`` if no chords could be found.
+
+        See Also:
+            - :py:meth:`Scale.harmonize`
+        """
+        chords = self.harmonize(include_dom7)
+        chords_dict: dict[str, Union[List[Chord],None]] = {}
+        for i, note in enumerate(self.notes):
+            chords_dict[str(note)] = chords[i]
+
+        return chords_dict
