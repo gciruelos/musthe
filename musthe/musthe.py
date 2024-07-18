@@ -406,7 +406,7 @@ class Chord:
                        for i in range(len(self.notes)))
     
     def lilypond_notation(self, duration: Union[str, int] = "") -> str:
-        """Returns the chord as string that can be used in a LilyPond
+        r"""Returns the chord as string that can be used in a LilyPond
         ``\chordmode`` block.
         
         Parameters
@@ -438,30 +438,6 @@ class Chord:
         else:
             modifier = self.chord_type
         
-        return f"{root}{duration}:{modifier}" if modifier is not None else f"{root}{duration}"
-
-    def lilypond_notation(self, duration: Union[str,int] = ""):
-        r"""Returns the chord as string that can be used in a LilyPond
-        ``\chordmode`` block.
-
-        Examples:
-            >>> Chord(Note('C')).lilypond_notation()
-            'c'
-
-            >>> Chord(Note('G#'), 'dom7').lilypond_notation(4)
-            'gis4:7'
-
-            >>> Chord(Note('Eb'), 'open5').lilypond_notation('8.')
-            'ees8.:1.5.8'
-        """
-
-        # Get the chord root lilypond_format() string
-        root = f"{self.notes[0].lilypond_notation()}"
-        if self.chord_type in self.lilypond_modifiers.keys():
-            modifier = self.lilypond_modifiers[self.chord_type]
-        else:
-            modifier = self.chord_type
-
         return f"{root}{duration}:{modifier}" if modifier is not None else f"{root}{duration}"
 
 
