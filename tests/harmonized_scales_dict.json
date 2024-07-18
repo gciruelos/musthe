@@ -1,0 +1,4235 @@
+{
+  "C major": {
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Cmaj7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cdom9",
+      "Cmaj9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fmaj7",
+      "Fsus2",
+      "Fopen5",
+      "Fdom9",
+      "Fmaj9"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gdom9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bdim",
+      "Bm7dim5"
+    ]
+  },
+  "C natural_minor": {
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Ddim",
+      "Dm7dim5"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebmaj7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebdom9",
+      "Ebmaj9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Abmaj7",
+      "Absus2",
+      "Abopen5",
+      "Abdom9",
+      "Abmaj9"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbdom9"
+    ]
+  },
+  "C harmonic_minor": {
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Ddim",
+      "Dm7dim5"
+    ],
+    "Eb": [
+      "Ebaug",
+      "Ebaug7",
+      "Ebaug9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Abmaj7",
+      "Abopen5"
+    ],
+    "B": [
+      "Bdim",
+      "Bdim7",
+      "Bm7dim5"
+    ]
+  },
+  "C melodic_minor": {
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "Eb": [
+      "Ebaug",
+      "Ebaug7",
+      "Ebaug9"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fopen5",
+      "Fdom9"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gdom9"
+    ],
+    "A": [
+      "Adim",
+      "Am7dim5"
+    ],
+    "B": [
+      "Bdim",
+      "Bm7dim5"
+    ]
+  },
+  "C major_pentatonic": {
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Copen5",
+      "Cdom9"
+    ],
+    "D": [
+      "Dsus2",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "E": null,
+    "G": [
+      "Gsus2",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus4",
+      "Aopen5"
+    ]
+  },
+  "C minor_pentatonic": {
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus4",
+      "Copen5"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebdom9"
+    ],
+    "F": [
+      "Fsus2",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "G": null,
+    "Bb": [
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5"
+    ]
+  },
+  "C# major": {
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#maj7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#dom9",
+      "C#maj9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#maj7",
+      "F#sus2",
+      "F#open5",
+      "F#dom9",
+      "F#maj9"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#dom9"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#min9"
+    ],
+    "B#": [
+      "B#dim",
+      "B#m7dim5"
+    ]
+  },
+  "C# natural_minor": {
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#dim",
+      "D#m7dim5"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Emaj7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Edom9",
+      "Emaj9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Amaj7",
+      "Asus2",
+      "Aopen5",
+      "Adom9",
+      "Amaj9"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bdom9"
+    ]
+  },
+  "C# harmonic_minor": {
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#dim",
+      "D#m7dim5"
+    ],
+    "E": [
+      "Eaug",
+      "Eaug7",
+      "Eaug9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Amaj7",
+      "Aopen5"
+    ],
+    "B#": [
+      "B#dim",
+      "B#dim7",
+      "B#m7dim5"
+    ]
+  },
+  "C# melodic_minor": {
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E": [
+      "Eaug",
+      "Eaug7",
+      "Eaug9"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#open5",
+      "F#dom9"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#dom9"
+    ],
+    "A#": [
+      "A#dim",
+      "A#m7dim5"
+    ],
+    "B#": [
+      "B#dim",
+      "B#m7dim5"
+    ]
+  },
+  "C# major_pentatonic": {
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#open5",
+      "C#dom9"
+    ],
+    "D#": [
+      "D#sus2",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E#": null,
+    "G#": [
+      "G#sus2",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus4",
+      "A#open5"
+    ]
+  },
+  "C# minor_pentatonic": {
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus4",
+      "C#open5"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Eopen5",
+      "Edom9"
+    ],
+    "F#": [
+      "F#sus2",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G#": null,
+    "B": [
+      "Bsus2",
+      "Bsus4",
+      "Bopen5"
+    ]
+  },
+  "Db major": {
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbmaj7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbdom9",
+      "Dbmaj9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbmaj7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbdom9",
+      "Gbmaj9"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abdom9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cdim",
+      "Cm7dim5"
+    ]
+  },
+  "Db natural_minor": {
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbmin9"
+    ],
+    "Eb": [
+      "Ebdim",
+      "Ebm7dim5"
+    ],
+    "Fb": [
+      "Fbmaj",
+      "Fbdom7",
+      "Fbmaj7",
+      "Fbsus2",
+      "Fbsus4",
+      "Fbopen5",
+      "Fbdom9",
+      "Fbmaj9"
+    ],
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbmin9"
+    ],
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bbb": [
+      "Bbbmaj",
+      "Bbbdom7",
+      "Bbbmaj7",
+      "Bbbsus2",
+      "Bbbopen5",
+      "Bbbdom9",
+      "Bbbmaj9"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbsus2",
+      "Cbsus4",
+      "Cbopen5",
+      "Cbdom9"
+    ]
+  },
+  "Db harmonic_minor": {
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbmin9"
+    ],
+    "Eb": [
+      "Ebdim",
+      "Ebm7dim5"
+    ],
+    "Fb": [
+      "Fbaug",
+      "Fbaug7",
+      "Fbaug9"
+    ],
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbmin9"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bbb": [
+      "Bbbmaj",
+      "Bbbdom7",
+      "Bbbmaj7",
+      "Bbbopen5"
+    ],
+    "C": [
+      "Cdim",
+      "Cdim7",
+      "Cm7dim5"
+    ]
+  },
+  "Db melodic_minor": {
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbmin9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "Fb": [
+      "Fbaug",
+      "Fbaug7",
+      "Fbaug9"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbdom9"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abdom9"
+    ],
+    "Bb": [
+      "Bbdim",
+      "Bbm7dim5"
+    ],
+    "C": [
+      "Cdim",
+      "Cm7dim5"
+    ]
+  },
+  "Db major_pentatonic": {
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbdom9"
+    ],
+    "Eb": [
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "F": null,
+    "Ab": [
+      "Absus2",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus4",
+      "Bbopen5"
+    ]
+  },
+  "Db minor_pentatonic": {
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus4",
+      "Dbopen5"
+    ],
+    "Fb": [
+      "Fbmaj",
+      "Fbdom7",
+      "Fbsus2",
+      "Fbopen5",
+      "Fbdom9"
+    ],
+    "Gb": [
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5"
+    ],
+    "Ab": null,
+    "Cb": [
+      "Cbsus2",
+      "Cbsus4",
+      "Cbopen5"
+    ]
+  },
+  "D major": {
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dmaj7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Ddom9",
+      "Dmaj9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gmaj7",
+      "Gsus2",
+      "Gopen5",
+      "Gdom9",
+      "Gmaj9"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Adom9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#dim",
+      "C#m7dim5"
+    ]
+  },
+  "D natural_minor": {
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Edim",
+      "Em7dim5"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fmaj7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fdom9",
+      "Fmaj9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus4",
+      "Aopen5"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbmaj7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbdom9",
+      "Bbmaj9"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cdom9"
+    ]
+  },
+  "D harmonic_minor": {
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Edim",
+      "Em7dim5"
+    ],
+    "F": [
+      "Faug",
+      "Faug7",
+      "Faug9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus4",
+      "Aopen5"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbmaj7",
+      "Bbopen5"
+    ],
+    "C#": [
+      "C#dim",
+      "C#dim7",
+      "C#m7dim5"
+    ]
+  },
+  "D melodic_minor": {
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F": [
+      "Faug",
+      "Faug7",
+      "Faug9"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gopen5",
+      "Gdom9"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Adom9"
+    ],
+    "B": [
+      "Bdim",
+      "Bm7dim5"
+    ],
+    "C#": [
+      "C#dim",
+      "C#m7dim5"
+    ]
+  },
+  "D major_pentatonic": {
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dopen5",
+      "Ddom9"
+    ],
+    "E": [
+      "Esus2",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F#": null,
+    "A": [
+      "Asus2",
+      "Asus4",
+      "Aopen5"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus4",
+      "Bopen5"
+    ]
+  },
+  "D minor_pentatonic": {
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fopen5",
+      "Fdom9"
+    ],
+    "G": [
+      "Gsus2",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "A": null,
+    "C": [
+      "Csus2",
+      "Csus4",
+      "Copen5"
+    ]
+  },
+  "D# major": {
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#maj7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#dom9",
+      "D#maj9"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus2",
+      "E#sus4",
+      "E#open5",
+      "E#min9"
+    ],
+    "F##": [
+      "F##min",
+      "F##min7",
+      "F##sus4",
+      "F##open5"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#maj7",
+      "G#sus2",
+      "G#open5",
+      "G#dom9",
+      "G#maj9"
+    ],
+    "A#": [
+      "A#maj",
+      "A#dom7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#dom9"
+    ],
+    "B#": [
+      "B#min",
+      "B#min7",
+      "B#sus2",
+      "B#sus4",
+      "B#open5",
+      "B#min9"
+    ],
+    "C##": [
+      "C##dim",
+      "C##m7dim5"
+    ]
+  },
+  "D# natural_minor": {
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#dim",
+      "E#m7dim5"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#maj7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#dom9",
+      "F#maj9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bmaj7",
+      "Bsus2",
+      "Bopen5",
+      "Bdom9",
+      "Bmaj9"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#dom9"
+    ]
+  },
+  "D# harmonic_minor": {
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#dim",
+      "E#m7dim5"
+    ],
+    "F#": [
+      "F#aug",
+      "F#aug7",
+      "F#aug9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#maj",
+      "A#dom7",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bmaj7",
+      "Bopen5"
+    ],
+    "C##": [
+      "C##dim",
+      "C##dim7",
+      "C##m7dim5"
+    ]
+  },
+  "D# melodic_minor": {
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F#": [
+      "F#aug",
+      "F#aug7",
+      "F#aug9"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus2",
+      "G#open5",
+      "G#dom9"
+    ],
+    "A#": [
+      "A#maj",
+      "A#dom7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#dom9"
+    ],
+    "B#": [
+      "B#dim",
+      "B#m7dim5"
+    ],
+    "C##": [
+      "C##dim",
+      "C##m7dim5"
+    ]
+  },
+  "D# major_pentatonic": {
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#sus2",
+      "D#open5",
+      "D#dom9"
+    ],
+    "E#": [
+      "E#sus2",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F##": null,
+    "A#": [
+      "A#sus2",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B#": [
+      "B#min",
+      "B#min7",
+      "B#sus4",
+      "B#open5"
+    ]
+  },
+  "D# minor_pentatonic": {
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus4",
+      "D#open5"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#open5",
+      "F#dom9"
+    ],
+    "G#": [
+      "G#sus2",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A#": null,
+    "C#": [
+      "C#sus2",
+      "C#sus4",
+      "C#open5"
+    ]
+  },
+  "Eb major": {
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebmaj7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebdom9",
+      "Ebmaj9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Abmaj7",
+      "Absus2",
+      "Abopen5",
+      "Abdom9",
+      "Abmaj9"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbdom9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Ddim",
+      "Dm7dim5"
+    ]
+  },
+  "Eb natural_minor": {
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fdim",
+      "Fm7dim5"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbmaj7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbdom9",
+      "Gbmaj9"
+    ],
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbmaj7",
+      "Cbsus2",
+      "Cbopen5",
+      "Cbdom9",
+      "Cbmaj9"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbdom9"
+    ]
+  },
+  "Eb harmonic_minor": {
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fdim",
+      "Fm7dim5"
+    ],
+    "Gb": [
+      "Gbaug",
+      "Gbaug7",
+      "Gbaug9"
+    ],
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbmaj7",
+      "Cbopen5"
+    ],
+    "D": [
+      "Ddim",
+      "Ddim7",
+      "Dm7dim5"
+    ]
+  },
+  "Eb melodic_minor": {
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "Gb": [
+      "Gbaug",
+      "Gbaug7",
+      "Gbaug9"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Abopen5",
+      "Abdom9"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbdom9"
+    ],
+    "C": [
+      "Cdim",
+      "Cm7dim5"
+    ],
+    "D": [
+      "Ddim",
+      "Dm7dim5"
+    ]
+  },
+  "Eb major_pentatonic": {
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebdom9"
+    ],
+    "F": [
+      "Fsus2",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "G": null,
+    "Bb": [
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus4",
+      "Copen5"
+    ]
+  },
+  "Eb minor_pentatonic": {
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbdom9"
+    ],
+    "Ab": [
+      "Absus2",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bb": null,
+    "Db": [
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5"
+    ]
+  },
+  "E major": {
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Emaj7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Edom9",
+      "Emaj9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Amaj7",
+      "Asus2",
+      "Aopen5",
+      "Adom9",
+      "Amaj9"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bdom9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#dim",
+      "D#m7dim5"
+    ]
+  },
+  "E natural_minor": {
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#dim",
+      "F#m7dim5"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gmaj7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gdom9",
+      "Gmaj9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Cmaj7",
+      "Csus2",
+      "Copen5",
+      "Cdom9",
+      "Cmaj9"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Ddom9"
+    ]
+  },
+  "E harmonic_minor": {
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#dim",
+      "F#m7dim5"
+    ],
+    "G": [
+      "Gaug",
+      "Gaug7",
+      "Gaug9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Cmaj7",
+      "Copen5"
+    ],
+    "D#": [
+      "D#dim",
+      "D#dim7",
+      "D#m7dim5"
+    ]
+  },
+  "E melodic_minor": {
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G": [
+      "Gaug",
+      "Gaug7",
+      "Gaug9"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Aopen5",
+      "Adom9"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bdom9"
+    ],
+    "C#": [
+      "C#dim",
+      "C#m7dim5"
+    ],
+    "D#": [
+      "D#dim",
+      "D#m7dim5"
+    ]
+  },
+  "E major_pentatonic": {
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Eopen5",
+      "Edom9"
+    ],
+    "F#": [
+      "F#sus2",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G#": null,
+    "B": [
+      "Bsus2",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus4",
+      "C#open5"
+    ]
+  },
+  "E minor_pentatonic": {
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus4",
+      "Eopen5"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gopen5",
+      "Gdom9"
+    ],
+    "A": [
+      "Asus2",
+      "Asus4",
+      "Aopen5"
+    ],
+    "B": null,
+    "D": [
+      "Dsus2",
+      "Dsus4",
+      "Dopen5"
+    ]
+  },
+  "F major": {
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fmaj7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fdom9",
+      "Fmaj9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus4",
+      "Aopen5"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbmaj7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbdom9",
+      "Bbmaj9"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cdom9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Edim",
+      "Em7dim5"
+    ]
+  },
+  "F natural_minor": {
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gdim",
+      "Gm7dim5"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Abmaj7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abdom9",
+      "Abmaj9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus4",
+      "Copen5"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbmaj7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbdom9",
+      "Dbmaj9"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebdom9"
+    ]
+  },
+  "F harmonic_minor": {
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gdim",
+      "Gm7dim5"
+    ],
+    "Ab": [
+      "Abaug",
+      "Abaug7",
+      "Abaug9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus4",
+      "Copen5"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbmaj7",
+      "Dbopen5"
+    ],
+    "E": [
+      "Edim",
+      "Edim7",
+      "Em7dim5"
+    ]
+  },
+  "F melodic_minor": {
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "Ab": [
+      "Abaug",
+      "Abaug7",
+      "Abaug9"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbdom9"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cdom9"
+    ],
+    "D": [
+      "Ddim",
+      "Dm7dim5"
+    ],
+    "E": [
+      "Edim",
+      "Em7dim5"
+    ]
+  },
+  "F major_pentatonic": {
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fopen5",
+      "Fdom9"
+    ],
+    "G": [
+      "Gsus2",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "A": null,
+    "C": [
+      "Csus2",
+      "Csus4",
+      "Copen5"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus4",
+      "Dopen5"
+    ]
+  },
+  "F minor_pentatonic": {
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Abopen5",
+      "Abdom9"
+    ],
+    "Bb": [
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "C": null,
+    "Eb": [
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5"
+    ]
+  },
+  "F# major": {
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#maj7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#dom9",
+      "F#maj9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bmaj7",
+      "Bsus2",
+      "Bopen5",
+      "Bdom9",
+      "Bmaj9"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#dom9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#dim",
+      "E#m7dim5"
+    ]
+  },
+  "F# natural_minor": {
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#dim",
+      "G#m7dim5"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Amaj7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Adom9",
+      "Amaj9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dmaj7",
+      "Dsus2",
+      "Dopen5",
+      "Ddom9",
+      "Dmaj9"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Edom9"
+    ]
+  },
+  "F# harmonic_minor": {
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#dim",
+      "G#m7dim5"
+    ],
+    "A": [
+      "Aaug",
+      "Aaug7",
+      "Aaug9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dmaj7",
+      "Dopen5"
+    ],
+    "E#": [
+      "E#dim",
+      "E#dim7",
+      "E#m7dim5"
+    ]
+  },
+  "F# melodic_minor": {
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A": [
+      "Aaug",
+      "Aaug7",
+      "Aaug9"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bopen5",
+      "Bdom9"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#dom9"
+    ],
+    "D#": [
+      "D#dim",
+      "D#m7dim5"
+    ],
+    "E#": [
+      "E#dim",
+      "E#m7dim5"
+    ]
+  },
+  "F# major_pentatonic": {
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#open5",
+      "F#dom9"
+    ],
+    "G#": [
+      "G#sus2",
+      "G#sus4",
+      "G#open5"
+    ],
+    "A#": null,
+    "C#": [
+      "C#sus2",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus4",
+      "D#open5"
+    ]
+  },
+  "F# minor_pentatonic": {
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus4",
+      "F#open5"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Aopen5",
+      "Adom9"
+    ],
+    "B": [
+      "Bsus2",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C#": null,
+    "E": [
+      "Esus2",
+      "Esus4",
+      "Eopen5"
+    ]
+  },
+  "Gb major": {
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbmaj7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbdom9",
+      "Gbmaj9"
+    ],
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbmaj7",
+      "Cbsus2",
+      "Cbopen5",
+      "Cbdom9",
+      "Cbmaj9"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbdom9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fdim",
+      "Fm7dim5"
+    ]
+  },
+  "Gb natural_minor": {
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbmin9"
+    ],
+    "Ab": [
+      "Abdim",
+      "Abm7dim5"
+    ],
+    "Bbb": [
+      "Bbbmaj",
+      "Bbbdom7",
+      "Bbbmaj7",
+      "Bbbsus2",
+      "Bbbsus4",
+      "Bbbopen5",
+      "Bbbdom9",
+      "Bbbmaj9"
+    ],
+    "Cb": [
+      "Cbmin",
+      "Cbmin7",
+      "Cbsus2",
+      "Cbsus4",
+      "Cbopen5",
+      "Cbmin9"
+    ],
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus4",
+      "Dbopen5"
+    ],
+    "Ebb": [
+      "Ebbmaj",
+      "Ebbdom7",
+      "Ebbmaj7",
+      "Ebbsus2",
+      "Ebbopen5",
+      "Ebbdom9",
+      "Ebbmaj9"
+    ],
+    "Fb": [
+      "Fbmaj",
+      "Fbdom7",
+      "Fbsus2",
+      "Fbsus4",
+      "Fbopen5",
+      "Fbdom9"
+    ]
+  },
+  "Gb harmonic_minor": {
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbmin9"
+    ],
+    "Ab": [
+      "Abdim",
+      "Abm7dim5"
+    ],
+    "Bbb": [
+      "Bbbaug",
+      "Bbbaug7",
+      "Bbbaug9"
+    ],
+    "Cb": [
+      "Cbmin",
+      "Cbmin7",
+      "Cbsus2",
+      "Cbopen5",
+      "Cbmin9"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus4",
+      "Dbopen5"
+    ],
+    "Ebb": [
+      "Ebbmaj",
+      "Ebbdom7",
+      "Ebbmaj7",
+      "Ebbopen5"
+    ],
+    "F": [
+      "Fdim",
+      "Fdim7",
+      "Fm7dim5"
+    ]
+  },
+  "Gb melodic_minor": {
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbmin9"
+    ],
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bbb": [
+      "Bbbaug",
+      "Bbbaug7",
+      "Bbbaug9"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbsus2",
+      "Cbopen5",
+      "Cbdom9"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbdom9"
+    ],
+    "Eb": [
+      "Ebdim",
+      "Ebm7dim5"
+    ],
+    "F": [
+      "Fdim",
+      "Fm7dim5"
+    ]
+  },
+  "Gb major_pentatonic": {
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbdom9"
+    ],
+    "Ab": [
+      "Absus2",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Bb": null,
+    "Db": [
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus4",
+      "Ebopen5"
+    ]
+  },
+  "Gb minor_pentatonic": {
+    "Gb": [
+      "Gbmin",
+      "Gbmin7",
+      "Gbsus4",
+      "Gbopen5"
+    ],
+    "Bbb": [
+      "Bbbmaj",
+      "Bbbdom7",
+      "Bbbsus2",
+      "Bbbopen5",
+      "Bbbdom9"
+    ],
+    "Cb": [
+      "Cbsus2",
+      "Cbsus4",
+      "Cbopen5"
+    ],
+    "Db": null,
+    "Fb": [
+      "Fbsus2",
+      "Fbsus4",
+      "Fbopen5"
+    ]
+  },
+  "G major": {
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gmaj7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gdom9",
+      "Gmaj9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Cmaj7",
+      "Csus2",
+      "Copen5",
+      "Cdom9",
+      "Cmaj9"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Ddom9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#dim",
+      "F#m7dim5"
+    ]
+  },
+  "G natural_minor": {
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Adim",
+      "Am7dim5"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbmaj7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbdom9",
+      "Bbmaj9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebmaj7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebdom9",
+      "Ebmaj9"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fdom9"
+    ]
+  },
+  "G harmonic_minor": {
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Adim",
+      "Am7dim5"
+    ],
+    "Bb": [
+      "Bbaug",
+      "Bbaug7",
+      "Bbaug9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebmaj7",
+      "Ebopen5"
+    ],
+    "F#": [
+      "F#dim",
+      "F#dim7",
+      "F#m7dim5"
+    ]
+  },
+  "G melodic_minor": {
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus4",
+      "Aopen5"
+    ],
+    "Bb": [
+      "Bbaug",
+      "Bbaug7",
+      "Bbaug9"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Copen5",
+      "Cdom9"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Ddom9"
+    ],
+    "E": [
+      "Edim",
+      "Em7dim5"
+    ],
+    "F#": [
+      "F#dim",
+      "F#m7dim5"
+    ]
+  },
+  "G major_pentatonic": {
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gopen5",
+      "Gdom9"
+    ],
+    "A": [
+      "Asus2",
+      "Asus4",
+      "Aopen5"
+    ],
+    "B": null,
+    "D": [
+      "Dsus2",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus4",
+      "Eopen5"
+    ]
+  },
+  "G minor_pentatonic": {
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus4",
+      "Gopen5"
+    ],
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbdom9"
+    ],
+    "C": [
+      "Csus2",
+      "Csus4",
+      "Copen5"
+    ],
+    "D": null,
+    "F": [
+      "Fsus2",
+      "Fsus4",
+      "Fopen5"
+    ]
+  },
+  "G# major": {
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#maj7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#dom9",
+      "G#maj9"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#min9"
+    ],
+    "B#": [
+      "B#min",
+      "B#min7",
+      "B#sus4",
+      "B#open5"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#maj7",
+      "C#sus2",
+      "C#open5",
+      "C#dom9",
+      "C#maj9"
+    ],
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#dom9"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus2",
+      "E#sus4",
+      "E#open5",
+      "E#min9"
+    ],
+    "F##": [
+      "F##dim",
+      "F##m7dim5"
+    ]
+  },
+  "G# natural_minor": {
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#dim",
+      "A#m7dim5"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bmaj7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bdom9",
+      "Bmaj9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Emaj7",
+      "Esus2",
+      "Eopen5",
+      "Edom9",
+      "Emaj9"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#dom9"
+    ]
+  },
+  "G# harmonic_minor": {
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#dim",
+      "A#m7dim5"
+    ],
+    "B": [
+      "Baug",
+      "Baug7",
+      "Baug9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Emaj7",
+      "Eopen5"
+    ],
+    "F##": [
+      "F##dim",
+      "F##dim7",
+      "F##m7dim5"
+    ]
+  },
+  "G# melodic_minor": {
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B": [
+      "Baug",
+      "Baug7",
+      "Baug9"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#open5",
+      "C#dom9"
+    ],
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#dom9"
+    ],
+    "E#": [
+      "E#dim",
+      "E#m7dim5"
+    ],
+    "F##": [
+      "F##dim",
+      "F##m7dim5"
+    ]
+  },
+  "G# major_pentatonic": {
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus2",
+      "G#open5",
+      "G#dom9"
+    ],
+    "A#": [
+      "A#sus2",
+      "A#sus4",
+      "A#open5"
+    ],
+    "B#": null,
+    "D#": [
+      "D#sus2",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus4",
+      "E#open5"
+    ]
+  },
+  "G# minor_pentatonic": {
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus4",
+      "G#open5"
+    ],
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bopen5",
+      "Bdom9"
+    ],
+    "C#": [
+      "C#sus2",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D#": null,
+    "F#": [
+      "F#sus2",
+      "F#sus4",
+      "F#open5"
+    ]
+  },
+  "Ab major": {
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Abmaj7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abdom9",
+      "Abmaj9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus4",
+      "Copen5"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbmaj7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbdom9",
+      "Dbmaj9"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebdom9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fmin9"
+    ],
+    "G": [
+      "Gdim",
+      "Gm7dim5"
+    ]
+  },
+  "Ab natural_minor": {
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbdim",
+      "Bbm7dim5"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbmaj7",
+      "Cbsus2",
+      "Cbsus4",
+      "Cbopen5",
+      "Cbdom9",
+      "Cbmaj9"
+    ],
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbmin9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "Fb": [
+      "Fbmaj",
+      "Fbdom7",
+      "Fbmaj7",
+      "Fbsus2",
+      "Fbopen5",
+      "Fbdom9",
+      "Fbmaj9"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5",
+      "Gbdom9"
+    ]
+  },
+  "Ab harmonic_minor": {
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbdim",
+      "Bbm7dim5"
+    ],
+    "Cb": [
+      "Cbaug",
+      "Cbaug7",
+      "Cbaug9"
+    ],
+    "Db": [
+      "Dbmin",
+      "Dbmin7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbmin9"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "Fb": [
+      "Fbmaj",
+      "Fbdom7",
+      "Fbmaj7",
+      "Fbopen5"
+    ],
+    "G": [
+      "Gdim",
+      "Gdim7",
+      "Gm7dim5"
+    ]
+  },
+  "Ab melodic_minor": {
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abmin9"
+    ],
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "Cb": [
+      "Cbaug",
+      "Cbaug7",
+      "Cbaug9"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbdom9"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebdom9"
+    ],
+    "F": [
+      "Fdim",
+      "Fm7dim5"
+    ],
+    "G": [
+      "Gdim",
+      "Gm7dim5"
+    ]
+  },
+  "Ab major_pentatonic": {
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Abopen5",
+      "Abdom9"
+    ],
+    "Bb": [
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "C": null,
+    "Eb": [
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus4",
+      "Fopen5"
+    ]
+  },
+  "Ab minor_pentatonic": {
+    "Ab": [
+      "Abmin",
+      "Abmin7",
+      "Absus4",
+      "Abopen5"
+    ],
+    "Cb": [
+      "Cbmaj",
+      "Cbdom7",
+      "Cbsus2",
+      "Cbopen5",
+      "Cbdom9"
+    ],
+    "Db": [
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5"
+    ],
+    "Eb": null,
+    "Gb": [
+      "Gbsus2",
+      "Gbsus4",
+      "Gbopen5"
+    ]
+  },
+  "A major": {
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Amaj7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Adom9",
+      "Amaj9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dmaj7",
+      "Dsus2",
+      "Dopen5",
+      "Ddom9",
+      "Dmaj9"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Edom9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#min9"
+    ],
+    "G#": [
+      "G#dim",
+      "G#m7dim5"
+    ]
+  },
+  "A natural_minor": {
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bdim",
+      "Bm7dim5"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Cmaj7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cdom9",
+      "Cmaj9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fmaj7",
+      "Fsus2",
+      "Fopen5",
+      "Fdom9",
+      "Fmaj9"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gdom9"
+    ]
+  },
+  "A harmonic_minor": {
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bdim",
+      "Bm7dim5"
+    ],
+    "C": [
+      "Caug",
+      "Caug7",
+      "Caug9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus2",
+      "Dopen5",
+      "Dmin9"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fmaj7",
+      "Fopen5"
+    ],
+    "G#": [
+      "G#dim",
+      "G#dim7",
+      "G#m7dim5"
+    ]
+  },
+  "A melodic_minor": {
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Amin9"
+    ],
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C": [
+      "Caug",
+      "Caug7",
+      "Caug9"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dopen5",
+      "Ddom9"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Edom9"
+    ],
+    "F#": [
+      "F#dim",
+      "F#m7dim5"
+    ],
+    "G#": [
+      "G#dim",
+      "G#m7dim5"
+    ]
+  },
+  "A major_pentatonic": {
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Aopen5",
+      "Adom9"
+    ],
+    "B": [
+      "Bsus2",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "C#": null,
+    "E": [
+      "Esus2",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus4",
+      "F#open5"
+    ]
+  },
+  "A minor_pentatonic": {
+    "A": [
+      "Amin",
+      "Amin7",
+      "Asus4",
+      "Aopen5"
+    ],
+    "C": [
+      "Cmaj",
+      "Cdom7",
+      "Csus2",
+      "Copen5",
+      "Cdom9"
+    ],
+    "D": [
+      "Dsus2",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "E": null,
+    "G": [
+      "Gsus2",
+      "Gsus4",
+      "Gopen5"
+    ]
+  },
+  "A# major": {
+    "A#": [
+      "A#maj",
+      "A#dom7",
+      "A#maj7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#dom9",
+      "A#maj9"
+    ],
+    "B#": [
+      "B#min",
+      "B#min7",
+      "B#sus2",
+      "B#sus4",
+      "B#open5",
+      "B#min9"
+    ],
+    "C##": [
+      "C##min",
+      "C##min7",
+      "C##sus4",
+      "C##open5"
+    ],
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#maj7",
+      "D#sus2",
+      "D#open5",
+      "D#dom9",
+      "D#maj9"
+    ],
+    "E#": [
+      "E#maj",
+      "E#dom7",
+      "E#sus2",
+      "E#sus4",
+      "E#open5",
+      "E#dom9"
+    ],
+    "F##": [
+      "F##min",
+      "F##min7",
+      "F##sus2",
+      "F##sus4",
+      "F##open5",
+      "F##min9"
+    ],
+    "G##": [
+      "G##dim",
+      "G##m7dim5"
+    ]
+  },
+  "A# natural_minor": {
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#min9"
+    ],
+    "B#": [
+      "B#dim",
+      "B#m7dim5"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#maj7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#dom9",
+      "C#maj9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#sus4",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#min",
+      "E#min7",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#maj7",
+      "F#sus2",
+      "F#open5",
+      "F#dom9",
+      "F#maj9"
+    ],
+    "G#": [
+      "G#maj",
+      "G#dom7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#dom9"
+    ]
+  },
+  "A# harmonic_minor": {
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#min9"
+    ],
+    "B#": [
+      "B#dim",
+      "B#m7dim5"
+    ],
+    "C#": [
+      "C#aug",
+      "C#aug7",
+      "C#aug9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus2",
+      "D#open5",
+      "D#min9"
+    ],
+    "E#": [
+      "E#maj",
+      "E#dom7",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#maj7",
+      "F#open5"
+    ],
+    "G##": [
+      "G##dim",
+      "G##dim7",
+      "G##m7dim5"
+    ]
+  },
+  "A# melodic_minor": {
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus2",
+      "A#sus4",
+      "A#open5",
+      "A#min9"
+    ],
+    "B#": [
+      "B#min",
+      "B#min7",
+      "B#sus4",
+      "B#open5"
+    ],
+    "C#": [
+      "C#aug",
+      "C#aug7",
+      "C#aug9"
+    ],
+    "D#": [
+      "D#maj",
+      "D#dom7",
+      "D#sus2",
+      "D#open5",
+      "D#dom9"
+    ],
+    "E#": [
+      "E#maj",
+      "E#dom7",
+      "E#sus2",
+      "E#sus4",
+      "E#open5",
+      "E#dom9"
+    ],
+    "F##": [
+      "F##dim",
+      "F##m7dim5"
+    ],
+    "G##": [
+      "G##dim",
+      "G##m7dim5"
+    ]
+  },
+  "A# major_pentatonic": {
+    "A#": [
+      "A#maj",
+      "A#dom7",
+      "A#sus2",
+      "A#open5",
+      "A#dom9"
+    ],
+    "B#": [
+      "B#sus2",
+      "B#sus4",
+      "B#open5"
+    ],
+    "C##": null,
+    "E#": [
+      "E#sus2",
+      "E#sus4",
+      "E#open5"
+    ],
+    "F##": [
+      "F##min",
+      "F##min7",
+      "F##sus4",
+      "F##open5"
+    ]
+  },
+  "A# minor_pentatonic": {
+    "A#": [
+      "A#min",
+      "A#min7",
+      "A#sus4",
+      "A#open5"
+    ],
+    "C#": [
+      "C#maj",
+      "C#dom7",
+      "C#sus2",
+      "C#open5",
+      "C#dom9"
+    ],
+    "D#": [
+      "D#sus2",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E#": null,
+    "G#": [
+      "G#sus2",
+      "G#sus4",
+      "G#open5"
+    ]
+  },
+  "Bb major": {
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbmaj7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbdom9",
+      "Bbmaj9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus2",
+      "Csus4",
+      "Copen5",
+      "Cmin9"
+    ],
+    "D": [
+      "Dmin",
+      "Dmin7",
+      "Dsus4",
+      "Dopen5"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebmaj7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebdom9",
+      "Ebmaj9"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fdom9"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus2",
+      "Gsus4",
+      "Gopen5",
+      "Gmin9"
+    ],
+    "A": [
+      "Adim",
+      "Am7dim5"
+    ]
+  },
+  "Bb natural_minor": {
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cdim",
+      "Cm7dim5"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbmaj7",
+      "Dbsus2",
+      "Dbsus4",
+      "Dbopen5",
+      "Dbdom9",
+      "Dbmaj9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fmin",
+      "Fmin7",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbmaj7",
+      "Gbsus2",
+      "Gbopen5",
+      "Gbdom9",
+      "Gbmaj9"
+    ],
+    "Ab": [
+      "Abmaj",
+      "Abdom7",
+      "Absus2",
+      "Absus4",
+      "Abopen5",
+      "Abdom9"
+    ]
+  },
+  "Bb harmonic_minor": {
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cdim",
+      "Cm7dim5"
+    ],
+    "Db": [
+      "Dbaug",
+      "Dbaug7",
+      "Dbaug9"
+    ],
+    "Eb": [
+      "Ebmin",
+      "Ebmin7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebmin9"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "Gb": [
+      "Gbmaj",
+      "Gbdom7",
+      "Gbmaj7",
+      "Gbopen5"
+    ],
+    "A": [
+      "Adim",
+      "Adim7",
+      "Am7dim5"
+    ]
+  },
+  "Bb melodic_minor": {
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus2",
+      "Bbsus4",
+      "Bbopen5",
+      "Bbmin9"
+    ],
+    "C": [
+      "Cmin",
+      "Cmin7",
+      "Csus4",
+      "Copen5"
+    ],
+    "Db": [
+      "Dbaug",
+      "Dbaug7",
+      "Dbaug9"
+    ],
+    "Eb": [
+      "Ebmaj",
+      "Ebdom7",
+      "Ebsus2",
+      "Ebopen5",
+      "Ebdom9"
+    ],
+    "F": [
+      "Fmaj",
+      "Fdom7",
+      "Fsus2",
+      "Fsus4",
+      "Fopen5",
+      "Fdom9"
+    ],
+    "G": [
+      "Gdim",
+      "Gm7dim5"
+    ],
+    "A": [
+      "Adim",
+      "Am7dim5"
+    ]
+  },
+  "Bb major_pentatonic": {
+    "Bb": [
+      "Bbmaj",
+      "Bbdom7",
+      "Bbsus2",
+      "Bbopen5",
+      "Bbdom9"
+    ],
+    "C": [
+      "Csus2",
+      "Csus4",
+      "Copen5"
+    ],
+    "D": null,
+    "F": [
+      "Fsus2",
+      "Fsus4",
+      "Fopen5"
+    ],
+    "G": [
+      "Gmin",
+      "Gmin7",
+      "Gsus4",
+      "Gopen5"
+    ]
+  },
+  "Bb minor_pentatonic": {
+    "Bb": [
+      "Bbmin",
+      "Bbmin7",
+      "Bbsus4",
+      "Bbopen5"
+    ],
+    "Db": [
+      "Dbmaj",
+      "Dbdom7",
+      "Dbsus2",
+      "Dbopen5",
+      "Dbdom9"
+    ],
+    "Eb": [
+      "Ebsus2",
+      "Ebsus4",
+      "Ebopen5"
+    ],
+    "F": null,
+    "Ab": [
+      "Absus2",
+      "Absus4",
+      "Abopen5"
+    ]
+  },
+  "B major": {
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bmaj7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bdom9",
+      "Bmaj9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus2",
+      "C#sus4",
+      "C#open5",
+      "C#min9"
+    ],
+    "D#": [
+      "D#min",
+      "D#min7",
+      "D#sus4",
+      "D#open5"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Emaj7",
+      "Esus2",
+      "Eopen5",
+      "Edom9",
+      "Emaj9"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#dom9"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus2",
+      "G#sus4",
+      "G#open5",
+      "G#min9"
+    ],
+    "A#": [
+      "A#dim",
+      "A#m7dim5"
+    ]
+  },
+  "B natural_minor": {
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#dim",
+      "C#m7dim5"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dmaj7",
+      "Dsus2",
+      "Dsus4",
+      "Dopen5",
+      "Ddom9",
+      "Dmaj9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Esus4",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#min",
+      "F#min7",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gmaj7",
+      "Gsus2",
+      "Gopen5",
+      "Gdom9",
+      "Gmaj9"
+    ],
+    "A": [
+      "Amaj",
+      "Adom7",
+      "Asus2",
+      "Asus4",
+      "Aopen5",
+      "Adom9"
+    ]
+  },
+  "B harmonic_minor": {
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#dim",
+      "C#m7dim5"
+    ],
+    "D": [
+      "Daug",
+      "Daug7",
+      "Daug9"
+    ],
+    "E": [
+      "Emin",
+      "Emin7",
+      "Esus2",
+      "Eopen5",
+      "Emin9"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G": [
+      "Gmaj",
+      "Gdom7",
+      "Gmaj7",
+      "Gopen5"
+    ],
+    "A#": [
+      "A#dim",
+      "A#dim7",
+      "A#m7dim5"
+    ]
+  },
+  "B melodic_minor": {
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus2",
+      "Bsus4",
+      "Bopen5",
+      "Bmin9"
+    ],
+    "C#": [
+      "C#min",
+      "C#min7",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D": [
+      "Daug",
+      "Daug7",
+      "Daug9"
+    ],
+    "E": [
+      "Emaj",
+      "Edom7",
+      "Esus2",
+      "Eopen5",
+      "Edom9"
+    ],
+    "F#": [
+      "F#maj",
+      "F#dom7",
+      "F#sus2",
+      "F#sus4",
+      "F#open5",
+      "F#dom9"
+    ],
+    "G#": [
+      "G#dim",
+      "G#m7dim5"
+    ],
+    "A#": [
+      "A#dim",
+      "A#m7dim5"
+    ]
+  },
+  "B major_pentatonic": {
+    "B": [
+      "Bmaj",
+      "Bdom7",
+      "Bsus2",
+      "Bopen5",
+      "Bdom9"
+    ],
+    "C#": [
+      "C#sus2",
+      "C#sus4",
+      "C#open5"
+    ],
+    "D#": null,
+    "F#": [
+      "F#sus2",
+      "F#sus4",
+      "F#open5"
+    ],
+    "G#": [
+      "G#min",
+      "G#min7",
+      "G#sus4",
+      "G#open5"
+    ]
+  },
+  "B minor_pentatonic": {
+    "B": [
+      "Bmin",
+      "Bmin7",
+      "Bsus4",
+      "Bopen5"
+    ],
+    "D": [
+      "Dmaj",
+      "Ddom7",
+      "Dsus2",
+      "Dopen5",
+      "Ddom9"
+    ],
+    "E": [
+      "Esus2",
+      "Esus4",
+      "Eopen5"
+    ],
+    "F#": null,
+    "A": [
+      "Asus2",
+      "Asus4",
+      "Aopen5"
+    ]
+  }
+}

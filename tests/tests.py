@@ -1,5 +1,6 @@
 import unittest
-from musthe import *
+import json
+from musthe import Letter, Note, Scale, Chord, Interval
 
 
 class TestsForLetter(unittest.TestCase):
@@ -362,7 +363,10 @@ class TestsForChord(unittest.TestCase):
         self.assertEqual(Chord(Note('C#'), '°7').lilypond_notation(2), 'cis2:7.5-')
         self.assertEqual(Chord(Note('Db'), 'ø7').lilypond_notation(4), 'des4:7.5-')
         self.assertEqual(Chord(Note('D'), 'm7b5').lilypond_notation(8), 'd8:7.5-')
- 
+
+
+class TestsForScale(unittest.TestCase):
+    
     def test_note_scales(self):
         def test1(root, name, notes):
             self.assertEqual(list(map(str, Scale(Note(root), name).notes)), notes)
@@ -423,6 +427,49 @@ class TestsForChord(unittest.TestCase):
         scale = Scale('C', 'major')
         self.assertEqual(str(scale), 'C major')
         self.assertEqual(repr(scale), 'Scale({!r}, {!r})'.format(scale.root, scale.name))
+
+    def test_harmonize(self):
+        """Tests that the chords returned from the Scale.harmonize() method match the most recent 'known good' values.
+        
+        If new scales or chord recipes are added to the library, this test
+        will break; to generate update the ``tests/harmonized_scales_list.json``
+        file you can use the ``examples/harmonize_list.py`` script.
+        """
+        with open('tests/harmonized_scales_list.json', 'r', encoding="utf-8") as fh:
+            expected_chords = json.load(fh)
+        for scale in Scale.all():
+            scale_chords = scale.harmonize()
+
+            # At this point, scale_chords should contain a list of lists,
+            # where each top index corresponds to a note in the scale;
+            # check that each one matches the expected results
+            for i in range(0, len(scale.notes)):
+                chords_as_str = [str(chord) for chord in scale_chords[i]] if scale_chords[i] is not None else None
+                self.assertEqual(chords_as_str, expected_chords[str(scale)][i], f"The harmonized chords for index {i} in '{str(scale)}' did not match the expected results. Have scales or chord recipes been added or removed?")
+
+    def test_harmonize_dict(self):
+        """Tests that the chords returned from the Scale.harmonize_dict()
+        method match the most recent 'known good' values.
+        
+        If new scales or chord recipes are added to the library, this test
+        will break; to generate update the ``tests/harmonized_scales_dict.json``
+        file you can use the ``examples/harmonize_dict.py`` script.
+        """
+        with open('tests/harmonized_scales_dict.json', 'r', encoding="utf-8") as fh:
+            expected_chords = json.load(fh)
+        for scale in Scale.all():
+            scale_str = str(scale)
+            scale_chords = scale.harmonize_dict()
+
+            # At this point, scale_chords should contain a dict of lists,
+            # where each key corresponds to the name of a note in the scale,
+            # and each list contains chords for that note;
+            # check that each one matches the expected results
+            for note in scale.notes:
+                note_str = str(note)
+                chords_as_str = [str(chord) for chord in scale_chords[note_str]] if scale_chords[note_str] is not None else None
+
+                self.assertEqual(chords_as_str, expected_chords[scale_str][note_str], f"The harmonized chords for '{note_str}' in '{str(scale)}' did not match the expected results. Have scales or chord recipes been added or removed?")
 
 
 if __name__ == '__main__':
