@@ -364,7 +364,6 @@ class TestsForChord(unittest.TestCase):
         self.assertEqual(Chord(Note('Db'), 'ø7').lilypond_notation(4), 'des4:7.5-')
         self.assertEqual(Chord(Note('D'), 'm7b5').lilypond_notation(8), 'd8:7.5-')
 
-
 class TestsForScale(unittest.TestCase):
     
     def test_note_scales(self):
