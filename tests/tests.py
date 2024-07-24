@@ -506,7 +506,6 @@ class TestsForScale(unittest.TestCase):
             'G': [Chord(Note('G4'), 'sus2'), Chord(Note('G4'), 'sus4'),
                 Chord(Note('G4'), 'open5')]}
         self.assertDictEqual(Scale('A', 'minor_pentatonic').harmonize_dict(include_dom7=False), expected)
-        pprint(Scale('A', 'minor_pentatonic').harmonize_dict(include_dom7=False), compact=True)    
 
 if __name__ == '__main__':
     unittest.main()
