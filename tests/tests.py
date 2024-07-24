@@ -2,7 +2,7 @@ import unittest
 import json
 from musthe import Letter, Note, Scale, Chord, Interval
 
-
+from pprint import pprint
 class TestsForLetter(unittest.TestCase):
     def test_letter_parsing(self):
         def test1(name):
@@ -366,7 +366,7 @@ class TestsForChord(unittest.TestCase):
 
 
 class TestsForScale(unittest.TestCase):
-    
+
     def test_note_scales(self):
         def test1(root, name, notes):
             self.assertEqual(list(map(str, Scale(Note(root), name).notes)), notes)
@@ -429,48 +429,84 @@ class TestsForScale(unittest.TestCase):
         self.assertEqual(repr(scale), 'Scale({!r}, {!r})'.format(scale.root, scale.name))
 
     def test_harmonize(self):
-        """Tests that the chords returned from the Scale.harmonize() method match the most recent 'known good' values.
-        
-        If new scales or chord recipes are added to the library, this test
-        will break; to generate update the ``tests/harmonized_scales_list.json``
-        file you can use the ``examples/harmonize_list.py`` script.
+        """Tests expected results of the harmonize() method.
         """
-        with open('tests/harmonized_scales_list.json', 'r', encoding="utf-8") as fh:
-            expected_chords = json.load(fh)
-        for scale in Scale.all():
-            scale_chords = scale.harmonize()
+        expected = [[Chord(Note('C#4'), 'maj'), Chord(Note('C#4'), 'dom7'),
+            Chord(Note('C#4'), 'maj7'), Chord(Note('C#4'), 'sus2'),
+            Chord(Note('C#4'), 'sus4'), Chord(Note('C#4'), 'open5'),
+            Chord(Note('C#4'), 'dom9'), Chord(Note('C#4'), 'maj9')],
+            [Chord(Note('D#4'), 'min'), Chord(Note('D#4'), 'min7'),
+            Chord(Note('D#4'), 'sus2'), Chord(Note('D#4'), 'sus4'),
+            Chord(Note('D#4'), 'open5'), Chord(Note('D#4'), 'min9')],
+            [Chord(Note('E#4'), 'min'), Chord(Note('E#4'), 'min7'),
+            Chord(Note('E#4'), 'sus4'), Chord(Note('E#4'), 'open5')],
+            [Chord(Note('F#4'), 'maj'), Chord(Note('F#4'), 'dom7'),
+            Chord(Note('F#4'), 'maj7'), Chord(Note('F#4'), 'sus2'),
+            Chord(Note('F#4'), 'open5'), Chord(Note('F#4'), 'dom9'),
+            Chord(Note('F#4'), 'maj9')],
+            [Chord(Note('G#4'), 'maj'), Chord(Note('G#4'), 'dom7'),
+            Chord(Note('G#4'), 'sus2'), Chord(Note('G#4'), 'sus4'),
+            Chord(Note('G#4'), 'open5'), Chord(Note('G#4'), 'dom9')],
+            [Chord(Note('A#4'), 'min'), Chord(Note('A#4'), 'min7'),
+            Chord(Note('A#4'), 'sus2'), Chord(Note('A#4'), 'sus4'),
+            Chord(Note('A#4'), 'open5'), Chord(Note('A#4'), 'min9')],
+            [Chord(Note('B#4'), 'dim'), Chord(Note('B#4'), 'm7dim5')]]
+        self.assertListEqual(Scale('C#', 'major').harmonize(), expected)
 
-            # At this point, scale_chords should contain a list of lists,
-            # where each top index corresponds to a note in the scale;
-            # check that each one matches the expected results
-            for i in range(0, len(scale.notes)):
-                chords_as_str = [str(chord) for chord in scale_chords[i]] if scale_chords[i] is not None else None
-                self.assertEqual(chords_as_str, expected_chords[str(scale)][i], f"The harmonized chords for index {i} in '{str(scale)}' did not match the expected results. Have scales or chord recipes been added or removed?")
+    def test_harmonize_no_dom7(self):
+        """Tests expected results of the harmonize() method when
+        dominant 7th chords are omitted.        
+        """
+        expected = [[Chord(Note('Ab4'), 'min'), Chord(Note('Ab4'), 'min7'),
+            Chord(Note('Ab4'), 'sus2'), Chord(Note('Ab4'), 'sus4'),
+            Chord(Note('Ab4'), 'open5'), Chord(Note('Ab4'), 'min9')],
+            [Chord(Note('Bb4'), 'dim'), Chord(Note('Bb4'), 'm7dim5')],
+            [Chord(Note('Cb4'), 'maj'), Chord(Note('Cb4'), 'maj7'),
+            Chord(Note('Cb4'), 'sus2'), Chord(Note('Cb4'), 'sus4'),
+            Chord(Note('Cb4'), 'open5'), Chord(Note('Cb4'), 'maj9')],
+            [Chord(Note('Db4'), 'min'), Chord(Note('Db4'), 'min7'),
+            Chord(Note('Db4'), 'sus2'), Chord(Note('Db4'), 'sus4'),
+            Chord(Note('Db4'), 'open5'), Chord(Note('Db4'), 'min9')],
+            [Chord(Note('Eb4'), 'min'), Chord(Note('Eb4'), 'min7'),
+            Chord(Note('Eb4'), 'sus4'), Chord(Note('Eb4'), 'open5')],
+            [Chord(Note('Fb4'), 'maj'), Chord(Note('Fb4'), 'maj7'),
+            Chord(Note('Fb4'), 'sus2'), Chord(Note('Fb4'), 'open5'),
+            Chord(Note('Fb4'), 'maj9')],
+            [Chord(Note('Gb4'), 'maj'), Chord(Note('Gb4'), 'dom7'),
+            Chord(Note('Gb4'), 'sus2'), Chord(Note('Gb4'), 'sus4'),
+            Chord(Note('Gb4'), 'open5'), Chord(Note('Gb4'), 'dom9')]]
+        self.assertListEqual(Scale('Ab', 'natural_minor').harmonize(include_dom7=False), expected)
 
     def test_harmonize_dict(self):
-        """Tests that the chords returned from the Scale.harmonize_dict()
-        method match the most recent 'known good' values.
-        
-        If new scales or chord recipes are added to the library, this test
-        will break; to generate update the ``tests/harmonized_scales_dict.json``
-        file you can use the ``examples/harmonize_dict.py`` script.
+        """Tests expected results of the harmonize() method.
         """
-        with open('tests/harmonized_scales_dict.json', 'r', encoding="utf-8") as fh:
-            expected_chords = json.load(fh)
-        for scale in Scale.all():
-            scale_str = str(scale)
-            scale_chords = scale.harmonize_dict()
+        expected = {'A': [Chord(Note('A4'), 'min'), Chord(Note('A4'), 'min7'),
+                Chord(Note('A4'), 'sus4'), Chord(Note('A4'), 'open5')],
+            'C': [Chord(Note('C4'), 'maj'), Chord(Note('C4'), 'dom7'),
+                Chord(Note('C4'), 'sus2'), Chord(Note('C4'), 'open5'),
+                Chord(Note('C4'), 'dom9')],
+            'D': [Chord(Note('D4'), 'sus2'), Chord(Note('D4'), 'sus4'),
+                Chord(Note('D4'), 'open5')],
+            'E': None,
+            'G': [Chord(Note('G4'), 'sus2'), Chord(Note('G4'), 'sus4'),
+                Chord(Note('G4'), 'open5')]}
+        self.assertDictEqual(Scale('C', 'major_pentatonic').harmonize_dict(), expected)
 
-            # At this point, scale_chords should contain a dict of lists,
-            # where each key corresponds to the name of a note in the scale,
-            # and each list contains chords for that note;
-            # check that each one matches the expected results
-            for note in scale.notes:
-                note_str = str(note)
-                chords_as_str = [str(chord) for chord in scale_chords[note_str]] if scale_chords[note_str] is not None else None
-
-                self.assertEqual(chords_as_str, expected_chords[scale_str][note_str], f"The harmonized chords for '{note_str}' in '{str(scale)}' did not match the expected results. Have scales or chord recipes been added or removed?")
-
+    def test_harmonize_dict_no_dom7(self):
+        """Tests expected results of the harmonize_dict() method when
+        dominant 7th chords are omitted.
+        """
+        expected = {'A': [Chord(Note('A4'), 'min'), Chord(Note('A4'), 'min7'),
+                Chord(Note('A4'), 'sus4'), Chord(Note('A4'), 'open5')],
+            'C': [Chord(Note('C4'), 'maj'), Chord(Note('C4'), 'sus2'),
+                Chord(Note('C4'), 'open5')],
+            'D': [Chord(Note('D4'), 'sus2'), Chord(Note('D4'), 'sus4'),
+                Chord(Note('D4'), 'open5')],
+            'E': None,
+            'G': [Chord(Note('G4'), 'sus2'), Chord(Note('G4'), 'sus4'),
+                Chord(Note('G4'), 'open5')]}
+        self.assertDictEqual(Scale('A', 'minor_pentatonic').harmonize_dict(include_dom7=False), expected)
+        pprint(Scale('A', 'minor_pentatonic').harmonize_dict(include_dom7=False), compact=True)    
 
 if __name__ == '__main__':
     unittest.main()

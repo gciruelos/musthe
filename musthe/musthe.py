@@ -551,7 +551,7 @@ class Scale:
         See Also:
             - :py:meth:`Scale.harmonize_dict`
         """
-        chords = [None]*len(self.notes)
+        chords = [None for _ in range(len(self.notes))]
 
         for i, note in enumerate(self.notes):
             chords_for_note = []
