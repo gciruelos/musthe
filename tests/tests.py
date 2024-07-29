@@ -1,7 +1,8 @@
 import unittest
-from musthe import *
+import json
+from musthe import Letter, Note, Scale, Chord, Interval
 
-
+from pprint import pprint
 class TestsForLetter(unittest.TestCase):
     def test_letter_parsing(self):
         def test1(name):
@@ -362,7 +363,10 @@ class TestsForChord(unittest.TestCase):
         self.assertEqual(Chord(Note('C#'), '°7').lilypond_notation(2), 'cis2:7.5-')
         self.assertEqual(Chord(Note('Db'), 'ø7').lilypond_notation(4), 'des4:7.5-')
         self.assertEqual(Chord(Note('D'), 'm7b5').lilypond_notation(8), 'd8:7.5-')
- 
+
+
+class TestsForScale(unittest.TestCase):
+
     def test_note_scales(self):
         def test1(root, name, notes):
             self.assertEqual(list(map(str, Scale(Note(root), name).notes)), notes)
@@ -424,6 +428,84 @@ class TestsForChord(unittest.TestCase):
         self.assertEqual(str(scale), 'C major')
         self.assertEqual(repr(scale), 'Scale({!r}, {!r})'.format(scale.root, scale.name))
 
+    def test_harmonize(self):
+        """Tests expected results of the harmonize() method.
+        """
+        expected = [[Chord(Note('C#4'), 'maj'), Chord(Note('C#4'), 'dom7'),
+            Chord(Note('C#4'), 'maj7'), Chord(Note('C#4'), 'sus2'),
+            Chord(Note('C#4'), 'sus4'), Chord(Note('C#4'), 'open5'),
+            Chord(Note('C#4'), 'dom9'), Chord(Note('C#4'), 'maj9')],
+            [Chord(Note('D#4'), 'min'), Chord(Note('D#4'), 'min7'),
+            Chord(Note('D#4'), 'sus2'), Chord(Note('D#4'), 'sus4'),
+            Chord(Note('D#4'), 'open5'), Chord(Note('D#4'), 'min9')],
+            [Chord(Note('E#4'), 'min'), Chord(Note('E#4'), 'min7'),
+            Chord(Note('E#4'), 'sus4'), Chord(Note('E#4'), 'open5')],
+            [Chord(Note('F#4'), 'maj'), Chord(Note('F#4'), 'dom7'),
+            Chord(Note('F#4'), 'maj7'), Chord(Note('F#4'), 'sus2'),
+            Chord(Note('F#4'), 'open5'), Chord(Note('F#4'), 'dom9'),
+            Chord(Note('F#4'), 'maj9')],
+            [Chord(Note('G#4'), 'maj'), Chord(Note('G#4'), 'dom7'),
+            Chord(Note('G#4'), 'sus2'), Chord(Note('G#4'), 'sus4'),
+            Chord(Note('G#4'), 'open5'), Chord(Note('G#4'), 'dom9')],
+            [Chord(Note('A#4'), 'min'), Chord(Note('A#4'), 'min7'),
+            Chord(Note('A#4'), 'sus2'), Chord(Note('A#4'), 'sus4'),
+            Chord(Note('A#4'), 'open5'), Chord(Note('A#4'), 'min9')],
+            [Chord(Note('B#4'), 'dim'), Chord(Note('B#4'), 'm7dim5')]]
+        self.assertListEqual(Scale('C#', 'major').harmonize(), expected)
+
+    def test_harmonize_no_dom7(self):
+        """Tests expected results of the harmonize() method when
+        dominant 7th chords are omitted.        
+        """
+        expected = [[Chord(Note('Ab4'), 'min'), Chord(Note('Ab4'), 'min7'),
+            Chord(Note('Ab4'), 'sus2'), Chord(Note('Ab4'), 'sus4'),
+            Chord(Note('Ab4'), 'open5'), Chord(Note('Ab4'), 'min9')],
+            [Chord(Note('Bb4'), 'dim'), Chord(Note('Bb4'), 'm7dim5')],
+            [Chord(Note('Cb4'), 'maj'), Chord(Note('Cb4'), 'maj7'),
+            Chord(Note('Cb4'), 'sus2'), Chord(Note('Cb4'), 'sus4'),
+            Chord(Note('Cb4'), 'open5'), Chord(Note('Cb4'), 'maj9')],
+            [Chord(Note('Db4'), 'min'), Chord(Note('Db4'), 'min7'),
+            Chord(Note('Db4'), 'sus2'), Chord(Note('Db4'), 'sus4'),
+            Chord(Note('Db4'), 'open5'), Chord(Note('Db4'), 'min9')],
+            [Chord(Note('Eb4'), 'min'), Chord(Note('Eb4'), 'min7'),
+            Chord(Note('Eb4'), 'sus4'), Chord(Note('Eb4'), 'open5')],
+            [Chord(Note('Fb4'), 'maj'), Chord(Note('Fb4'), 'maj7'),
+            Chord(Note('Fb4'), 'sus2'), Chord(Note('Fb4'), 'open5'),
+            Chord(Note('Fb4'), 'maj9')],
+            [Chord(Note('Gb4'), 'maj'), Chord(Note('Gb4'), 'dom7'),
+            Chord(Note('Gb4'), 'sus2'), Chord(Note('Gb4'), 'sus4'),
+            Chord(Note('Gb4'), 'open5'), Chord(Note('Gb4'), 'dom9')]]
+        self.assertListEqual(Scale('Ab', 'natural_minor').harmonize(include_dom7=False), expected)
+
+    def test_harmonize_dict(self):
+        """Tests expected results of the harmonize() method.
+        """
+        expected = {'A': [Chord(Note('A4'), 'min'), Chord(Note('A4'), 'min7'),
+                Chord(Note('A4'), 'sus4'), Chord(Note('A4'), 'open5')],
+            'C': [Chord(Note('C4'), 'maj'), Chord(Note('C4'), 'dom7'),
+                Chord(Note('C4'), 'sus2'), Chord(Note('C4'), 'open5'),
+                Chord(Note('C4'), 'dom9')],
+            'D': [Chord(Note('D4'), 'sus2'), Chord(Note('D4'), 'sus4'),
+                Chord(Note('D4'), 'open5')],
+            'E': None,
+            'G': [Chord(Note('G4'), 'sus2'), Chord(Note('G4'), 'sus4'),
+                Chord(Note('G4'), 'open5')]}
+        self.assertDictEqual(Scale('C', 'major_pentatonic').harmonize_dict(), expected)
+
+    def test_harmonize_dict_no_dom7(self):
+        """Tests expected results of the harmonize_dict() method when
+        dominant 7th chords are omitted.
+        """
+        expected = {'A': [Chord(Note('A4'), 'min'), Chord(Note('A4'), 'min7'),
+                Chord(Note('A4'), 'sus4'), Chord(Note('A4'), 'open5')],
+            'C': [Chord(Note('C4'), 'maj'), Chord(Note('C4'), 'sus2'),
+                Chord(Note('C4'), 'open5')],
+            'D': [Chord(Note('D4'), 'sus2'), Chord(Note('D4'), 'sus4'),
+                Chord(Note('D4'), 'open5')],
+            'E': None,
+            'G': [Chord(Note('G4'), 'sus2'), Chord(Note('G4'), 'sus4'),
+                Chord(Note('G4'), 'open5')]}
+        self.assertDictEqual(Scale('A', 'minor_pentatonic').harmonize_dict(include_dom7=False), expected)
 
 if __name__ == '__main__':
     unittest.main()
